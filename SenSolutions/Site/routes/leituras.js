@@ -1,17 +1,16 @@
 var express = require('express');
 var router = express.Router();
-var banco = require('../BD/app-banco');
+var banco = require('../app-banco');
 
 router.get('/ultimas', function (req, res, next) {
   console.log(banco.conexao);
   banco.conectar().then(() => {
-    var limite_linhas = 3;
-    return banco.sql.query(`select top ${limite_linhas} 
-                            Id as id_nome_loko, 
-                            temperatura as temp, 
+    var limite_linhas = 5;
+    return banco.sql.query(`select top ${limite_linhas}  
+                            temperatura, 
                             umidade, 
-                            FORMAT(momento,'HH:mm:ss') as momento 
-                            from leitura order by id desc`);
+                            FORMAT(dataHora,'HH:mm:ss') as dataHora 
+                            from tb_eventos order by idtemp_umid desc`);
   }).then(consulta => {
 
     console.log(consulta.recordset);

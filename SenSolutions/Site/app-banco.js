@@ -1,4 +1,4 @@
-var desenvolvimento = false;
+var desenvolvimento = true;
 
 var configuracoes = {
     producao: {
@@ -16,10 +16,10 @@ var configuracoes = {
         }
     },
     desenvolvimento: {
-        server: "Luis Colocar seu link azure aqui",
+        server: "projetovialactea.database.windows.net",
         user: "bandtec",
-        password: "Colocar sua senha aqui",
-        database: "colocar o nome do banco aqui",
+        password: "Localhost123",
+        database: "BancoProjeto",
         options: {
             encrypt: true
         }

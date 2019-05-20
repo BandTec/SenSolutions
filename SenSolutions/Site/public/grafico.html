@@ -79,7 +79,11 @@
     // e como são recuperados do BackEnd
     function obterDadosGrafico() {
         var dados = new google.visualization.DataTable();
+<<<<<<< HEAD
         dados.addColumn('string', 'DataHora');
+=======
+        dados.addColumn('string', 'Momento');
+>>>>>>> 127f4eef673c276ce19241ee8f989927b8d0c994
         dados.addColumn('number', 'Temperatura');
         dados.addColumn('number', 'Umidade');
         fetch('/leituras/ultimas', {cache:'no-store'}).then(function (response) {

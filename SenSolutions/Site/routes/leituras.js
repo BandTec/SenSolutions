@@ -5,7 +5,11 @@ var banco = require('../app-banco');
 router.get('/ultimas', function (req, res, next) {
   console.log(banco.conexao);
   banco.conectar().then(() => {
+<<<<<<< HEAD
     var limite_linhas = 5;
+=======
+    var limite_linhas = 8;
+>>>>>>> 127f4eef673c276ce19241ee8f989927b8d0c994
     return banco.sql.query(`select top ${limite_linhas}  
                             temperatura, 
                             umidade, 

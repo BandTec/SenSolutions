@@ -42,13 +42,13 @@
         data.addColumn('number', 'Umidade');
 
         data.addRows([
-            ['10:00:01', 200, 1000],
-            ['10:00:09', 500, 650],
-            ['10:01:20', 700, 550],
-            ['10:01:55', 800, 95],
-            ['10:02:13', 500, 400],
-            ['10:02:35', 900, 250],
-            ['10:03:00', 800, 300]
+            ['10:00:01', 19, 50],
+            ['10:00:09', 18, 60],
+            ['10:01:20', 17, 75],
+            ['10:01:55', 20, 42],
+            ['10:02:13', 22, 54],
+            ['10:02:35', 25, 49],
+            ['10:03:00', 29, 38]
         ]);
 
 
@@ -60,17 +60,17 @@
             },
             trendlines: {
                 0: {
-                    color: 'red'
+                    color: 'blue'
                 },
                 1: {
-                    color: 'yellow'
+                    color: 'red'
                 },
             },
             title: 'Histórico recente de temperatura e umidade',
             isStacked: true,
             width: chartWidth,
             height: chartHeight,
-            colors: ['#0000D8', '#00dddd'],
+            colors: ['red', 'blue'],
             hAxis: {
                 title: 'Momento da leitura',
                 slantedText: false,

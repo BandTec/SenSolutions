@@ -20,3 +20,6 @@ app.use('/usuarios', usuariosRouter);
 app.use('/leituras', leiturasRouter);
 
 module.exports = app;
+
+
+

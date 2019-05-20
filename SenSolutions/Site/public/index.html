@@ -16,11 +16,9 @@
     <title>SenSolutions</title>
 
     <link href="css/googleapis.css" rel="stylesheet">
-    
-    
-    <!--
-			CSS
-			============================================= -->
+
+
+    <!--CSS ============================================= -->
     <link rel="stylesheet" href="css/linearicons.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/bootstrap.css">
@@ -35,51 +33,53 @@
 </head>
 
 <body>
-    <header >
-        <nav class="navbar sticky-top navbar-expand-md navbar-light bg-light ">
+    <header>
+        <nav class="navbar fixed-top navbar-expand-md navbar-light bg-light ">
             <div class="container">
-            <a href="index.html" class="navbar-brand">
-                <img src="img/logo-1.png" class="" width="80" height="45">
-              </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav mr-auto">
-              
-              <li class="nav-item">
-                <a class="nav-link" href="Quemsomos.html">Sobre nós</a>
-              </li>
-              
-              <li class="nav-item dropdown">
-                    <a href="" class="nav-link dropdown-toggle" 
-                    data-toggle="dropdown">Projetos</a>
+                <a href="index.html" class="navbar-brand">
+                    <img src="img/logo-1.png" class="" width="80" height="45">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav mr-auto">
 
-                    <div class="dropdown-menu">
-                        <a href="Projeto-Avícola.html" class="dropdown-item">Projeto avícolas</a>
-                       
-                    </div>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Quemsomos.html">Sobre nós</a>
+                        </li>
 
-                </li>
-                <li class="nav-item ">
-                        <a class="nav-link" href="Ajuda.html">Ajuda</a>
-                      </li>
-            </ul>
-            <form class="form-inline mt-2 mt-md-0">
-                <a class="btn btn-outline-primary" href="login.html">Entrar</a>
-                <a class="btn btn-primary ml-3" href="register.html">Cadastre-se</a>
-            </form>
-          </div>
-        </div>
+                        <li class="nav-item dropdown">
+                            <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown">Projetos</a>
+
+                            <div class="dropdown-menu">
+                                <a href="Projeto-Avícola.html" class="dropdown-item">Projeto avícolas</a>
+
+                            </div>
+
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="Ajuda.html">Ajuda</a>
+                        </li>
+                    </ul>
+                    <form class="form-inline mt-2 mt-md-0">
+                        <a class="btn btn-outline-primary" href="login.html">Entrar</a>
+                        <a class="btn btn-primary ml-3" href="register.html">Cadastre-se</a>
+                    </form>
+                </div>
+            </div>
         </nav>
-      </header>
+    </header>
     <!-- end header Area -->
+
     <!-- start banner Area -->
     <section id="intro" class="clearfix bg-light">
         <div class="container d-flex h-100">
             <div class="row justify-content-center align-self-center">
                 <div class="col-md-6 intro-info order-md-first order-last">
-                    <h2 style="color:rgb(80, 80, 201)">Tenha eficiência<br>no monitoramento da <br><span style="color:rgb(151, 113, 151)">Temperatura e Umidade</span> de sua avícola.</h2>
+                    <h2 style="color:rgb(80, 80, 201)">Tenha eficiência<br>no monitoramento da <br><span
+                            style="color:rgb(151, 113, 151)">Temperatura e Umidade</span> de sua avícola.</h2>
                     <p class="lead h3">Somos uma empresa que propõe uma solução simples e eficaz para o seu negócio.</p>
                 </div>
 
@@ -95,48 +95,50 @@
         <div class="container">
             <div class="row d-flex justify-content-center">
                 <div class="col-lg-6">
-                        <div class="section-title text-center">
-                            <h2 class="text-uppercase h2">Nosso Projeto</h2>
-                            
+                    <div class="section-title text-center">
+                        <h2 class="text-uppercase h2">Nosso Projeto</h2>
+
+                    </div>
+                </div>
+                <div class="col-lg-12">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img class="d-block w-100" src="img/img-frango-1.png" alt="First slide">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h3>Nosso projeto é pioneiro no mercado de avicolas</h3>
+                                    <p>...</p>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="img/img-frango-2.png" alt="Second slide">
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block w-100" src="img/img-frango-3.png" alt="Third slide">
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
+                            data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
+                            data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
                 </div>
             </div>
-            <div class="col-lg-12">
-                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                    </ol>
-                    <div class="carousel-inner">
-                      <div class="carousel-item active">
-                        <img class="d-block w-100" src="img/img-frango-1.png" alt="First slide">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h3>Nosso projeto é pioneiro no mercado de avicolas</h3>
-                            <p>...</p>
-                          </div>
-                      </div>
-                      <div class="carousel-item">
-                        <img class="d-block w-100" src="img/img-frango-2.png" alt="Second slide">
-                      </div>
-                      <div class="carousel-item">
-                        <img class="d-block w-100" src="img/img-frango-3.png" alt="Third slide">
-                      </div>
-                    </div>
-                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                      <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                      <span class="sr-only">Next</span>
-                    </a>
-                  </div>
-            </div>
         </div>
-    </div>
     </section>
 
-   
+
 
     <!-- Start about Area -->
     <section class="about-area">
@@ -176,25 +178,25 @@
         </div>
         </div>
     </section>
- 
-    <!-- Start Footer Area -->
+
+    <!-- End Footer Area -->
     <footer class="footer-area section-gap">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-3 single-footer-widget">
                     <h4><u>Ajuda</u></h4>
                     <ul>
-                        <li><a href="Ajuda.html">Dúvidas Frequentes</a></li>
-                        <li><a href="Ajuda.html">FAQ</a></li>
+                        <li><a href="#">Dúvidas Frequentes</a></li>
+                        <li><a href="#">FAQ</a></li>
 
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-3 single-footer-widget">
                     <h4><u>Institucional</u></h4>
                     <ul>
-                        <li><a  class="scroll" href="#missao">Missão</a></li>
-                        <li><a  class="scroll" href="#visao">Visão</a></li>
-                        <li><a  class="scroll" href="#valores">Valores</a></li>
+                        <li><a href="#">Missão</a></li>
+                        <li><a href="#">Visão</a></li>
+                        <li><a href="#">Valores</a></li>
 
                     </ul>
                 </div>
@@ -211,22 +213,18 @@
 
                     <a href="#"><i class="fab fa-twitter fa-2x"></i></a>
                     <a href="#"><i class="fab fa-facebook fa-2x"></i></a>
-                    <a target="_Blank" href="https://github.com/BandTec/SenSolutions"><i class="fab fa-github fa-2x"></i></a>
+                    <a target="_Blank" href="https://github.com/BandTec/SenSolutions"><i
+                            class="fab fa-github fa-2x"></i></a>
                     <a href="#"><i class="fab fa-trello fa-2x"></i></a>
-
-
                 </div>
-
             </div>
             <div class="footer-bottom row align-items-center">
                 <p class="footer-text m-0 col-lg-6 col-md-12">&copy; Copyright 2019. All rights reserved SenSolutions
                 </p>
-
             </div>
         </div>
-       
     </footer>
-    <!-- End Footer Area -->
+
 
     <script src="js/vendor/jquery-2.2.4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
@@ -248,4 +246,3 @@
 </body>
 
 </html>
-

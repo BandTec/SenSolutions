@@ -1,4 +1,4 @@
-var desenvolvimento = true;
+var desenvolvimento = false;
 
 var configuracoes = {
     producao: {

@@ -5,11 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Página com exemplo de gráfico</title>
 
+    <!-- script do google charts -->
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 
 <body onload="atualizarGrafico()">
@@ -20,59 +19,47 @@
 
 </html>
 <script>
-
+    // Não mexa nestas 3 linhas! 
     google.load('visualization', '1', {
-        packages: ['corechart'],
-        callback: plotarGrafico
+        packages: ['corechart','line'],
+        callback: obterDadosGrafico
     });
-
+    // Não mexa nessas 3 linhas! 
+    // só mexer se quiser alterar o tempo de atualização
+    // ou se souber o que está fazendo!
     function atualizarGrafico() {
-        plotarGrafico();
-        setTimeout(atualizarGrafico, 5000);
+        obterDadosGrafico();
+        setTimeout(atualizarGrafico, 3000);
     }
-
-    function plotarGrafico() {
-        console.log('iniciando plotagem do gráfico...');
-
-        var chart;
-
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Momento');
-        data.addColumn('number', 'Temperatura');
-        data.addColumn('number', 'Umidade');
-
-        data.addRows([
-            ['10:00:01', 19, 50],
-            ['10:00:09', 18, 60],
-            ['10:01:20', 17, 75],
-            ['10:01:55', 20, 42],
-            ['10:02:13', 22, 54],
-            ['10:02:35', 25, 49],
-            ['10:03:00', 29, 38]
-        ]);
-
-
-        var chartHeight = 400;
-        var chartWidth = 600;
-        var chartOptions = {
+    // altere aqui as configurações do gráfico
+    // (tamanhos, cores, textos, etc)
+    function configurarGrafico() {
+        var altura = 400;
+        var largura = 600;
+        var configuracoes = {
             tooltip: {
                 isHtml: true
             },
             trendlines: {
                 0: {
-                    color: 'blue'
+                    labelInLegend: 'Temperatura'
                 },
                 1: {
-                    color: 'red'
+                    labelInLegend: 'Umidade'
                 },
             },
             title: 'Histórico recente de temperatura e umidade',
+            legend: { position: 'bottom' },
+            colors: ['green', 'blue'],            
             isStacked: true,
-            width: chartWidth,
-            height: chartHeight,
-            colors: ['red', 'blue'],
+            width: largura,
+            height: altura,
+            vAxis: {
+                textStyle: {
+                    fontSize: 12
+                }
+            },
             hAxis: {
-                title: 'Momento da leitura',
                 slantedText: false,
                 slantedTextAngle: 45,
                 textStyle: {
@@ -82,54 +69,50 @@
             chartArea: {
                 left: 50,
                 top: 20,
-                width: (chartWidth - 10),
-                height: (chartHeight - 90)
+                width: (largura - 10),
+                height: (altura - 90)
             }
         };
-        chart = new google.visualization.LineChart(document.getElementById('div_grafico'));
-        chart.draw(data, chartOptions);
+        return configuracoes;
     }
-    
-</script>
-
-<script>
-    /*
-google.charts.load('current', {packages: ['corechart', 'line']});
-google.charts.setOnLoadCallback(drawLogScales);
-
-function drawLogScales() {
-      var data = new google.visualization.DataTable();
-      data.addColumn('number', 'X');
-      data.addColumn('number', 'rate');
-      
-
-      data.addRows([[25,5.240266007932762],[26,5.253756507319332],[27,5.22029650790401],[28,5.268704059004204],[29,5.233683845050076],[30,5.289605815622391],[31,5.232041091123958],[1,5.2301254401862955],[2,5.250722035402405],[3,5.283736492427697],[4,5.296890906826341],[5,5.355039204322343],[6,5.346735747035125],[7,5.326231782387644],[8,5.3273666240507165],[9,5.328501949410373],[10,5.291005414482904],[11,5.317451861825049],[12,5.3344712035425745],[13,5.318865815686569],[14,5.3273666240507165],[15,5.327650410031998],
-[16,5.33532534905194],[17,5.294647171789238],[18,5.243288403010766],[19,5.2449386384155785],[20,5.265097477347184],
-[21,5.291005414482904],[22,5.290165399493866],[23,5.243013533000918],[24,5.177591381675723],[25,5.136106760580972],
-[26,5.118754990317601],[27,5.132943184294443],[28,5.093984040401572],[29,5.092946441953961],[1,5.096580274206888]]);
-
-     var view = new google.visualization.DataView(data);
-     view.setColumns([{ sourceColumn: 0, type: 'string',
-       calc: function(dt, rowIndex) {
-         return String(dt.getValue(rowIndex, 0));
-       }}, 1]);
-     
-      var options = {
-        hAxis: {
-          title: 'day',
-          logScale: false
-		  
-        },
-        vAxis: {
-          title: 'rates',
-          logScale: false
-		  
-        },
-        colors: ['#a52714', '#097138']
-      };
-		
-      var chart = new google.visualization.LineChart(document.getElementById('div_grafico'));
-      chart.draw(view, options);
+    // altere aqui como os dados serão exibidos
+    // e como são recuperados do BackEnd
+    function obterDadosGrafico() {
+        var dados = new google.visualization.DataTable();
+        dados.addColumn('string', 'Momento');
+        dados.addColumn('number', 'Temperatura');
+        dados.addColumn('number', 'Umidade');
+        fetch('/leituras/ultimas', {cache:'no-store'}).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    
+                    console.log(`Dados recebidos: ${JSON.stringify(dados)}`);
+                    resposta.reverse();
+                    for (i = 0; i < resposta.length; i++) {
+                        var registro = resposta[i];
+                        // aqui, após registro. use os nomes 
+                        // dos atributos que vem no JSON 
+                        // que gerou na consulta ao banco de dados
+                        dados.addRow([
+                            registro.momento, 
+                            registro.temperatura, 
+                            registro.umidade
+                        ]);
+                    }
+                    plotarGrafico(dados);
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+        .catch(function (error) {
+            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        });
     }
-    */
+    // só altere aqui se souber o que está fazendo!
+    function plotarGrafico(dados) {
+        console.log('iniciando plotagem do gráfico...');
+        var chart = new google.visualization.LineChart(div_grafico);
+        chart.draw(dados, configurarGrafico());
+    }
 </script>

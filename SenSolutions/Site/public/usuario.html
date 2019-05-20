@@ -192,7 +192,65 @@
                     </div>
                 </div>
             </div>
+        
+        <!-- Barra de pesquisa -->
+    <div class="row">
+        <div class="col-md-3">
+              <h2 class="text-center">Itens</h2>
+                 
         </div>
+  
+        <div class="col-md-6">
+          <div class="input-group">
+              <input name="data[search]" class="form-control form-control-user" id="search" type="text" 
+              placeholder="Pesquisar Itens...">
+              
+              <span class="input-group-btn">
+                  <button class="btn btn-primary pull-left" type="submit">Pesquisar
+                      <span class="glyphicon glyphicon-search"></span>
+                  </button>
+              </span>
+          </div>
+      </div>
+   
+      <div class="col-md-3">
+          <a href="#" class="btn btn-primary pull-left">Novo Item</a>
+      </div>
+    </div> <!-- /#top -->
+  
+    <div id="list" class="row">
+    <div class="table-responsive col-md-12">
+          <table class="table table-striped" cellspacing="0" cellpadding="0">
+              <thead>
+                  <tr class="text-center">
+                      <th>ID</th>
+                      <th>Header 1</th>
+                      <th>Header 2</th>
+                      <th>Header 3</th>
+                      <th class="actions">Ações</th>
+                    </div>
+                      
+                   </tr>
+              </thead>
+              <tbody>
+   
+                  <tr class="text-center">
+                      <td>1001</td>
+                      <td>Lorem ipsum dolor sit amet, consectetur adipiscing</td>
+                      <td>Jes</td>
+                      <td>01/01/2015</td>
+                      <td class="actions">
+                          <a class="btn btn-info btn-xs" href="#">Editar</a>
+                          <a class="btn btn-primary btn-xs" href="#">Excluir</a>
+                      </td>
+                  </tr>
+   
+              </tbody>
+           </table>
+   
+       </div>
+   </div> 
+  <!-- /#list -->
         <!-- main content area end -->
         <!-- Start Footer Area -->
         <footer class="footer-area section-gap">

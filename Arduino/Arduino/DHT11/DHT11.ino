@@ -12,9 +12,11 @@ void setup()
 void loop()
 {
   DHT.read11(dht_dpin); //Lê as informações do sensor
-   Serial.print(DHT.humidity,0);
+   Serial.print(DHT.temperature,0);
    Serial.print(",");
-  Serial.println(DHT.temperature,0); 
+   Serial.println(DHT.humidity,0);
+  
+  
  
-  delay(2000);  
+  delay(10000);  
 }

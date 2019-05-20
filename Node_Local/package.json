@@ -1,0 +1,13 @@
+{
+  "name": "meuleitor-arduino",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node insert-banco.js"
+  },
+  "dependencies": {
+    "serialport": "~7.1.5",
+    "events": "~3.0.0",
+    "mssql": "~5.1.0"
+  }
+}

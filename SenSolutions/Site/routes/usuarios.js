@@ -7,12 +7,16 @@ var banco = require('../app-banco');
 router.post('/entrar', function (req, res, next) {
 
   banco.conectar().then(() => {
+    console.log(`Chegou p/ login: ${JSON.stringify(req.body)}`);
     var login = req.body.login; // depois de .body, use o nome (name) do campo em seu formulário de login
     var senha = req.body.senha; // depois de .body, use o nome (name) do campo em seu formulário de login
-    return banco.sql.query(`select * from usuario where login='${login}' and senha='${senha}'`);
+    if (login == undefined || senha == undefined) {
+      throw new Error(`Dados de login não chegaram completos: ${login} / ${senha}`);
+    }
+    return banco.sql.query(`select * from tb_cliente where email='${login}' and senhaUsuario='${senha}'`);
   }).then(consulta => {
 
-    console.log(`Usuários encontrados: ${consulta.recordset}`);
+    console.log(`Usuários encontrados: ${JSON.stringify(consulta.recordset)}`);
 
     if (consulta.recordset.length==1) {
       res.send(consulta.recordset[0]);

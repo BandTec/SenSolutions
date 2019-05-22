@@ -13,8 +13,8 @@
     <link rel="stylesheet" href="css/themify-icons.css">
     <link rel="stylesheet" href="css/metisMenu.css">
     <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/slicknav.min.css">
-    <!-- amchart css -->
+    <link rel="stylesheet" href="css/slicknav.min.css"> -->
+     amchart css 
     <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
     <!-- others css -->
     <link rel="stylesheet" href="css/typography.css">
@@ -55,8 +55,10 @@
                                 <a href="javascript:void(0)" aria-expanded="true"><i class="fas fa-chart-line"></i>
                                     Gráficos</a>
                                 <ul class="collapse ">
-                                    <li ><a class="scroll" href="#verview-shart" onclick="trocar(grafico,sensores,local,usuario)">Em Linhas</a></li>
-                                    <li ><a class="scroll" href="#ambarchart3" onclick="trocar(grafico,sensores,local,usuario)">Em Barra</a></li>
+                                    <li><a class="scroll" href="#verview-shart" onclick="trocar(grafico,sensores,local,usuario)">Em
+                                            Linhas</a></li>
+                                    <li><a class="scroll" href="#ambarchart3" onclick="trocar(grafico,sensores,local,usuario)">Em
+                                            Barra</a></li>
                                 </ul>
                             </li>
                             <li class="active " cadastrar>
@@ -64,11 +66,11 @@
                                     Cadastrar</a>
                                 <ul class="collapse ">
                                     <li><a class="" href="#sensores" onclick="trocar(sensores,usuario,local,grafico)">Sensores</a></li>
-                                    <li><a class="" href="#local" onclick="trocar(local,sensores,usuario,grafico)" >Locais</a></li>
+                                    <li><a class="" href="#local" onclick="trocar(local,sensores,usuario,grafico)">Locais</a></li>
                                     <li><a class="" href="#usuario" onclick="trocar(usuario,sensores,local,grafico)">Usuarios</a></li>
                                 </ul>
                             </li>
-                            
+
                         </ul>
                     </nav>
                 </div>
@@ -109,7 +111,8 @@
                     <div class="col-sm-3 col-lg-3 col-md-3 clearfix">
                         <div class="user-profile pull-right">
                             <img class="avatar user-thumb" src="img/avatar.png" alt="avatar">
-                            <h4 class="user-name dropdown-toggle" data-toggle="dropdown"> <span id="user"> Admin </span> <i class="fa fa-angle-down"></i></h4>
+                            <h4 class="user-name dropdown-toggle" data-toggle="dropdown"> <span id="user"> Admin </span>
+                                <i class="fa fa-angle-down"></i></h4>
                             <div class="dropdown-menu">
 
                                 <ul class="notification-area pull-right">
@@ -128,390 +131,397 @@
             <div class="main-content-inner">
                 <!-- sales report area start -->
                 <div class="sales-report-area mt-5 mb-5">
-                        <div class="row" style="display: none" id="sensores">
-                                <div class="col-lg-7 mx-auto">
-                                    <div class="card o-hidden border-1  my-5">
-                                        <div class="card-body p-0">
-                                  <div class="p-5">
-                                    <div class="text-center">
-                                      <h1 class="h4 text-gray-900 mb-4">Faça o registro dos sensores.</h1>
-                                    </div>
-                                    <form class="user">
-                                      <div class="form-group">
-                                          <div class="form-group">
-                                              <input type="text" class="form-control form-control-user" id="exampleInputEmail" placeholder="Digite o número serial do sensor.">
-                                            </div>
+                    <div class="row" style="display: none" id="sensores">
+                        <div class="col-lg-7 mx-auto">
+                            <div class="card o-hidden border-1  my-5">
+                                <div class="card-body p-0">
+                                    <div class="p-5">
+                                        <div class="text-center">
+                                            <h1 class="h4 text-gray-900 mb-4">Faça o registro dos sensores.</h1>
+                                        </div>
+                                        <form class="user">
                                             <div class="form-group">
-                                              <input type="text" class="form-control form-control-user" id="exampleInputEmail" placeholder="Digite a àla onde será posicionado.">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control form-control-user" id="exampleInputEmail"
+                                                        placeholder="Digite o número serial do sensor.">
+                                                </div>
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control form-control-user" id="exampleInputEmail"
+                                                        placeholder="Digite a àla onde será posicionado.">
+                                                </div>
                                             </div>
-                                     </div>
-                                      <a href="Dashboard.html" class="btn btn-outline-primary btn-user btn-block">
-                                        Registrar.
-                                      </a>
-                                    </form>
-                                    <hr>
-                                    <div class="text-center">
-                                      <a class="" href="login.html">Já tem uma conta ? Faça o login</a>
+                                            <a href="Dashboard.html" class="btn btn-outline-primary btn-user btn-block">
+                                                Registrar.
+                                            </a>
+                                        </form>
+                                        <hr>
+                                        <div class="text-center">
+                                            <a class="" href="login.html">Já tem uma conta ? Faça o login</a>
+                                        </div>
                                     </div>
-                                  </div>
                                 </div>
-                              </div>
                             </div>
-                            <div class="col-12">
-                                    <!-- Barra de pesquisa -->
-    <div class="row">
-        <div class="col-md-3">
-              <h2 class="text-center">Itens</h2>
-                 
-        </div>
-  
-        <div class="col-md-6">
-          <div class="input-group">
-              <input name="data[search]" class="form-control form-control-user" id="search" type="text" 
-              placeholder="Pesquisar Itens...">
-              
-              <span class="input-group-btn">
-                  <button class="btn btn-primary pull-left" type="submit">Pesquisar
-                      <span class="glyphicon glyphicon-search"></span>
-                  </button>
-              </span>
-          </div>
-      </div>
-   
-      <div class="col-md-3">
-          <a href="#" class="btn btn-primary pull-left">Novo Item</a>
-      </div>
-    </div> <!-- /#top -->
-  
-    <div id="list" class="row">
-    <div class="table-responsive col-md-12">
-          <table class="table table-striped" cellspacing="0" cellpadding="0">
-              <thead>
-                  <tr class="text-center">
-                      <th>ID</th>
-                      <th>Header 1</th>
-                      <th>Header 2</th>
-                      <th>Header 3</th>
-                      <th class="actions">Ações</th>
+                        </div>
+                        <div class="col-12">
+                            <!-- Barra de pesquisa -->
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <h2 class="text-center">Itens</h2>
+
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                        <input name="data[search]" class="form-control form-control-user" id="search"
+                                            type="text" placeholder="Pesquisar Itens...">
+
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-primary pull-left" type="submit">Pesquisar
+                                                <span class="glyphicon glyphicon-search"></span>
+                                            </button>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-3">
+                                    <a href="#" class="btn btn-primary pull-left">Novo Item</a>
+                                </div>
+                            </div> <!-- /#top -->
+
+                            <div id="list" class="row">
+                                <div class="table-responsive col-md-12">
+                                    <table class="table table-striped" cellspacing="0" cellpadding="0">
+                                        <thead>
+                                            <tr class="text-center">
+                                                <th>ID</th>
+                                                <th>Header 1</th>
+                                                <th>Header 2</th>
+                                                <th>Header 3</th>
+                                                <th class="actions">Ações</th>
+                                </div>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr class="text-center">
+                                        <td>1001</td>
+                                        <td>Lorem ipsum dolor sit amet, consectetur adipiscing</td>
+                                        <td>Jes</td>
+                                        <td>01/01/2015</td>
+                                        <td class="actions">
+                                            <a class="btn btn-info btn-xs" href="#">Editar</a>
+                                            <a class="btn btn-primary btn-xs" href="#">Excluir</a>
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+                                </table>
+
+                            </div>
+                        </div>
+                        <!-- /#list -->
                     </div>
-                      
-                   </tr>
-              </thead>
-              <tbody>
-   
-                  <tr class="text-center">
-                      <td>1001</td>
-                      <td>Lorem ipsum dolor sit amet, consectetur adipiscing</td>
-                      <td>Jes</td>
-                      <td>01/01/2015</td>
-                      <td class="actions">
-                          <a class="btn btn-info btn-xs" href="#">Editar</a>
-                          <a class="btn btn-primary btn-xs" href="#">Excluir</a>
-                      </td>
-                  </tr>
-   
-              </tbody>
-           </table>
-   
-       </div>
-   </div> 
-  <!-- /#list -->
-                            </div>
-                          </div>
-                        
-                          <div class="row" style="display: none" id="local">
-                                <div class="col-lg-7 mx-auto">
-                                    <div class="card o-hidden border-1  my-5">
-                                        <div class="card-body p-0">
-                                  <div class="p-5">
+                </div>
+
+                <div class="row" style="display: none" id="local">
+                    <div class="col-lg-7 mx-auto">
+                        <div class="card o-hidden border-1  my-5">
+                            <div class="card-body p-0">
+                                <div class="p-5">
                                     <div class="text-center">
-                                      <h1 class="h4 text-gray-900 mb-4">Cadastre um local.</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">Cadastre um local.</h1>
                                     </div>
                                     <form class="user">
-                                      <div class="form-group">
-                                          <div class="form-group">
-                                              <input type="text" class="form-control form-control-user" id="exampleInputEmail" placeholder="Digite o nome da empresa.">
+                                        <div class="form-group">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control form-control-user" id="exampleInputEmail"
+                                                    placeholder="Digite o nome da empresa.">
                                             </div>
                                             <div class="form-group">
-                                              <input type="text" class="form-control form-control-user" id="exampleInputEmail" placeholder="Digite o CEP.">
+                                                <input type="text" class="form-control form-control-user" id="exampleInputEmail"
+                                                    placeholder="Digite o CEP.">
                                             </div>
-                                          <div class="form-group row">
-                                              <div class="col-sm-6 mb-3 mb-sm-0">
-                                                  <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Digite o número.">
+                                            <div class="form-group row">
+                                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                                    <input type="password" class="form-control form-control-user" id="exampleInputPassword"
+                                                        placeholder="Digite o número.">
                                                 </div>
                                                 <div class="col-sm-6">
-                                                  <input type="text" class="form-control form-control-user" id="exampleRepeatPassword"
-                                                    placeholder="Digite o logradouro.">
-                                              </div>
-                                              
-                                      </div>
-                                     
-                                      
-                                      </div>
-                                      <a href="Dashboard.html" class="btn btn-outline-primary btn-user btn-block">
-                                        Registrar local.
-                                      </a>
+                                                    <input type="text" class="form-control form-control-user" id="exampleRepeatPassword"
+                                                        placeholder="Digite o logradouro.">
+                                                </div>
+
+                                            </div>
+
+
+                                        </div>
+                                        <a href="Dashboard.html" class="btn btn-outline-primary btn-user btn-block">
+                                            Registrar local.
+                                        </a>
                                     </form>
                                     <hr>
                                     <div class="text-center">
                                     </div>
-                                  </div>
                                 </div>
-                              </div>
                             </div>
-                            <div class="col-12">
-                                <div class="row">
-                                    <div class="col-md-3">
-                                          <h2 class="text-center">Itens</h2>
-                                             
-                                    </div>
-                              
-                                    <div class="col-md-6">
-                                      <div class="input-group">
-                                          <input name="data[search]" class="form-control form-control-user" id="search" type="text" 
-                                          placeholder="Pesquisar Itens...">
-                                          
-                                          <span class="input-group-btn">
-                                              <button class="btn btn-primary pull-left" type="submit">Pesquisar
-                                                  <span class="glyphicon glyphicon-search"></span>
-                                              </button>
-                                          </span>
-                                      </div>
-                                  </div>
-                               
-                                  <div class="col-md-3">
-                                      <a href="#" class="btn btn-primary pull-left">Novo Item</a>
-                                  </div>
-                                </div> <!-- /#top -->
-                              
-                                <div id="list" class="row">
-                                <div class="table-responsive col-md-12">
-                                      <table class="table table-striped" cellspacing="0" cellpadding="0">
-                                          <thead>
-                                              <tr class="text-center">
-                                                  <th>ID</th>
-                                                  <th>Header 1</th>
-                                                  <th>Header 2</th>
-                                                  <th>Header 3</th>
-                                                  <th class="actions">Ações</th>
-                                                </div>
-                                                  
-                                               </tr>
-                                          </thead>
-                                          <tbody>
-                               
-                                              <tr class="text-center">
-                                                  <td>1001</td>
-                                                  <td>Lorem ipsum dolor sit amet, consectetur adipiscing</td>
-                                                  <td>Jes</td>
-                                                  <td>01/01/2015</td>
-                                                  <td class="actions">
-                                                      <a class="btn btn-info btn-xs" href="#">Editar</a>
-                                                      <a class="btn btn-primary btn-xs" href="#">Excluir</a>
-                                                  </td>
-                                              </tr>
-                               
-                                          </tbody>
-                                       </table>
-                               
-                                   </div>
-                            </div>
-                          </div>
-                                <div class="row" style="display: none" id="usuario">
-                                        <div class="col-lg-7 mx-auto">
-                                            <div class="card o-hidden border-1  my-5">
-                                                <div class="card-body p-0">
-                                          <div class="p-5">
-                                            <div class="text-center">
-                                              <h1 class="h4 text-gray-900 mb-4">Cadastre outro usuário.</h1>
-                                            </div>
-                                            <form class="user">
-                                              <div class="form-group">
-                                                  <div class="form-group">
-                                                      <input type="text" class="form-control form-control-user" id="exampleInputEmail" placeholder="Digite seu nome completo.">
-                                                    </div>
-                                                    <div class="form-group">
-                                                      <input type="text" class="form-control form-control-user" id="exampleInputEmail" placeholder="Digite seu e-mail.">
-                                                    </div>
-                                                  <div class="form-group row">
-                                                      <div class="col-sm-6 mb-3 mb-sm-0">
-                                                          <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Sua Senha.">
-                                                        </div>
-                                                        <div class="col-sm-6">
-                                                          <input type="text" class="form-control form-control-user" id="exampleRepeatPassword"
-                                                            placeholder="Repita a senha.">
-                                                      </div>
-                                                      
-                                              </div>
-                                             
-                                              
-                                              </div>
-                                              <a href="Dashboard.html" class="btn btn-outline-primary btn-user btn-block">
-                                                Registrar.
-                                              </a>
-                                            </form>
-                                            <hr>
-                                            <div class="text-center">
-                                            
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h2 class="text-center">Itens</h2>
 
-                                    
-                                  </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <input name="data[search]" class="form-control form-control-user" id="search" type="text"
+                                        placeholder="Pesquisar Itens...">
+
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-primary pull-left" type="submit">Pesquisar
+                                            <span class="glyphicon glyphicon-search"></span>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3">
+                                <a href="#" class="btn btn-primary pull-left">Novo Item</a>
+                            </div>
+                        </div> <!-- /#top -->
+
+                        <div id="list" class="row">
+                            <div class="table-responsive col-md-12">
+                                <table class="table table-striped" cellspacing="0" cellpadding="0">
+                                    <thead>
+                                        <tr class="text-center">
+                                            <th>ID</th>
+                                            <th>Header 1</th>
+                                            <th>Header 2</th>
+                                            <th>Header 3</th>
+                                            <th class="actions">Ações</th>
+                            </div>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr class="text-center">
+                                    <td>1001</td>
+                                    <td>Lorem ipsum dolor sit amet, consectetur adipiscing</td>
+                                    <td>Jes</td>
+                                    <td>01/01/2015</td>
+                                    <td class="actions">
+                                        <a class="btn btn-info btn-xs" href="#">Editar</a>
+                                        <a class="btn btn-primary btn-xs" href="#">Excluir</a>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                            </table>
+
+                        </div>
+                    </div>
                 </div>
-                <!-- sales report area end -->
-                <!-- overview area start -->
-                <div class="row" id="grafico">
-                    <div class="col-xl-12 col-lg-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <h4 class="header-title mb-0">Overview</h4>
-                                </div>
+                <div class="row" style="display: none" id="usuario">
+                    <div class="col-lg-7 mx-auto">
+                        <div class="card o-hidden border-1  my-5">
+                            <div class="card-body p-0">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">Cadastre outro usuário.</h1>
+                                    </div>
+                                    <form class="user">
+                                        <div class="form-group">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control form-control-user" id="exampleInputEmail"
+                                                    placeholder="Digite seu nome completo.">
+                                            </div>
+                                            <div class="form-group">
+                                                <input type="text" class="form-control form-control-user" id="exampleInputEmail"
+                                                    placeholder="Digite seu e-mail.">
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                                    <input type="password" class="form-control form-control-user" id="exampleInputPassword"
+                                                        placeholder="Sua Senha.">
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <input type="text" class="form-control form-control-user" id="exampleRepeatPassword"
+                                                        placeholder="Repita a senha.">
+                                                </div>
 
-                                
-                             
-                                <!-- <div  id="img_temp_umid">
+                                            </div>
+
+
+                                        </div>
+                                        <a href="Dashboard.html" class="btn btn-outline-primary btn-user btn-block">
+                                            Registrar.
+                                        </a>
+                                    </form>
+                                    <hr>
+                                    <div class="text-center">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <!-- sales report area end -->
+            <!-- overview area start -->
+            <div class="row" id="grafico">
+                <div class="col-xl-12 col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h4 class="header-title mb-0">Overview</h4>
+                            </div>
+
+
+
+                            <!-- <div  id="img_temp_umid">
                                         <img src="img/tempUmid.png" alt="">
                                 </div> -->
-                                <!-- colocar aqui os GRAFICOS -->
-                                <div id="verview-shart"></div>
-                                <div class="row">
-                                    <div class="col-lg-12 col-sm-12 mx-auto"> 
-                                
-                                        <div class="mx-auto">
-                                            <div class="card-header mx-4">
-                                              <h4 class="m-0 font-weight-bold text-primary text-center">Estatísticas</h4>
-                                            </div>
-                                            <div class="card-body">
-                                              <div class="table-responsive">
+                            <!-- colocar aqui os GRAFICOS -->
+                            <div id="verview-shart"></div>
+                            <div class="row">
+                                <div class="col-lg-12 col-sm-12 mx-auto">
+
+                                    <div class="mx-auto">
+                                        <div class="card-header mx-4">
+                                            <h4 class="m-0 font-weight-bold text-primary text-center">Estatísticas</h4>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="table-responsive">
                                                 <table class="table table-bordered" id="dataTable">
-                                                  <thead>
-                                                    <tr>
-                                                      <th>Valor Mínimo</th>
-                                                      <th>25% Percentil</th>
-                                                      <th>Média</th>
-                                                      <th>Ponto Médio</th>
-                                                      <th>75% Percentil</th>
-                                                      <th>Valor Máximo</th>
-                                                    </tr>
-                                                  </thead>
-                                                  
-                                                  <tbody>
-                                                    
-                                                    <tr>
-                                                      <td>30</td>
-                                                      <td>31</td>
-                                                      <td>31,9</td>
-                                                      <td>32</td>
-                                                      <td>33</td>
-                                                      <td>34</td>
-                                                    </tr>
-                                                  </tbody>
-    
-                                                  </table>
-                                                  <div class="">
-                                                    <div class="table-responsive">
-                                                      <table class="table table-bordered" id="dataTable">
-                                                        <thead>
-                                                          <tr>
+                                                    <thead>
+                                                        <tr>
                                                             <th>Valor Mínimo</th>
                                                             <th>25% Percentil</th>
                                                             <th>Média</th>
                                                             <th>Ponto Médio</th>
                                                             <th>75% Percentil</th>
                                                             <th>Valor Máximo</th>
-                                                          </tr>
-                                                        </thead>
-                                                        
-                                                        <tbody>
-                                                          
-                                                          <tr>
-                                                            <td>59</td>
-                                                            <td>65,25</td>
-                                                            <td>68,61</td>
-                                                            <td>59</td>
-                                                            <td>70</td>
-                                                            <td>80</td>
-                                                          </tr>
-                                                        </tbody>
+                                                        </tr>
+                                                    </thead>
+
+                                                    <tbody>
+
+                                                        <tr>
+                                                            <td>30</td>
+                                                            <td>31</td>
+                                                            <td>31,9</td>
+                                                            <td>32</td>
+                                                            <td>33</td>
+                                                            <td>34</td>
+                                                        </tr>
+                                                    </tbody>
+
+                                                </table>
+                                                <div class="">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-bordered" id="dataTable">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Valor Mínimo</th>
+                                                                    <th>25% Percentil</th>
+                                                                    <th>Média</th>
+                                                                    <th>Ponto Médio</th>
+                                                                    <th>75% Percentil</th>
+                                                                    <th>Valor Máximo</th>
+                                                                </tr>
+                                                            </thead>
+
+                                                            <tbody>
+
+                                                                <tr>
+                                                                    <td>59</td>
+                                                                    <td>65,25</td>
+                                                                    <td>68,61</td>
+                                                                    <td>59</td>
+                                                                    <td>70</td>
+                                                                    <td>80</td>
+                                                                </tr>
+                                                            </tbody>
                                                         </table>
-                                              </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                  
+                                        </div>
                                     </div>
-                                     
                                 </div>
-                                    </div>
-                                </div>  
-                                <div class="col-lg-12 col-sm-12 mx-auto">
-                                    <div class="text-center h3 mb-4">Graficos em barras</div>
-                                        <div id="ambarchart3" class="mt-4"></div> 
-                                        <div id="ambarchart2" class="mt-4"></div>
-                                </div>
-                                </div>
-                                
+                            </div>
+                            <div class="col-lg-12 col-sm-12 mx-auto">
+                                <div class="text-center h3 mb-4">Graficos em barras</div>
+                                <div id="ambarchart3" class="mt-4"></div>
+                                <div id="ambarchart2" class="mt-4"></div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
         </div>
-        <!-- main content area end -->
-        <!-- Start Footer Area -->
-        <footer class="footer-area section-gap">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 col-md-3 single-footer-widget">
-                        <h4><u>Ajuda</u></h4>
-                        <ul>
-                            <li><a href="Ajuda.html">Dúvidas Frequentes</a></li>
-                            <li><a href="Ajuda.html">FAQ</a></li>
+    </div>
+    </div>
+    <!-- main content area end -->
+    <!-- Start Footer Area -->
+    <footer class="footer-area section-gap">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 single-footer-widget">
+                    <h4><u>Ajuda</u></h4>
+                    <ul>
+                        <li><a href="Ajuda.html">Dúvidas Frequentes</a></li>
+                        <li><a href="Ajuda.html">FAQ</a></li>
 
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 col-md-3 single-footer-widget">
-                        <h4><u>Institucional</u></h4>
-                        <ul>
-                            <li><a href="index.html">Missão</a></li>
-                            <li><a href="index.html">Visão</a></li>
-                            <li><a href="index.html">Valores</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-3 single-footer-widget">
+                    <h4><u>Institucional</u></h4>
+                    <ul>
+                        <li><a href="index.html">Missão</a></li>
+                        <li><a href="index.html">Visão</a></li>
+                        <li><a href="index.html">Valores</a></li>
 
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 col-md-3 single-footer-widget">
-                        <h4><u>Projetos</u></h4>
-                        <ul>
-                            <li><a href="Projeto-Avícola.html">Avícola</a></li>
-                            <li><a href="Dashboard.html">Dashboards</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-3 col-md-3 single-footer-widget">
-                        <h4><u>Redes Sociais</u></h4>
-
-
-                        <a href="#"><i class="fab fa-twitter fa-2x"></i></a>
-                        <a href="#"><i class="fab fa-facebook fa-2x"></i></a>
-                        <a target="_Blank" href="https://github.com/BandTec/SenSolutions"><i class="fab fa-github fa-2x"></i></a>
-                        <a href="#"><i class="fab fa-trello fa-2x"></i></a>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-3 single-footer-widget">
+                    <h4><u>Projetos</u></h4>
+                    <ul>
+                        <li><a href="Projeto-Avícola.html">Avícola</a></li>
+                        <li><a href="Dashboard.html">Dashboards</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-3 single-footer-widget">
+                    <h4><u>Redes Sociais</u></h4>
 
 
-                    </div>
+                    <a href="#"><i class="fab fa-twitter fa-2x"></i></a>
+                    <a href="#"><i class="fab fa-facebook fa-2x"></i></a>
+                    <a target="_Blank" href="https://github.com/BandTec/SenSolutions"><i class="fab fa-github fa-2x"></i></a>
+                    <a href="#"><i class="fab fa-trello fa-2x"></i></a>
+
 
                 </div>
-                <div class="footer-bottom row align-items-center">
-                    <p class="footer-text m-0 col-lg-6 col-md-12">&copy; Copyright 2019. All rights reserved
-                        SenSolutions
-                    </p>
 
-                </div>
             </div>
+            <div class="footer-bottom row align-items-center">
+                <p class="footer-text m-0 col-lg-6 col-md-12">&copy; Copyright 2019. All rights reserved
+                    SenSolutions
+                </p>
 
-        </footer>
-        <!-- End Footer Area - ->
+            </div>
+        </div>
+
+    </footer>
+    <!-- End Footer Area - ->
     </div>
 page container area end -->
 
@@ -525,7 +535,7 @@ page container area end -->
     <script src="js/jquery.slimscroll.min.js"></script>
     <script src="js/jquery.slicknav.min.js"></script>
     <script src="js/main.js"></script>
-  
+
 
 
     <!-- start chart js -->
@@ -535,9 +545,9 @@ page container area end -->
     <!-- start zingchart js -->
     <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
     <script>
-        zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
+         zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
         ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "ee6b7db5b51705a13dc2339db3edaf6d"];
-    </script>
+    </script> 
     <!-- all line chart activation -->
     <script src="js/line-chart.js"></script>
     <!-- others plugins -->
@@ -550,35 +560,19 @@ page container area end -->
     <script src="https://www.amcharts.com/lib/3/plugins/animate/animate.min.js"></script>
     <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
     <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
-    <!-- all bar chart activation -->
+     <!-- all bar chart activation -->
     <script src="js/bar-chart.js"></script>
-    <!-- all pie chart -->
-    <script src="js/pie-chart.js"></script>
-
     
-    </div>
-   </div>
-</div>
-</div>
-</div>
-</div>
-
-</div>
-
-
-</div>
-</div>
 
 </body>
 
 </html>
 <script>
-grafico.style.display = 'block';
-function trocar (mostrar,esconder1,esconder2,esconder3){
-mostrar.style.display = 'block';
-esconder1.style.display = 'none';
-esconder2.style.display = 'none';
-esconder3.style.display = 'none';
-}
+    grafico.style.display = 'block';
+    function trocar(mostrar, esconder1, esconder2, esconder3) {
+        mostrar.style.display = 'block';
+        esconder1.style.display = 'none';
+        esconder2.style.display = 'none';
+        esconder3.style.display = 'none';
+    }
 </script>
-

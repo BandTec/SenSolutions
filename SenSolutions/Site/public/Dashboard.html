@@ -7,25 +7,23 @@
     <title>SenSolutions</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="img/logo-resp1.png">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+   
+    
+    <link href="css/googleapis.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/themify-icons.css">
-    <link rel="stylesheet" href="css/metisMenu.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/slicknav.min.css"> 
-    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
-    <!-- others css -->
-    <link rel="stylesheet" href="css/typography.css">
+    <link rel="stylesheet" href="vendor/fontawesome-free/css/all.css">
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/default-css.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="vendor/fontawesome-free/css/all.css">
+
     <!-- modernizr css -->
 </head>
 
-<body>
+<body onload="atualizarGrafico()">
     <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -94,39 +92,33 @@
                 </div>
             </div>
             <!-- header area end -->
-            <!-- page title area start -->
-            <div class="page-title-area">
-                <div class="row align-items-left">
-                    <div class="col-sm-9 col-lg-9 col-md-9">
-                        <div class="breadcrumbs-area clearfix">
-                            <h4 class="page-title pull-left">Dashboard</h4>
-                            <ul class="breadcrumbs pull-left">
-                                <li><a href="index.html">Home</a></li>
-                                <li><span>Dashboard</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-sm-3 col-lg-3 col-md-3 clearfix">
-                        <div class="user-profile pull-right">
-                            <img class="avatar user-thumb" src="img/avatar.png" alt="avatar">
-                            <h4 class="user-name dropdown-toggle" data-toggle="dropdown">  <b id="b_usuario"></b>
-                                <i class="fa fa-angle-down"></i></h4>
-                            <div class="dropdown-menu">
 
-                                <ul class="notification-area pull-right">
-                                    <li class="dropdown-item"><a class="dropdown-link"  onclick="logoff()" href="#">Log Out</a>
-                                        
-                                    </li>
-                                    <li class="dropdown-item" id="full-view"><a href="">Expandir</a> <i class="fas fa-expand"></i></li>
-                                    <li class="dropdown-item" id="full-view-exit"><a href="">Voltar</a> <i class="fas fa-compress-arrows-alt"></i></li>
+             <!-- page title area start -->
+             <div class="page-title-area">
+                    <div class="row align-items-center">
+                        <div class="col-sm-6">
+                            <div class="breadcrumbs-area clearfix">
+                                <h4 class="page-title pull-left">Dashboard</h4>
+                                <ul class="breadcrumbs pull-left">
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><span>Dashboard</span></li>
                                 </ul>
                             </div>
-
+                        </div>
+                        <div class="col-sm-6 clearfix">
+                            <div class="user-profile pull-right">
+                                <img class="avatar user-thumb" src="img/avatar.png" alt="avatar">
+                                <h4 class="user-name dropdown-toggle" data-toggle="dropdown"><span id="b_usuario"></span> <i class="fa fa-angle-down"></i></h4>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" onclick="logoff()">Log Out</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- page title area end -->
+                <!-- page title area end -->
+
+         
             <div class="main-content-inner">
                     <div class="row" style="display: none" id="usuario">
                             <div class="col-lg-7 mx-auto">
@@ -390,7 +382,7 @@
                                 <div id="div_aguarde">Dados sendo obtidos...</div>
                                 <canvas id="canvas_grafico"></canvas>
                             </div>
-                            <canvas id="canvas_grafico"></canvas>
+                           
                             
                             <div id="verview-shart"></div>
                             <div class="row">
@@ -472,7 +464,7 @@
             </div>
         </div>
     </div>
-    </div>
+  
     <!-- main content area end -->
     <!-- Start Footer Area -->
     <footer class="footer-area section-gap">
@@ -533,189 +525,187 @@ page container area end -->
     <!-- bootstrap 4 js -->
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/metisMenu.min.js"></script>
-    <script src="js/jquery.slimscroll.min.js"></script>
-    <script src="js/jquery.slicknav.min.js"></script>
+    <!-- <script src="js/owl.carousel.min.js"></script> -->
+    <!-- <script src="js/metisMenu.min.js"></script> -->
+    <!-- <script src="js/jquery.slimscroll.min.js"></script> -->
+    <!-- <script src="js/jquery.slicknav.min.js"></script> -->
     <script src="js/main.js"></script>
 
 
 
     <!-- start chart js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script> -->
+
     <!-- start highcharts js -->
-    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <!-- <script src="https://code.highcharts.com/highcharts.js"></script> -->
     <!-- start zingchart js -->
-    <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
-    <script>
+    <!-- <script src="https://cdn.zingchart.com/zingchart.min.js"></script> -->
+    <!-- <script>
          zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
         ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "ee6b7db5b51705a13dc2339db3edaf6d"];
-    </script> 
+    </script>  -->
     <!-- all line chart activation -->
-    <script src="js/line-chart.js"></script>
+    <!-- <script src="js/line-chart.js"></script> -->
     <!-- others plugins -->
     <script src="js/plugins.js"></script>
     <script src="js/scripts.js"></script>
     <script src="js/scripts.min.js"></script>
-    <!-- start amchart js -->
+    <!-- start amchart js 
     <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
     <script src="https://www.amcharts.com/lib/3/pie.js"></script>
     <script src="https://www.amcharts.com/lib/3/serial.js"></script>
     <script src="https://www.amcharts.com/lib/3/plugins/animate/animate.min.js"></script>
     <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
     <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
-     <!-- all bar chart activation -->
-    <script src="js/bar-chart.js"></script>
+       all bar chart activation --> 
+    <!-- <script src="js/bar-chart.js"></script> -->
+    
+    <script type="text/javascript" src="https://www.chartjs.org/dist/2.8.0/Chart.min.js"></script>
+    <script type="text/javascript" src="https://www.chartjs.org/samples/latest/utils.js"></script>
     
 
 </body>
 
 </html>
 <script>
-    grafico.style.display = 'block';
-    function trocar(mostrar, esconder1, esconder2, esconder3) {
-        mostrar.style.display = 'block';
-        esconder1.style.display = 'none';
-        esconder2.style.display = 'none';
-        esconder3.style.display = 'none';
-    }
 
-    var usuario;
-    var exibiu_grafico = false;
-
-    verificarAutenticacao();
-
-
-    function verificarAutenticacao() {
-        usuario = sessionStorage.usuario_bandtec;
-        if (usuario == undefined) {
-            window.location.href = 'login.html';
-        } else {
-            b_usuario.innerHTML = usuario;
-        }
-    }
-
-    function logoff() {
-        sessionStorage.removeItem('usuario_bandtec');
+        var usuario;
+        var exibiu_grafico = false;
+    
         verificarAutenticacao();
-    }
-
-    // só mexer se quiser alterar o tempo de atualização
-    // ou se souber o que está fazendo!
-    function atualizarGrafico() {
-        obterDadosGrafico();
-        setTimeout(atualizarGrafico, 10000);
-    }
-
-    // altere aqui as configurações do gráfico
-    // (tamanhos, cores, textos, etc)
-    function configurarGrafico() {
-        var configuracoes = {
-            responsive: true,
-            animation: exibiu_grafico ? false : {duration: 1500},
-            hoverMode: 'index',
-            stacked: false,
-            title: {
-                display: true,
-                text: 'Histórico recente de temperatura e umidade'
-            },
-            scales: {
-                yAxes: [{
-                    type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
-                    display: true,
-                    position: 'left',
-                    id: 'y-temperatura',
-                }, {
-                    type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
-                    display: true,
-                    position: 'right',
-                    id: 'y-umidade',
-
-                    // grid line settings
-                    gridLines: {
-                        drawOnChartArea: false, // only want the grid lines for one axis to show up
-                    },
-                }],
-            }
-        };
-
-        exibiu_grafico = true;
-
-        return configuracoes;
-    }
-
-    // altere aqui como os dados serão exibidos
-    // e como são recuperados do BackEnd
-    function obterDadosGrafico() {
-
-        // neste JSON tem que ser 'labels', 'datasets' etc, 
-        // porque é o padrão do Chart.js
-        var dados = {
-            labels: [],
-            datasets: [
-                {
-                    yAxisID: 'y-temperatura',
-                    label: 'Temperatura',
-                    borderColor: window.chartColors.red,
-                    backgroundColor: window.chartColors.red,
-                    fill: false,
-                    data: []
-                },
-                {
-                    yAxisID: 'y-umidade',
-                    label: 'Umidade',
-                    borderColor: window.chartColors.blue,
-                    backgroundColor: window.chartColors.blue,
-                    fill: false,
-                    data: []
-                }
-            ]
-        };
-
-        fetch('/leituras/ultimas', { cache: 'no-store' }).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (resposta) {
-
-                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-
-                    resposta.reverse();
-
-                    for (i = 0; i < resposta.length; i++) {
-                        var registro = resposta[i];
-                    
-                        // aqui, após 'registro.' use os nomes 
-                        // dos atributos que vem no JSON 
-                        // que gerou na consulta ao banco de dados
-
-                        dados.labels.push(registro.dataHora);
-                        dados.datasets[0].data.push(registro.temperatura);
-                        dados.datasets[1].data.push(registro.umidade);
-                    }
-                    console.log(JSON.stringify(dados));
-
-                    div_aguarde.style.display = 'none';
-
-                    plotarGrafico(dados);
-                });
+    
+    
+        function verificarAutenticacao() {
+            usuario = sessionStorage.usuario_bandtec;
+            if (usuario == undefined) {
+                window.location.href = 'login.html';
             } else {
-                console.error('Nenhum dado encontrado ou erro na API');
+                b_usuario.innerHTML = usuario;
             }
-        })
-            .catch(function (error) {
-                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+        }
+    
+        function logoff() {
+            sessionStorage.removeItem('usuario_bandtec');
+            verificarAutenticacao();
+        }
+    
+        // só mexer se quiser alterar o tempo de atualização
+        // ou se souber o que está fazendo!
+        function atualizarGrafico() {
+            obterDadosGrafico();
+            setTimeout(atualizarGrafico, 10000);
+        }
+    
+        // altere aqui as configurações do gráfico
+        // (tamanhos, cores, textos, etc)
+        function configurarGrafico() {
+            var configuracoes = {
+                responsive: true,
+                animation: exibiu_grafico ? false : {duration: 1500},
+                hoverMode: 'index',
+                stacked: false,
+                title: {
+                    display: true,
+                    text: 'Histórico recente de temperatura e umidade'
+                },
+                scales: {
+                    yAxes: [{
+                        type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                        display: true,
+                        position: 'left',
+                        id: 'y-temperatura',
+                    }, {
+                        type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                        display: true,
+                        position: 'right',
+                        id: 'y-umidade',
+    
+                        // grid line settings
+                        gridLines: {
+                            drawOnChartArea: false, // only want the grid lines for one axis to show up
+                        },
+                    }],
+                }
+            };
+    
+            exibiu_grafico = true;
+    
+            return configuracoes;
+        }
+    
+        // altere aqui como os dados serão exibidos
+        // e como são recuperados do BackEnd
+        function obterDadosGrafico() {
+    
+            // neste JSON tem que ser 'labels', 'datasets' etc, 
+            // porque é o padrão do Chart.js
+            var dados = {
+                labels: [],
+                datasets: [
+                    {
+                        yAxisID: 'y-temperatura',
+                        label: 'Temperatura',
+                        borderColor: window.chartColors.red,
+                        backgroundColor: window.chartColors.red,
+                        fill: false,
+                        data: []
+                    },
+                    {
+                        yAxisID: 'y-umidade',
+                        label: 'Umidade',
+                        borderColor: window.chartColors.blue,
+                        backgroundColor: window.chartColors.blue,
+                        fill: false,
+                        data: []
+                    }
+                ]
+            };
+    
+            fetch('/leituras/ultimas', { cache: 'no-store' }).then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
+    
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+    
+                        resposta.reverse();
+    
+                        for (i = 0; i < resposta.length; i++) {
+                            var registro = resposta[i];
+                        
+                            // aqui, após 'registro.' use os nomes 
+                            // dos atributos que vem no JSON 
+                            // que gerou na consulta ao banco de dados
+    
+                            dados.labels.push(registro.dataHora);
+    
+                            dados.datasets[0].data.push(registro.temperatura);
+                            dados.datasets[1].data.push(registro.umidade);
+                        }
+                        console.log(JSON.stringify(dados));
+    
+                        div_aguarde.style.display = 'none';
+    
+                        plotarGrafico(dados);
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
+                .catch(function (error) {
+                    console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+                });
+    
+        }
+    
+        // só altere aqui se souber o que está fazendo!
+        function plotarGrafico(dados) {
+            console.log('iniciando plotagem do gráfico...');
+    
+            var ctx = canvas_grafico.getContext('2d');
+            window.grafico_linha = Chart.Line(ctx, {
+                data: dados,
+                options: configurarGrafico()
             });
-
-    }
-
-    // só altere aqui se souber o que está fazendo!
-    function plotarGrafico(dados) {
-        console.log('iniciando plotagem do gráfico...');
-
-        var ctx = canvas_grafico.getContext('2d');
-        window.grafico_linha = Chart.Line(ctx, {
-            data: dados,
-            options: configurarGrafico()
-        });
-    }
-
-</script>
+        }
+    
+    </script>

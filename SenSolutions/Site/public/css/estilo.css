@@ -1619,4 +1619,24 @@ h6 {
   position: relative;
   background: #f5f8fd url("../img/banner-jumbotron1.png") center top no-repeat;
   background-size: cover;
+} 
+.bg-gray{
+  background: rgb(238, 238, 238) !important;
 }
+
+.bg-item{
+  background-image: url('../IMG/img-fundo-6.jpg');
+  max-width: 100%;
+  height: auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.fa-angle-down:before {
+  content: "\f107"; }

@@ -6,18 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="img/logo-resp1.png">
+
+    <link href="css/googleapis.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilo.css">
     <link rel="stylesheet" href="css/bootstrap.css">
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/linearicons.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="css/nice-select.css">
-    <link rel="stylesheet" href="css/hexagons.min.css">
-    <link rel="stylesheet" href="css/owl.carousel.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="vendor/fontawesome-free/css/all.css">
-
     <title>Faça login teste</title>
 </head>
 
@@ -69,6 +65,14 @@
                         <div class="row">
                             <div class="col-md-9 col-lg-8 mx-auto">
                                 <h3 class="mb-4 text-center h3 text-uppercase text-primary">Bem-vindo de volta!</h3>
+
+                                <div id="div_erro" class="alert alert-danger alert-dismissible fade show" role="alert" style="display: none;">
+                                        <strong>E-mail ou Senha incorretos!</strong> Digite seu login e senha novamente.
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                        </button>
+                                      </div>
+
                                 <form form id="form_login" method="post" onsubmit="return  entrar()">
                                     <div class="form-label-group">
                                         <input type="email" name="login" id="inputEmail" class="form-control"
@@ -92,11 +96,12 @@
                                     <div class="text-center">
                                         <a class="small" href="#">Esqueceu a senha?</a></div>
                                 </form>
-                                <img src="aguarde.gif" id="img_aguarde" style="display: none;">
-    
-                                <div id="div_erro" style="background-color: sandybrown; color: maroon; display: none;">
-                                    Usuário e/ou senha inválidos!
+                                <div class="">
+                                        <img class="mx-auto" src="img/loading-2.gif" id="img_aguarde" style="display: none;">
                                 </div>
+                                
+
+                        
                             
                             </div>
                         </div>
@@ -105,9 +110,9 @@
             </div>
         </div>
     </div>
-    <!-- Start Footer Area -->
+    <!-- End Footer Area -->
     <footer class="footer-area section-gap">
-        <div class="container">
+        <div class="container text-sm-center">
             <div class="row">
                 <div class="col-lg-3 col-md-3 single-footer-widget">
                     <h4><u>Ajuda</u></h4>
@@ -120,9 +125,9 @@
                 <div class="col-lg-3 col-md-3 single-footer-widget">
                     <h4><u>Institucional</u></h4>
                     <ul>
-                        <li><a href="">Missão</a></li>
-                        <li><a href="">Visão</a></li>
-                        <li><a href="">Valores</a></li>
+                        <li><a href="#">Missão</a></li>
+                        <li><a href="#">Visão</a></li>
+                        <li><a href="#">Valores</a></li>
 
                     </ul>
                 </div>
@@ -139,22 +144,18 @@
 
                     <a href="#"><i class="fab fa-twitter fa-2x"></i></a>
                     <a href="#"><i class="fab fa-facebook fa-2x"></i></a>
-                    <a target="_Blank" href="https://github.com/BandTec/SenSolutions"><i class="fab fa-github fa-2x"></i></a>
+                    <a target="_Blank" href="https://github.com/BandTec/SenSolutions"><i
+                            class="fab fa-github fa-2x"></i></a>
                     <a href="#"><i class="fab fa-trello fa-2x"></i></a>
-
-
                 </div>
-
             </div>
             <div class="footer-bottom row align-items-center">
                 <p class="footer-text m-0 col-lg-6 col-md-12">&copy; Copyright 2019. All rights reserved SenSolutions
                 </p>
-
             </div>
         </div>
-
     </footer>
-    <!-- End Footer Area -->
+
 </body>
 
 </html>

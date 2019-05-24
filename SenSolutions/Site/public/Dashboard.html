@@ -450,9 +450,9 @@
 
                         </div>
                     </div>
-                </div>     
+                </div>
             </div>
-              <!-- Fim Analytics -->
+            <!-- Fim Analytics -->
         </div>
         <!-- end main area -->
     </div>
@@ -561,7 +561,6 @@
 
 </html>
 <script>
-
     var usuario;
     var exibiu_grafico = false;
 
@@ -594,7 +593,9 @@
     function configurarGrafico() {
         var configuracoes = {
             responsive: true,
-            animation: exibiu_grafico ? false : { duration: 1500 },
+            animation: exibiu_grafico ? false : {
+                duration: 1500
+            },
             hoverMode: 'index',
             stacked: false,
             title: {
@@ -634,8 +635,7 @@
         // porque é o padrão do Chart.js
         var dados = {
             labels: [],
-            datasets: [
-                {
+            datasets: [{
                     yAxisID: 'y-temperatura',
                     label: 'Temperatura',
                     borderColor: window.chartColors.red,
@@ -654,36 +654,36 @@
             ]
         };
 
-        fetch('/leituras/ultimas', { cache: 'no-store' }).then(function (response) {
-            if (response.ok) {
-                response.json().then(function (resposta) {
+        fetch('/leituras/ultimas', {
+                cache: 'no-store'
+            }).then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (resposta) {
 
-                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                        console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
 
-                    resposta.reverse();
+                        resposta.reverse();
 
-                    for (i = 0; i < resposta.length; i++) {
-                        var registro = resposta[i];
+                        for (i = 0; i < resposta.length; i++) {
+                            var registro = resposta[i];
 
-                        // aqui, após 'registro.' use os nomes 
-                        // dos atributos que vem no JSON 
-                        // que gerou na consulta ao banco de dados
+                            // aqui, após 'registro.' use os nomes 
+                            // dos atributos que vem no JSON 
+                            // que gerou na consulta ao banco de dados
+                            dados.labels.push(registro.dataHora);
+                            dados.datasets[0].data.push(registro.temperatura);
+                            dados.datasets[1].data.push(registro.umidade);
+                        }
+                        console.log(JSON.stringify(dados));
 
-                        dados.labels.push(registro.dataHora);
+                        div_aguarde.style.display = 'none';
 
-                        dados.datasets[0].data.push(registro.temperatura);
-                        dados.datasets[1].data.push(registro.umidade);
-                    }
-                    console.log(JSON.stringify(dados));
-
-                    div_aguarde.style.display = 'none';
-
-                    plotarGrafico(dados);
-                });
-            } else {
-                console.error('Nenhum dado encontrado ou erro na API');
-            }
-        })
+                        plotarGrafico(dados);
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                }
+            })
             .catch(function (error) {
                 console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
             });
@@ -700,5 +700,4 @@
             options: configurarGrafico()
         });
     }
-
 </script>

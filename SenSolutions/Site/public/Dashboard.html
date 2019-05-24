@@ -47,38 +47,31 @@
                     <nav>
                         <ul class="metismenu " id="menu">
                             <li>
-                                <a class="text-light" href="Dashboard.html"><i class="fas fa-home text-primary "></i>
-                                    Home</a>
-                                </li>
+                            <a class="text-light" href="Dashboard.html"><i class="fas fa-home text-primary "></i> Home</a>
+                            </li>
                             <li class="active " Sensores>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="fas fa-chart-line"></i>
-                                    Gráficos</a>
+                         <a href="javascript:void(0)" aria-expanded="true"><i class="fas fa-chart-line"></i> Gráficos</a>
                                 <ul class="collapse ">
-                                    <li><a class="scroll" href="#verview-shart"
-                                            onclick="trocar(grafico,sensores,local,usuario)">Em
-                                            Linhas</a>
-                                        </li>
                                     <li>
-                                        <a class="scroll" href="#ambarchart3"
-                                            onclick="trocar(grafico,sensores,local,usuario)">Em
-                                            Barra</a>
-                                        </li>
+                      <a class="scroll" href="#verview-shart" onclick="trocar(grafico,sensores,local,usuario)">Em Linhas</a>
+                                    </li>
+                                    <li>
+                        <a class="scroll" href="#ambarchart3" onclick="trocar(grafico,sensores,local,usuario)">Em Barra</a>
+                                    </li>
                                 </ul>
                             </li>
                             <li class="active " cadastrar>
-                                <a href="javascript:void(0)" aria-expanded="true"><i class="fab fa-wpforms"></i>
-                                    Cadastrar</a>
+                    <a href="javascript:void(0)" aria-expanded="true"><i class="fab fa-wpforms"></i> Cadastrar</a>
                                 <ul class="collapse ">
                                     <li>
-                                        <a class="" href="#sensores"
-                                            onclick="trocar(sensores,usuario,local,grafico)">Sensores</a>
-                                        </li>
+                        <a class="" href="#sensores" onclick="trocar(sensores,usuario,local,grafico)">Sensores</a>
+                                    </li>
                                     <li>
-                                        <a class="" href="#local"
-                                            onclick="trocar(local,sensores,usuario,grafico)">Locais</a>
-                                        </li>
-                                    <li><a class="" href="#usuario"
-                                            onclick="trocar(usuario,sensores,local,grafico)">Usuarios</a></li>
+                                        <a class="" href="#local" onclick="trocar(local,sensores,usuario,grafico)">Locais</a>
+                                    </li>
+                                    <li>
+                                <a class="" href="#usuario" onclick="trocar(usuario,sensores,local,grafico)">Usuarios</a>
+                                    </li>
                                 </ul>
                             </li>
 
@@ -136,7 +129,7 @@
 
             <!-- main content inner -->
             <div class="main-content-inner">
-           
+
                 <!-- inicio grafico -->
                 <div class="row" id="grafico">
                     <div class="col-lg-12 col-sm-12 mx-auto mt-3">
@@ -217,72 +210,267 @@
                     </div>
                 </div>
                 <!-- Fim Analytics -->
+
+                <!-- Inicio CRUD -->
+                <section>
+                        <div class="row mt-3">
+                                <!-- Vertically centered modal start -->
+                                <div class="col-lg-6 mt-5">
+                                       <div class="card">
+                                           <div class="card-body mx-auto">
+                                               <h4 class="header-title text-center">Cadastrar Sensores</h4>
+                                          
+                                               <!-- Button trigger modal -->                               
+                                                       <button type="button" class="btn btn-primary btn-flat btn-lg mt-2 mx-3" data-toggle="modal" data-target="#modalsensor">Abrir Cadastro</button>
+                                               
+                                               <!-- Modal -->
+                                               <div class="modal fade" id="modalsensor">
+                                                   <div class="modal-dialog modal-dialog-centered" role="document">
+                                                       <div class="modal-content">
+                                                           <div class="modal-header ">
+                                                               <h5 class="modal-title ">Cadastrar sensores</h5>
+                                                               <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                                                           </div>
+                                                           <div class="modal-body">
+                                                                   <div class="mx-auto">
+                                                                           
+                                                                             
+                                                                         <div class="p-5">
+                                                                           <div class="text-center">
+                                                                             <h1 class="h4 text-gray-900 mb-4">Registre seu Sensor</h1>
+                                                                           </div>
+                                                                           <form class="user">
+                                                                             <div class="form-group">
+                                                                               <div class="form-group">
+                                                             
+                                                                                 <div class="input-group">
+                                                                                   <div class="input-group-prepend">
+                                                                                     <span class="input-group-text">
+                                                                                       Número de Indentificação:
+                                                                                     </span>
+                                                                                   </div>
+                                                                                   <input class="form-control" type="text" id="identifica_sens" placeholder="Nº">
+                                                                                 </div>
+                                                                               </div>
+                                                                             </div>
+                                                                             <div class="form-group">
+                                                                               <input type="text" class="form-control form-control-user" id="id_pos_sens"
+                                                                                 placeholder="Posição do sensor">
+                                                                             </div>
+                                                                             <a href="Dashboard.html" class="btn btn-primary btn-user btn-block">
+                                                                               Registrar Sensor
+                                                                             </a>
+                                                                           </form>
+                                                                       
+                                                                     </div>
+                                                                   </div>
+                                                           </div>
+                                                           <div class="modal-footer">
+                                                               <div class="mx-auto">
+                                                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                                                       
+                                                               </div>
+                                                              
+                                                           </div>
+                                                       </div>
+                                                   </div>
+                                               </div>
+                                           </div>
+                                       </div>
+                                   </div>
+                                   <!-- Vertically centered modal end -->
+                           </div>
+           
+                           <div class="row ">
+           
+                                    <!-- Vertically centered modal start -->
+                                <div class="col-lg-6 mt-3">
+                                       <div class="card">
+                                           <div class="card-body mx-auto">
+                                                   <h1 class="h4 text-gray-900 mb-4">Cadastrar Usuario</h1>
+                                          
+                                               <!-- Button trigger modal -->                               
+                                                       <button type="button" class="btn btn-primary btn-flat btn-lg mt-2 mx-3" data-toggle="modal" data-target="#modalusuario">Abrir Cadastro</button>
+                                               
+                                               <!-- Modal -->
+                                               <div class="modal fade" id="modalusuario">
+                                                   <div class="modal-dialog modal-dialog-centered" role="document">
+                                                       <div class="modal-content">
+                                                           <div class="modal-header ">
+                                                               <h5 class="modal-title ">Cadastrar Usuarios</h5>
+                                                               <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                                                           </div>
+                                                           <div class="modal-body">
+                                                                   <form class="user">
+                                                                           <div class="form-group">
+                                                                             <div class="form-group">
+                                                                               <input type="email" class="form-control form-control-user" id="nome_user"
+                                                                                 placeholder="Digite seu nome completo.">
+                                                                             </div>
+                                                                           </div>
+                                                                           <div class="form-group">
+                                                                             <input type="email" class="form-control form-control-user" id="email_user"
+                                                                               placeholder="Digite seu e-mail.">
+                                                                           </div>
+                                                                           <div class="form-group row">
+                                                                             <div class="col-sm-6 mb-3 mb-sm-0">
+                                                                               <input type="password" class="form-control form-control-user" id="senha_user"
+                                                                                 placeholder="Digite sua senha.">
+                                                                             </div>
+                                                                             <div class="col-sm-6">
+                                                                               <input type="password" class="form-control form-control-user" id="repeat_senha"
+                                                                                 placeholder="Repita sua senha.">
+                                                                             </div>
+                                                                           </div>
+                                                                           <a href="Dashboard.html" class="btn btn-outline-primary btn-user btn-block">
+                                                                             Registrar
+                                                                           </a>
+                                                                         </form> 
+                                                           </div>
+                                                           <div class="modal-footer">
+                                                               <div class="mx-auto">
+                                                                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                                                       
+                                                               </div>
+                                                              
+                                                           </div>
+                                                       </div>
+                                                   </div>
+                                               </div>
+                                           </div>
+                                       </div>
+                                   </div>
+                                   <!-- Vertically centered modal end -->
+           
+                                 
+                           </div>
+           
+                           <div class="row">
+           
+                                       <!-- Vertically centered modal start -->
+                                       <div class="col-lg-6 mt-3">
+                                               <div class="card">
+                                                   <div class="card-body mx-auto">
+                                                           <h1 class="h4 text-gray-900 mb-4">Registrar o local</h1>
+                                                  
+                                                       <!-- Button trigger modal -->                               
+                                                               <button type="button" class="btn btn-primary btn-flat btn-lg mt-2 mx-3" data-toggle="modal" data-target="#modalocal">Abrir Cadastro</button>
+                                                       
+                                                       <!-- Modal -->
+                                                       <div class="modal fade" id="modalocal">
+                                                           <div class="modal-dialog modal-dialog-centered" role="document">
+                                                               <div class="modal-content">
+                                                                   <div class="modal-header ">
+                                                                       <h5 class="modal-title ">Cadastrar Locais</h5>
+                                                                       <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                                                                   </div>
+                                                                   <div class="modal-body">
+                                                                           <form class="user">
+                                                                                   <div class="form-group">
+                                                                                     <div class="form-group">
+                                                                                       <input type="email" class="form-control form-control-user" id="nome_emp" placeholder="Digite o nome de sua empresa.">
+                                                                                     </div>
+                                                                                   </div>
+                                                                                   <div class="form-group">
+                                                                                     <input type="number" class="form-control form-control-user" id="cep_emp" placeholder="Digite o CEP.">
+                                                                                   </div>
+                                                                                   <div class="form-group row">
+                                                                                     <div class="col-sm-6 mb-3 mb-sm-0">
+                                                                                       <input type="text" class="form-control form-control-user" id="num_emp" placeholder="Digite o número.">
+                                                                                     </div>
+                                                                                     <div class="col-sm-6">
+                                                                                       <input type="text" class="form-control form-control-user" id="logr_emp"
+                                                                                         placeholder="Digite o logradouro.">
+                                                                                     </div>
+                                                                                   </div>
+                                                                                   <a href="login.html" class="btn btn-primary btn-user btn-block">
+                                                                                     Registrar local
+                                                                                   </a>
+                                                                                 </form>  
+                                                                   </div>
+                                                                   <div class="modal-footer">
+                                                                       <div class="mx-auto">
+                                                                               <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                                                               
+                                                                       </div>
+                                                                      
+                                                                   </div>
+                                                               </div>
+                                                           </div>
+                                                       </div>
+                                                   </div>
+                                               </div>
+                                           </div>
+                                           <!-- Vertically centered modal end -->
+           
+                                 
+                           </div>
+                </section>
+               <!-- Fim CRUD -->
+               
             </div>
             <!-- end main content inner  -->
-
-
-
         </div>
         <!-- end main area -->
 
 
 
-    <!-- Start Footer Area -->
-    <footer class="footer-area section-gap">
-        <div class="container">
-            <div class="row text-center">
-                <div class="col-lg-3 col-md-3 single-footer-widget">
-                    <h4><u>Ajuda</u></h4>
-                    <ul>
-                        <li><a href="Ajuda.html">Dúvidas Frequentes</a></li>
-                        <li><a href="Ajuda.html">FAQ</a></li>
+        <!-- Start Footer Area -->
+        <footer class="footer-area section-gap">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-lg-3 col-md-3 single-footer-widget">
+                        <h4><u>Ajuda</u></h4>
+                        <ul>
+                            <li><a href="Ajuda.html">Dúvidas Frequentes</a></li>
+                            <li><a href="Ajuda.html">FAQ</a></li>
 
-                    </ul>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-3 single-footer-widget">
+                        <h4><u>Institucional</u></h4>
+                        <ul>
+                            <li><a href="index.html">Missão</a></li>
+                            <li><a href="index.html">Visão</a></li>
+                            <li><a href="index.html">Valores</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-3 single-footer-widget">
+                        <h4><u>Projetos</u></h4>
+                        <ul>
+                            <li><a href="Projeto-Avícola.html">Avícola</a></li>
+                            <li><a href="Dashboard.html">Dashboards</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-3 single-footer-widget">
+                        <h4><u>Redes Sociais</u></h4>
+
+
+                        <a href="#"><i class="fab fa-twitter fa-2x"></i></a>
+                        <a href="#"><i class="fab fa-facebook fa-2x"></i></a>
+                        <a target="_Blank" href="https://github.com/BandTec/SenSolutions"><i
+                                class="fab fa-github fa-2x"></i></a>
+                        <a href="#"><i class="fab fa-trello fa-2x"></i></a>
+
+
+                    </div>
+
                 </div>
-                <div class="col-lg-3 col-md-3 single-footer-widget">
-                    <h4><u>Institucional</u></h4>
-                    <ul>
-                        <li><a href="index.html">Missão</a></li>
-                        <li><a href="index.html">Visão</a></li>
-                        <li><a href="index.html">Valores</a></li>
-
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-md-3 single-footer-widget">
-                    <h4><u>Projetos</u></h4>
-                    <ul>
-                        <li><a href="Projeto-Avícola.html">Avícola</a></li>
-                        <li><a href="Dashboard.html">Dashboards</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-3 col-md-3 single-footer-widget">
-                    <h4><u>Redes Sociais</u></h4>
-
-
-                    <a href="#"><i class="fab fa-twitter fa-2x"></i></a>
-                    <a href="#"><i class="fab fa-facebook fa-2x"></i></a>
-                    <a target="_Blank" href="https://github.com/BandTec/SenSolutions"><i
-                            class="fab fa-github fa-2x"></i></a>
-                    <a href="#"><i class="fab fa-trello fa-2x"></i></a>
-
+                <div class="footer-bottom row align-items-center">
+                    <p class="footer-text m-0 col-lg-6 col-md-12">&copy; Copyright 2019. All rights reserved
+                        SenSolutions
+                    </p>
 
                 </div>
-
             </div>
-            <div class="footer-bottom row align-items-center">
-                <p class="footer-text m-0 col-lg-6 col-md-12">&copy; Copyright 2019. All rights reserved
-                    SenSolutions
-                </p>
 
-            </div>
-        </div>
+        </footer>
+        <!-- End Footer Area -->
 
-    </footer>
-    <!-- End Footer Area -->
-
-</div>
+    </div>
     <!-- Inicio core -->
-    <script src="js/jquery-3.3.1.min.js"></script> 
+    <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.slimscroll.min.js"></script>
@@ -300,33 +488,7 @@
 
 </html>
 <script>
+    function trocar(n1, n2, n3, n4) {
 
+    }
 </script>
-
-<!-- #region scripts não utilizados -->
- <!-- <script src="js/main.js"></script> -->
-    <!-- <script src="js/jquery.slicknav.min.js"></script> -->
-    <!-- <script src="js/owl.carousel.min.js"></script> -->
-    <!-- start amchart js 
-    <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
-    <script src="https://www.amcharts.com/lib/3/pie.js"></script>
-    <script src="https://www.amcharts.com/lib/3/serial.js"></script>
-    <script src="https://www.amcharts.com/lib/3/plugins/animate/animate.min.js"></script>
-    <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
-    <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
-       all bar chart activation -->
-    <!-- <script src="js/bar-chart.js"></script> -->
-     <!-- start chart js -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script> -->
-
-    <!-- start highcharts js -->
-    <!-- <script src="https://code.highcharts.com/highcharts.js"></script> -->
-    <!-- start zingchart js -->
-    <!-- <script src="https://cdn.zingchart.com/zingchart.min.js"></script> -->
-    <!-- <script>
-         zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
-        ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "ee6b7db5b51705a13dc2339db3edaf6d"];
-    </script>  -->
-    <!-- all line chart activation -->
-    <!-- <script src="js/line-chart.js"></script> -->
-    <!-- #endregion -->

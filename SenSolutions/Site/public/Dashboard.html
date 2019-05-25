@@ -53,10 +53,10 @@
                          <a href="javascript:void(0)" aria-expanded="true"><i class="fas fa-chart-line"></i> Gráficos</a>
                                 <ul class="collapse ">
                                     <li>
-                      <a class="scroll" href="#verview-shart" onclick="trocar(grafico,sensores,local,usuario)">Em Linhas</a>
+                      <a class="scroll" href="#grafico" >Em Linhas</a>
                                     </li>
                                     <li>
-                        <a class="scroll" href="#ambarchart3" onclick="trocar(grafico,sensores,local,usuario)">Em Barra</a>
+                        <a class="scroll" href="#analytics" >Analytics</a>
                                     </li>
                                 </ul>
                             </li>
@@ -64,13 +64,13 @@
                     <a href="javascript:void(0)" aria-expanded="true"><i class="fab fa-wpforms"></i> Cadastrar</a>
                                 <ul class="collapse ">
                                     <li>
-                        <a class="" href="#sensores" onclick="trocar(sensores,usuario,local,grafico)">Sensores</a>
+                        <a class="" href="#sensores" data-toggle="modal" data-target="#modalsensor">Sensores</a>
                                     </li>
                                     <li>
-                                        <a class="" href="#local" onclick="trocar(local,sensores,usuario,grafico)">Locais</a>
+                                        <a class="" href="#local" data-toggle="modal" data-target="#modalocal">Locais</a>
                                     </li>
                                     <li>
-                                <a class="" href="#usuario" onclick="trocar(usuario,sensores,local,grafico)">Usuarios</a>
+                                <a class="" href="#usuario" data-toggle="modal" data-target="#modalusuario">Usuarios</a>
                                     </li>
                                 </ul>
                             </li>
@@ -147,32 +147,32 @@
                 <!-- fim grafico -->
 
                 <!-- Inicio Analytics -->
-                <div class="row mt-3">
+                <div class="row mt-3" id="analytics">
                     <div class="col-lg-12 col-12 mx-auto">
                         <div class="card">
                             <div class="card-body">
                                 <div class="text-center h1 mb-3">Estatísticas</div>
                                 <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTable">
-                                        <thead>
+                                    <table class="table table-bordered " id="dataTable">
+                                        <thead class="text-center">
                                             <tr>
-                                                <th>Valor Mínimo</th>
-                                                <th>25% Percentil</th>
-                                                <th>Média</th>
-                                                <th>Ponto Médio</th>
-                                                <th>75% Percentil</th>
-                                                <th>Valor Máximo</th>
+                                                <th class="bg-danger text-white">Valor Mínimo</th>
+                                                <th class="bg-warning text-white">25% Percentil</th>
+                                                <th class="bg-success text-white">Média</th>
+                                                <th class="bg-primary text-white">Ponto Médio</th>
+                                                <th class="bg-warning text-white">75% Percentil</th>
+                                                <th class="bg-danger text-white">Valor Máximo</th>
                                             </tr>
                                         </thead>
                                         <tbody>
 
-                                            <tr>
-                                                <td>30</td>
-                                                <td>31</td>
-                                                <td>31,9</td>
-                                                <td>32</td>
-                                                <td>33</td>
-                                                <td>34</td>
+                                            <tr class="text-center">
+                                                <td class="bg-danger text-white">30</td>
+                                                <td class="bg-warning text-white">31</td>
+                                                <td class="bg-success text-white">31,9</td>
+                                                <td class="bg-primary text-white">32</td>
+                                                <td class="bg-warning text-white">33</td>
+                                                <td class="bg-danger text-white">34</td>
                                             </tr>
                                         </tbody>
 
@@ -180,25 +180,25 @@
                                 </div>
                                 <div class="table-responsive">
                                     <table class="table table-bordered" id="dataTable1">
-                                        <thead>
-                                            <tr>
-                                                <th>Valor Mínimo</th>
-                                                <th>25% Percentil</th>
-                                                <th>Média</th>
-                                                <th>Ponto Médio</th>
-                                                <th>75% Percentil</th>
-                                                <th>Valor Máximo</th>
+                                        <thead class="text-center">
+                                            <tr >
+                                                <th class="bg-danger text-white">Valor Mínimo</th>
+                                                <th class="bg-warning text-white">25% Percentil</th>
+                                                <th class="bg-success text-white">Média</th>
+                                                <th class="bg-primary text-white">Ponto Médio</th>
+                                                <th class="bg-warning text-white">75% Percentil</th>
+                                                <th class="bg-danger text-white">Valor Máximo</th>
                                             </tr>
                                         </thead>
                                         <tbody>
 
-                                            <tr>
-                                                <td>59</td>
-                                                <td>65,25</td>
-                                                <td>68,61</td>
-                                                <td>59</td>
-                                                <td>70</td>
-                                                <td>80</td>
+                                            <tr class="text-center">
+                                                <td class="bg-danger text-white">59</td>
+                                                <td class="bg-warning text-white">65,25</td>
+                                                <td class="bg-success text-white">68,61</td>
+                                                <td class="bg-primary text-white">59</td>
+                                                <td class="bg-warning text-white">70</td>
+                                                <td class="bg-danger text-white">80</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -217,11 +217,7 @@
                                 <!-- Vertically centered modal start -->
                                 <div class="col-lg-6 mt-5">
                                        <div class="card">
-                                           <div class="card-body mx-auto">
-                                               <h4 class="header-title text-center">Cadastrar Sensores</h4>
-                                          
-                                               <!-- Button trigger modal -->                               
-                                                       <button type="button" class="btn btn-primary btn-flat btn-lg mt-2 mx-3" data-toggle="modal" data-target="#modalsensor">Abrir Cadastro</button>
+                                           
                                                
                                                <!-- Modal -->
                                                <div class="modal fade" id="modalsensor">
@@ -276,22 +272,16 @@
                                                    </div>
                                                </div>
                                            </div>
-                                       </div>
-                                   </div>
+                                   
                                    <!-- Vertically centered modal end -->
                            </div>
-           
+                        </div>
                            <div class="row ">
            
                                     <!-- Vertically centered modal start -->
                                 <div class="col-lg-6 mt-3">
                                        <div class="card">
-                                           <div class="card-body mx-auto">
-                                                   <h1 class="h4 text-gray-900 mb-4">Cadastrar Usuario</h1>
                                           
-                                               <!-- Button trigger modal -->                               
-                                                       <button type="button" class="btn btn-primary btn-flat btn-lg mt-2 mx-3" data-toggle="modal" data-target="#modalusuario">Abrir Cadastro</button>
-                                               
                                                <!-- Modal -->
                                                <div class="modal fade" id="modalusuario">
                                                    <div class="modal-dialog modal-dialog-centered" role="document">
@@ -337,25 +327,20 @@
                                                        </div>
                                                    </div>
                                                </div>
-                                           </div>
-                                       </div>
+                                          
                                    </div>
                                    <!-- Vertically centered modal end -->
            
                                  
                            </div>
-           
+                           </div>
                            <div class="row">
            
                                        <!-- Vertically centered modal start -->
                                        <div class="col-lg-6 mt-3">
                                                <div class="card">
-                                                   <div class="card-body mx-auto">
-                                                           <h1 class="h4 text-gray-900 mb-4">Registrar o local</h1>
-                                                  
-                                                       <!-- Button trigger modal -->                               
-                                                               <button type="button" class="btn btn-primary btn-flat btn-lg mt-2 mx-3" data-toggle="modal" data-target="#modalocal">Abrir Cadastro</button>
-                                                       
+                                              
+                                                       <!-- Button trigger modal -->                      
                                                        <!-- Modal -->
                                                        <div class="modal fade" id="modalocal">
                                                            <div class="modal-dialog modal-dialog-centered" role="document">
@@ -395,8 +380,7 @@
                                                                        </div>
                                                                       
                                                                    </div>
-                                                               </div>
-                                                           </div>
+                                                            
                                                        </div>
                                                    </div>
                                                </div>
@@ -404,6 +388,7 @@
                                            <!-- Vertically centered modal end -->
            
                                  
+                           </div>
                            </div>
                 </section>
                <!-- Fim CRUD -->

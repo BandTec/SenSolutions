@@ -1,17 +1,27 @@
+
+
 var usuario;
 var exibiu_graficoTemp = false;
 var exibiu_graficoUmid = false;
 verificarAutenticacao();
 
-
+// Não mexa nestas 3 linhas! 
+// google.load('visualization', '1', {
+// packages: ['corechart','line'],
+// callback: obterDadosGrafico
+// });
 function verificarAutenticacao() {
     usuario = sessionStorage.usuario_bandtec;
+    
     if (usuario == undefined) {
         window.location.href = 'login.html';
     } else {
         b_usuario.innerHTML = usuario;
     }
 }
+
+
+
 
 function logoff() {
     sessionStorage.removeItem('usuario_bandtec');
@@ -161,93 +171,6 @@ function obterDadosGrafico() {
         });
 }
 
-// altere aqui como os dados serão exibidos
-// e como são recuperados do BackEnd
-// function obterDadosGraficoUmid() {
-
-//     // neste JSON tem que ser 'labels', 'datasets' etc, 
-//     // porque é o padrão do Chart.js
-
-//     var dadosumid = {
-//         labels: [],
-//         datasets: [
-//             {
-//                 yAxisID: 'y-umidade',
-//                 label: 'Umidade',
-//                 borderColor: window.chartColors.blue,
-//                 backgroundColor: window.chartColors.blue,
-//                 fill: false,
-//                 data: []
-//             }
-//             // ,
-//             // {
-//             //     yAxisID: 'y-umidade',
-//             //     label: 'Umidade',
-//             //     borderColor: window.chartColors.blue,
-//             //     backgroundColor: window.chartColors.blue,
-//             //     fill: false,
-//             //     data: []
-//             // }
-//         ]
-//     };
-
-//     var dadostemp = {
-//         labels: [],
-//         datasets: [
-//             {
-//                 yAxisID: 'y-temperatura',
-//                 label: 'Temperatura',
-//                 borderColor: window.chartColors.red,
-//                 backgroundColor: window.chartColors.red,
-//                 fill: false,
-//                 data: []
-//             }
-//             // ,
-//             // {
-//             //     yAxisID: 'y-umidade',
-//             //     label: 'Umidade',
-//             //     borderColor: window.chartColors.blue,
-//             //     backgroundColor: window.chartColors.blue,
-//             //     fill: false,
-//             //     data: []
-//             // }
-//         ]
-//     };
-//     fetch('/leituras/ultimas', { cache: 'no-store' }).then(function (response) {
-//         if (response.ok) {
-//             response.json().then(function (resposta) {
-
-//                 console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-
-//                 resposta.reverse();
-
-//                 for (i = 0; i < resposta.length; i++) {
-//                     var registro = resposta[i];
-
-//                     // aqui, após 'registro.' use os nomes 
-//                     // dos atributos que vem no JSON 
-//                     // que gerou na consulta ao banco de dados
-//                     dadostemp.labels.push(registro.dataHora);
-//                     dadosumid.labels.push(registro.dataHora);
-//                     dadostemp.datasets[0].data.push(registro.temperatura);
-//                     dadosumid.datasets[0].data.push(registro.umidade);
-//                     // dados.datasets[1].data.push(registro.umidade);
-//                 }
-//                 console.log(JSON.stringify(dadostemp,dadosumid));
-
-//                 div_aguarde1.style.display = 'none';
-
-//                 plotarGrafico(dadosumid);
-//             });
-//         } else {
-//             console.error('Nenhum dado encontrado ou erro na API');
-//         }
-//     })
-//         .catch(function (error) {
-//             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-//         });
-
-// }
 
 // só altere aqui se souber o que está fazendo!
 

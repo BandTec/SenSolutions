@@ -44,7 +44,7 @@ function configurarGraficoTemp() {
                 position: 'left',
                 id: 'y-temperatura',
             }
-        ],
+            ],
         }
     };
 
@@ -71,8 +71,8 @@ function configurarGraficoUmid() {
                 display: true,
                 position: 'left',
                 id: 'y-umidade',
-            }         
-        ],
+            }
+            ],
         }
     };
 
@@ -87,9 +87,9 @@ function obterDadosGrafico() {
 
     // neste JSON tem que ser 'labels', 'datasets' etc, 
     // porque é o padrão do Chart.js
-    
+
     var dadosumid = {
-        labels:[],
+        labels: [],
         layout: {
             padding: {
                 left: 100,
@@ -102,7 +102,7 @@ function obterDadosGrafico() {
             {
                 yAxisID: 'y-umidade',
                 label: 'Umidade',
-                borderColor:'#4B67C1' ,
+                borderColor: '#4B67C1',
                 backgroundColor: '#4B67C1',
                 fill: false,
                 data: []
@@ -120,7 +120,7 @@ function obterDadosGrafico() {
                 backgroundColor: '#C44848',
                 fill: false,
                 data: []
-            }          
+            }
         ]
     };
 
@@ -145,12 +145,12 @@ function obterDadosGrafico() {
                     dadosumid.labels.push(registro.dataHora);
                     dadosumid.datasets[0].data.push(registro.umidade);
                 }
-                console.log(JSON.stringify(dadostemp,dadosumid));
+                console.log(JSON.stringify(dadostemp, dadosumid));
 
                 div_aguarde.style.display = 'none';
                 div_aguarde1.style.display = 'none';
 
-                plotarGrafico(dadostemp,dadosumid);
+                plotarGrafico(dadostemp, dadosumid);
             });
         } else {
             console.error('Nenhum dado encontrado ou erro na API');
@@ -251,7 +251,7 @@ function obterDadosGrafico() {
 
 // só altere aqui se souber o que está fazendo!
 
-function plotarGrafico(dados,dadosumid) {
+function plotarGrafico(dados, dadosumid) {
     console.log('iniciando plotagem do gráfico...');
 
     var ctx = canvas_temp.getContext('2d');
@@ -262,7 +262,7 @@ function plotarGrafico(dados,dadosumid) {
 
     var ctx1 = canvas_umid.getContext('2d');
     window.grafico_linha = Chart.Line(ctx1, {
-        data:dadosumid,
-        options:configurarGraficoUmid()
+        data: dadosumid,
+        options: configurarGraficoUmid()
     });
 }

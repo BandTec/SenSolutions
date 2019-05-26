@@ -13,7 +13,7 @@
   <title>Cadastre-se</title>
 
   <!-- Custom fonts for this template-->
- 
+
 
   <link href="css/googleapis.css" rel="stylesheet">
   <link rel="stylesheet" href="css/estilo.css">
@@ -75,30 +75,32 @@
               <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">Crie sua conta</h1>
               </div>
-              <form class="user">
+              <form class="user" form id="form_Cad" method="post" onsubmit="return  cadastrar()">
                 <div class="form-group">
                   <div class="form-group">
-                    <input type="text" class="form-control form-control-user" id="exampleInputUser"
+                    <input type="text" name="nomeCompleto" class="form-control form-control-user" id="exampleInputUser"
                       placeholder="Digite seu nome completo">
                   </div>
                 </div>
                 <div class="form-group">
-                  <input type="email" class="form-control form-control-user" id="exampleInputEmail"
+                  <input type="email" name="emailCad" class="form-control form-control-user" id="exampleInputEmail"
                     placeholder="Digite seu e-mail">
                 </div>
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="password" class="form-control form-control-user" id="exampleInputPassword"
-                      placeholder="Digite sua senha">
+                    <input type="password" name="senhaCad" class="form-control form-control-user"
+                      id="exampleInputPassword" placeholder="Digite sua senha">
                   </div>
                   <div class="col-sm-6">
-                    <input type="password" class="form-control form-control-user" id="exampleRepeatPassword"
-                      placeholder="Repita sua senha">
+                    <input type="password" name="senhaCad2" class="form-control form-control-user"
+                      id="exampleRepeatPassword" placeholder="Repita sua senha">
                   </div>
                 </div>
-                <a href="login.html" class="btn btn-outline-primary btn-user btn-block">
+                <button id="btn_Cadastrar"
+                  class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2">Cadastre-se</button>
+                <!-- <a href="login.html" class="btn btn-outline-primary btn-user btn-block">
                   Registre agora seu local
-                </a>
+                </a> -->
               </form>
               <hr>
               <div class="text-center">
@@ -162,7 +164,52 @@
   <script type="text/javascript" src="js/popper.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
   <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin-2.min.js"></script>
+  <!-- <script src="js/sb-admin-2.min.js"></script> -->
 </body>
 
 </html>
+
+<script>
+  verificarAutenticacao();
+
+  function verificarAutenticacao() {
+
+    if (sessionStorage.usuario_bandtec != undefined) {
+      window.location.href = 'Dashboard.html';
+    }
+  }
+
+
+  function cadastrar() {
+    aguardar();
+    var formulario = new URLSearchParams(new FormData(form_Cad));
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      body: formulario
+    }).then(function (response) {
+      if (response.ok) {
+        response.json().then(function (resposta) {
+          sessionStorage.usuario_bandtec = resposta.nomeUsuario;
+        });
+      } else {
+        console.log('Erro de login!');
+        finalizar_aguardar();
+
+      }
+    });
+
+    return false;
+  }
+
+  function aguardar() {
+    // btn_entrar.disabled = true;
+    // img_aguarde.style.display = 'block';
+    // div_erro.style.display = 'none';
+  }
+
+  function finalizar_aguardar() {
+    // btn_entrar.disabled = false;
+    // img_aguarde.style.display = 'none';
+    // div_erro.style.display = 'block';
+  }
+</script>

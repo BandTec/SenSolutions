@@ -40,6 +40,46 @@ router.post('/entrar', function (req, res, next) {
 
 });
 
+router.post('/cadastrar', function (req, res, next) {
+
+  banco.conectar().then(() => {
+    console.log(`Chegou p/ login: ${JSON.stringify(req.body)}`);
+    // var login = req.body.login; // depois de .body, use o nome (name) do campo em seu formulário de login
+    // var senha = req.body.senha; // depois de .body, use o nome (name) do campo em seu formulário de login
+    var nomeCadastro = req.body.nomeCompleto;
+    var emailCadastro = req.body.emailCad;
+    var senhaCadastro = req.body.senhaCad;
+    var senhaCadastro2 = req.body.senhaCad2;
+
+
+    if (nomeCadastro == undefined || emailCadastro == undefined || senhaCadastro == undefined || senhaCadastro2 == undefined) {
+      throw new Error(`Dados de cadastro não chegaram completos: ${nomeCadastro} / ${emailCadastro} / ${senhaCadastro} / ${senhaCadastro2}`);
+    } else if (senhaCadastro != senhaCadastro2) {
+       console.log(`Senhas incorretas! Digite a senha novamente!`);
+    }
+    return banco.sql.query(`Insert into (nomeUsuario,senhaUsuario,Email) values ('${nomeCadastro}','${senhaCadastro}','${emailCadastro}');`);
+  }).then(consulta => {
+
+    console.log(`Cadastro realizado com Sucesso !: ${JSON.stringify(consulta.recordset)}`);
+
+    if (consulta.recordset.length == 1) {
+      res.send(consulta.recordset[0]);
+    } else {
+      res.sendStatus(404);
+    }
+
+  }).catch(err => {
+
+    var erro = `Erro no Cadastro: ${err}`;
+    console.error(erro);
+    res.status(500).send(erro);
+
+  }).finally(() => {
+    banco.sql.close();
+  });
+
+});
+
 
 
 

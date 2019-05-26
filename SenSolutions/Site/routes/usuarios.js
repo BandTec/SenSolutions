@@ -57,7 +57,7 @@ router.post('/cadastrar', function (req, res, next) {
     } else if (senhaCadastro != senhaCadastro2) {
        console.log(`Senhas incorretas! Digite a senha novamente!`);
     }
-    return banco.sql.query(`Insert into (nomeUsuario,senhaUsuario,Email) values ('${nomeCadastro}','${senhaCadastro}','${emailCadastro}');`);
+    return banco.sql.query(`Insert into tb_cliente(nomeUsuario,senhaUsuario,Email) values ('${nomeCadastro}','${senhaCadastro}','${emailCadastro}');`);
   }).then(consulta => {
 
     console.log(`Cadastro realizado com Sucesso !: ${JSON.stringify(consulta.recordset)}`);

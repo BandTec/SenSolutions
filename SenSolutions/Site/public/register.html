@@ -75,7 +75,7 @@
               <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">Crie sua conta</h1>
               </div>
-              <form class="user" form id="form_Cad" method="post" onsubmit="return  cadastrar()">
+              <form class="user" form id="form_Cad" method="post" onsubmit="return  cadUsuario()">
                 <div class="form-group">
                   <div class="form-group">
                     <input type="text" name="nomeCompleto" class="form-control form-control-user" id="exampleInputUser"
@@ -175,12 +175,12 @@
   function verificarAutenticacao() {
 
     if (sessionStorage.usuario_bandtec != undefined) {
-      window.location.href = 'Dashboard.html';
+      window.location.href = 'login.html';
     }
   }
 
 
-  function cadastrar() {
+  function cadUsuario() {
     aguardar();
     var formulario = new URLSearchParams(new FormData(form_Cad));
     fetch("/usuarios/cadastrar", {
@@ -192,7 +192,7 @@
           sessionStorage.usuario_bandtec = resposta.nomeUsuario;
         });
       } else {
-        console.log('Erro de login!');
+        console.log('Erro no Cadastro!');
         finalizar_aguardar();
 
       }

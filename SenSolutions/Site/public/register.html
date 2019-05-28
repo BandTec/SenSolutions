@@ -96,7 +96,9 @@
                       id="exampleRepeatPassword" placeholder="Repita sua senha">
                   </div>
                 </div>
-                <button id="btn_Cadastrar"
+                <button
+                  onclick="cadUsuario(exampleInputUser.value,exampleInputEmail.value,exampleInputPassword.value,exampleRepeatPassword.value)"
+                  id="btn_Cadastrar"
                   class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2">Cadastre-se</button>
                 <!-- <a href="login.html" class="btn btn-outline-primary btn-user btn-block">
                   Registre agora seu local
@@ -170,46 +172,42 @@
 </html>
 
 <script>
-  verificarAutenticacao();
 
-  function verificarAutenticacao() {
 
-    if (sessionStorage.usuario_bandtec != undefined) {
-      window.location.href = 'login.html';
+
+  function cadUsuario(user,email,password,confirmPassword) {
+
+
+    fetch(`usuarios/cadastrar/?user=${user}&email=${email}&password=${password}`, {
+      method: "POST"
+    }).then(js => {
+    console.log(js.status);
+    if (js.status === 200) {
+    alert('usuario cadastrado')
+    } else {
+    M.toast({ html: 'Usuário ou senha incorretos' })
     }
-  }
-
-
-  function cadUsuario() {
-    aguardar();
-    var formulario = new URLSearchParams(new FormData(form_Cad));
-    fetch("/usuarios/cadastrar", {
-      method: "POST",
-      body: formulario
-    }).then(function (response) {
-      if (response.ok) {
-        response.json().then(function (resposta) {
-          sessionStorage.usuario_bandtec = resposta.nomeUsuario;
-        });
-      } else {
-        console.log('Erro no Cadastro!');
-        finalizar_aguardar();
-
-      }
     });
+    
 
     return false;
   }
 
-  function aguardar() {
-    // btn_entrar.disabled = true;
-    // img_aguarde.style.display = 'block';
-    // div_erro.style.display = 'none';
-  }
+  select(4);
 
-  function finalizar_aguardar() {
-    // btn_entrar.disabled = false;
-    // img_aguarde.style.display = 'none';
-    // div_erro.style.display = 'block';
-  }
+   function select(id) {
+
+   fetch(`usuarios/?id=${id}`, {
+   method: "GET"
+   }).then(js => {
+     return js.json();
+   }).then(rs=>{
+    console.log(rs);
+   });
+
+
+   return false;
+   }
+
+
 </script>

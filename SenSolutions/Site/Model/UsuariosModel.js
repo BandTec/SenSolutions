@@ -12,7 +12,7 @@ module.exports = class UsuariosModel{
 
     static adicionar(tb_cliente, callback) {
 
-        return db.query("INSERT INTO tb_cliente (nomeUsuario, senhaUsuario,Email) VALUES(?,?)",
+        return db.query("INSERT INTO tb_cliente (nomeUsuario, senhaUsuario,Email) VALUES(?,?,?)",
         [tb_cliente.nomeUsuario, tb_cliente.senhaUsuario,tb_cliente.Email], callback);
     }
 

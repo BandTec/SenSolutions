@@ -39,20 +39,7 @@ router.post('/entrar', function (req, res, next) {
 });
 
 router.post('/cadastrar', function (req, res, next) {
-  
-  // var nomeCadastro = req.body.nomeCompleto;
-  // var emailCadastro = req.body.emailCad;
-  // var senhaCadastro = req.body.senhaCad;
-  // var senhaCadastro2 = req.body.senhaCad2;
-
-
-
   banco.conectar().then(() => {
-    // if (nomeCadastro == undefined || emailCadastro == undefined || senhaCadastro == undefined || senhaCadastro2 == undefined) {
-    //   throw new Error(`Dados de cadastro não chegaram completos: ${nomeCadastro} / ${emailCadastro} / ${senhaCadastro} / ${senhaCadastro2}`);
-    // } else if (senhaCadastro != senhaCadastro2) {
-    //   console.log(`Senhas incorretas! Digite a senha novamente!`);
-    // }
     console.log(`Chegou p/ cadastro: ${JSON.stringify(req.query)}`);
     var json = req.query;
     return banco.sql.query(`Insert into tb_cliente(nomeUsuario,senhaUsuario,Email) values ('${json.user}','${json.password}','${json.email}')`);
@@ -71,24 +58,17 @@ router.post('/cadastrar', function (req, res, next) {
   });
 });
 
-
 router.get('/', function (req, res, next) {
-
-
   banco.conectar().then(() => {
     console.log(`Chegou p/ cadastro: ${JSON.stringify(req.query)}`);
     var json = req.query;
-
     return banco.sql.query(`Select * from tb_cliente where idcliente = ${json.id};`);
   }).then(consulta => {
 
     console.log(consulta.recordset)
     res.status(200);
     res.send(consulta.recordset);
-
-
   }).catch(err => {
-
     var erro = `Erro no login: ${err}`;
     console.error(erro);
     res.status(500).send(erro);

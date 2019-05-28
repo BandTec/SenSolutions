@@ -184,18 +184,16 @@
     console.log(js.status);
     if (js.status === 200) {
     alert('usuario cadastrado')
-    } else {
-    M.toast({ html: 'Usuário ou senha incorretos' })
-    }
+    } 
     });
     
 
     return false;
   }
 
-  select(4);
+  getUsuariosId(1);
 
-   function select(id) {
+   function getUsuariosId(id) {
 
    fetch(`usuarios/?id=${id}`, {
    method: "GET"

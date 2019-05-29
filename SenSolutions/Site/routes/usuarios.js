@@ -7,7 +7,7 @@ var banco = require('../app-banco');
 
 
 router.post('/entrar', function (req, res, next) {
-
+  banco.sql.close();
   banco.conectar().then(() => {
     console.log(`Chegou p/ login: ${JSON.stringify(req.body)}`);
     var login = req.body.login; // depois de .body, use o nome (name) do campo em seu formulário de login
@@ -39,6 +39,7 @@ router.post('/entrar', function (req, res, next) {
 });
 
 router.post('/cadastrar', function (req, res, next) {
+  banco.sql.close();
   banco.conectar().then(() => {
     console.log(`Chegou p/ cadastro: ${JSON.stringify(req.query)}`);
     var json = req.query;
@@ -59,6 +60,7 @@ router.post('/cadastrar', function (req, res, next) {
 });
 
 router.get('/', function (req, res, next) {
+  banco.sql.close();
   banco.conectar().then(() => {
     console.log(`Chegou p/ cadastro: ${JSON.stringify(req.query)}`);
     var json = req.query;
@@ -77,6 +79,38 @@ router.get('/', function (req, res, next) {
     banco.sql.close();
   });
 });
+router.get('/todos', function (req, res, next) {
+  console.log(banco.conexao);
+  banco.sql.close();
+  banco.conectar().then(() => {
+
+    return banco.sql.query(`select  
+                             idcliente as 'Codigo',
+                             nomeUsuario as 'Nome' ,
+                             email as 'Email' 
+                             from tb_cliente order by idcliente  `);
+    //  para trazer os top 8 cadastros 
+    // var limite_linhas = 8;
+    // return banco.sql.query(`select top ${limite_linhas} 
+    //                         idcliente as 'Codigo',
+    //                         nomeUsuario as 'Nome',
+    //                         email                     
+    //                         from tb_cliente order by idcliente  `);
+  }).then(consulta => {
+    console.log(consulta.recordset);
+    res.send(consulta.recordset);
+  }).catch(err => {
+
+    var erro = `Erro para trazer os dados cadastrados: ${err}`;
+    console.error(erro);
+    res.sendStatus(500).send(erro);
+
+  }).finally(() => {
+    banco.sql.close();
+  });
+
+});
+
 
 // não mexa nesta linha!
 module.exports = router;

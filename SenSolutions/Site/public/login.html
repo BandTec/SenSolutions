@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="shortcut icon" href="img/logo-resp1.png">
 
-   
+
     <link href="css/googleapis.css" rel="stylesheet">
     <link rel="stylesheet" href="css/estilo.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -67,23 +67,31 @@
                             <div class="col-md-9 col-lg-8 mx-auto">
                                 <h3 class="mb-4 text-center h3 text-uppercase text-primary">Bem-vindo de volta!</h3>
 
-                                <div id="div_erro" class="alert alert-danger alert-dismissible fade show" role="alert" style="display: none;">
-                                        <strong>E-mail ou Senha incorretos!</strong> Digite seu login e senha novamente.
-                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                          <span aria-hidden="true">&times;</span>
-                                        </button>
-                                      </div>
+                                <div id="div_erro" class="alert alert-danger alert-dismissible fade show" role="alert"
+                                    style="display: none;">
+                                    <strong>E-mail ou Senha incorretos!</strong> Digite seu login e senha novamente.
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div id="div_brancos" class="alert alert-warning alert-dismissible fade show" role="alert"
+                                    style="display: none;">
+                                    <strong>Preencha todos os campos!</strong>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
 
                                 <form form id="form_login" method="post" onsubmit="return  entrar()">
                                     <div class="form-label-group">
                                         <input type="email" name="login" id="inputEmail" class="form-control"
-                                            placeholder="Email" required autofocus>
+                                            placeholder="Email" autofocus>
                                         <label for="inputEmail">Email</label>
                                     </div>
 
                                     <div class="form-label-group">
                                         <input type="password" name="senha" id="inputPassword" class="form-control"
-                                            placeholder="Sua senha" required>
+                                            placeholder="Sua senha">
                                         <label for="inputPassword">Senha</label>
                                     </div>
 
@@ -91,19 +99,14 @@
                                         <input type="checkbox" class="custom-control-input" id="customCheck1">
                                         <label class="custom-control-label" for="customCheck1">Lembrar senha</label>
                                     </div>
-                                    <button id="btn_entrar" class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
-                                        >Entrar</button>
+                                    <button id="btn_entrar" class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2">Entrar</button>
                                     <!-- <a href="Dashboard.html" class="btn btn-lg btn-outline-primary btn-block btn-login text-uppercase font-weight-bold mb-2">Entrar</a> -->
                                     <div class="text-center">
                                         <a class="small" href="#">Esqueceu a senha?</a></div>
                                 </form>
                                 <div class="">
-                                        <img class="mx-auto" src="img/loading-2.gif" id="img_aguarde" style="display: none;">
+                                    <img class="mx-auto" src="img/loading-2.gif" id="img_aguarde" style="display: none;">
                                 </div>
-                                
-
-                        
-                            
                             </div>
                         </div>
                     </div>
@@ -145,8 +148,7 @@
 
                     <a href="#"><i class="fab fa-twitter fa-2x"></i></a>
                     <a href="#"><i class="fab fa-facebook fa-2x"></i></a>
-                    <a target="_Blank" href="https://github.com/BandTec/SenSolutions"><i
-                            class="fab fa-github fa-2x"></i></a>
+                    <a target="_Blank" href="https://github.com/BandTec/SenSolutions"><i class="fab fa-github fa-2x"></i></a>
                     <a href="#"><i class="fab fa-trello fa-2x"></i></a>
                 </div>
             </div>
@@ -181,19 +183,22 @@
             method: "POST",
             body: formulario
         }).then(function (response) {
-
-            if (response.ok) {
-
-                response.json().then(function (resposta) {
-
-                    sessionStorage.usuario_bandtec = resposta.nomeUsuario;
-                    verificarAutenticacao();
-
-                });
+            if (inputEmail.value == '' || inputPassword.value == '') {
+                div_brancos.style.display = 'block';
+                img_aguarde.style.display = 'none';
+                btn_entrar.disabled = false;
             } else {
+                if (response.ok) {
 
-                console.log('Erro de login!');
-                finalizar_aguardar();
+                    response.json().then(function (resposta) {
+
+                        sessionStorage.usuario_bandtec = resposta.nomeUsuario;
+                        verificarAutenticacao();
+                    });
+                } else {
+                    console.log('Erro de login!');
+                    finalizar_aguardar();
+                }
             }
         });
 
@@ -204,6 +209,7 @@
         btn_entrar.disabled = true;
         img_aguarde.style.display = 'block';
         div_erro.style.display = 'none';
+        div_brancos.style.display = 'none';
     }
 
     function finalizar_aguardar() {

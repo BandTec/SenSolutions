@@ -52,6 +52,7 @@ router.post('/cadastrar', function (req, res, next) {
     
   }).then(consulta => {
 
+    
     res.status(200);
     res.send('ok');
 

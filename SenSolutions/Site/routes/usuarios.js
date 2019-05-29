@@ -7,7 +7,7 @@ var banco = require('../app-banco');
 
 
 router.post('/entrar', function (req, res, next) {
-  banco.sql.close();
+
   banco.conectar().then(() => {
     console.log(`Chegou p/ login: ${JSON.stringify(req.body)}`);
     var login = req.body.login; // depois de .body, use o nome (name) do campo em seu formulário de login

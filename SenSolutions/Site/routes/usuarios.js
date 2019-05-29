@@ -43,12 +43,11 @@ router.post('/cadastrar', function (req, res, next) {
   banco.conectar().then(() => {
     console.log(`Chegou p/ cadastro: ${JSON.stringify(req.query)}`);
     var json = req.query;
-    if(json.user == undefined || json.password == undefined || json.email == undefined){
-      console.log('Preencha todos os campos')
+    if(json.user == '' || json.password == '' || json.email == ''){
+      console.log('Preencha todos os campos');
     }else{
       console.log('inserindo dados no banco');
       return banco.sql.query(`Insert into tb_cliente(nomeUsuario,senhaUsuario,Email) values ('${json.user}','${json.password}','${json.email}')`);
-  
     }
     
   }).then(consulta => {

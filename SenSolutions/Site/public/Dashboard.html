@@ -80,7 +80,24 @@
                                     </li>
                                 </ul>
                             </li>
-
+                            <li class="active" cadastrar>
+                                <a href="javascript:void(0)" aria-expanded="true"><i class="fab fa-wpforms"></i>
+                                    Listas</a>
+                                <ul class="collapse ">
+                                    <li>
+                                        <a class="" href="#sensores" data-toggle="modal"
+                                            data-target="#listasensor">Sensores</a>
+                                    </li>
+                                    <li>
+                                        <a class="" href="#local" data-toggle="modal"
+                                            data-target="#listalocal">Locais</a>
+                                    </li>
+                                    <li>
+                                        <a class="" href="#usuario" data-toggle="modal"
+                                            data-target="#listausuario">Usuarios</a>
+                                    </li>
+                                </ul>
+                            </li>
                         </ul>
                     </nav>
                 </div>
@@ -425,7 +442,410 @@
                     </div>
                 </section>
                 <!-- Fim CRUD -->
+                <section>
+                    <div class="row">
+                        <div class="row mt-3">
+                            <!-- Vertically centered modal start -->
+                            <div class="col-lg-6 mt-5">
+                                <div class="card">
+    
+    
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="listasensor">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header ">
+                                                    <h5 class="modal-title ">Cadastrar sensores</h5>
+                                                    <button type="button" class="close"
+                                                        data-dismiss="modal"><span>&times;</span></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="mx-auto">
+    
+                                                        <h1 class="h3 mb-2 text-gray-800">Dados dos usuários</h1>
 
+                                                        <!-- DataTales Example -->
+                                                        <div class="card shadow mb-4">
+                                                            <div class="card-header py-3">
+                                                                <h6 class="m-0 font-weight-bold text-primary">Resultados</h6>
+                                                            </div>
+                                                            <div class="card-body">
+                                                                <div class="table-responsive">
+                                                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="font-size:13px">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th>Email</th>
+                                                                                <th>Nome</th>
+                                                                                <th>Senha</th>
+                                                                                <th>Telefone</th>
+                                                                                <th class="actions">Ações</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tfoot>
+                                                                            <tr>
+                                                                                <th>Email</th>
+                                                                                <th>Nome</th>
+                                                                                <th>Senha</th>
+                                                                                <th>Telefone</th>
+                                                                                <th class="actions">Ações</th>
+                                                                            </tr>
+                                                                        </tfoot>
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td>fulano@gmail.com</td>
+                                                                                <td>Fulano</td>
+                                                                                <td>fulano123</td>
+                                                                                <td>99999-0000</td>
+                                                                                <td class="actions" >
+                                                                                    <a style="margin-right: 4px" href="view.html" class="btn btn-success btn-icon-split">
+                                                                                        <span class="text">Visualizar</span>
+                                                                                        <span class="icon text-white-50"><i class="fas fa-eye"></i></span>
+                                                                                    </a>
+                                                                                    <a style="margin-right: 4px" href="edit.html" class="btn btn-warning btn-icon-split">
+                                                                                        <span class="text">Editar</span>
+                                                                                        <span class="icon text-white-50"><i class="fas fa-cog"></i></span>
+                                                                                    </a>
+                                                                                    <a style="margin-right: 4px" href="#" data-toggle="modal" data-target="#delete-modal"
+                                                                                        class="btn btn-danger btn-icon-split">
+                                                                                        <span class="text">Excluir</span>
+                                                                                        <span class="icon text-white-50"><i class="fas fa-trash"></i></span>
+                                                                                    </a>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>fulano@gmail.com</td>
+                                                                                <td>Fulano</td>
+                                                                                <td>fulano123</td>
+                                                                                <td>99999-0000</td>
+                                                                                <td class="actions" >
+                                                                                    <a style="margin-right: 4px" href="view.html" class="btn btn-success btn-icon-split">
+                                                                                        <span class="text">Visualizar</span>
+                                                                                        <span class="icon text-white-50"><i class="fas fa-eye"></i></span>
+                                                                                    </a>
+                                                                                    <a style="margin-right: 4px" href="edit.html" class="btn btn-warning btn-icon-split">
+                                                                                        <span class="text">Editar</span>
+                                                                                        <span class="icon text-white-50"><i class="fas fa-cog"></i></span>
+                                                                                    </a>
+                                                                                    <a style="margin-right: 4px" href="#" data-toggle="modal" data-target="#delete-modal"
+                                                                                        class="btn btn-danger btn-icon-split">
+                                                                                        <span class="text">Excluir</span>
+                                                                                        <span class="icon text-white-50"><i class="fas fa-trash"></i></span>
+                                                                                    </a>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>fulano@gmail.com</td>
+                                                                                <td>Fulano</td>
+                                                                                <td>fulano123</td>
+                                                                                <td>99999-0000</td>
+                                                                                <td class="actions" >
+                                                                                    <a style="margin-right: 4px" href="view.html" class="btn btn-success btn-icon-split">
+                                                                                        <span class="text">Visualizar</span>
+                                                                                        <span class="icon text-white-50"><i class="fas fa-eye"></i></span>
+                                                                                    </a>
+                                                                                    <a style="margin-right: 4px" href="edit.html" class="btn btn-warning btn-icon-split">
+                                                                                        <span class="text">Editar</span>
+                                                                                        <span class="icon text-white-50"><i class="fas fa-cog"></i></span>
+                                                                                    </a>
+                                                                                    <a style="margin-right: 4px" href="#" data-toggle="modal" data-target="#delete-modal"
+                                                                                        class="btn btn-danger btn-icon-split">
+                                                                                        <span class="text">Excluir</span>
+                                                                                        <span class="icon text-white-50"><i class="fas fa-trash"></i></span>
+                                                                                    </a>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>fulano@gmail.com</td>
+                                                                                <td>Fulano</td>
+                                                                                <td>fulano123</td>
+                                                                                <td>99999-0000</td>
+                                                                                <td class="actions" >
+                                                                                    <a style="margin-right: 4px" href="view.html" class="btn btn-success btn-icon-split">
+                                                                                        <span class="text">Visualizar</span>
+                                                                                        <span class="icon text-white-50"><i class="fas fa-eye"></i></span>
+                                                                                    </a>
+                                                                                    <a style="margin-right: 4px" href="edit.html" class="btn btn-warning btn-icon-split">
+                                                                                        <span class="text">Editar</span>
+                                                                                        <span class="icon text-white-50"><i class="fas fa-cog"></i></span>
+                                                                                    </a>
+                                                                                    <a style="margin-right: 4px" href="#" data-toggle="modal" data-target="#delete-modal"
+                                                                                        class="btn btn-danger btn-icon-split">
+                                                                                        <span class="text">Excluir</span>
+                                                                                        <span class="icon text-white-50"><i class="fas fa-trash"></i></span>
+                                                                                    </a>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>fulano@gmail.com</td>
+                                                                                <td>Fulano</td>
+                                                                                <td>fulano123</td>
+                                                                                <td>99999-0000</td>
+                                                                                <td class="actions" >
+                                                                                    <a style="margin-right: 4px" href="view.html" class="btn btn-success btn-icon-split">
+                                                                                        <span class="text">Visualizar</span>
+                                                                                        <span class="icon text-white-50"><i class="fas fa-eye"></i></span>
+                                                                                    </a>
+                                                                                    <a style="margin-right: 4px" href="edit.html" class="btn btn-warning btn-icon-split">
+                                                                                        <span class="text">Editar</span>
+                                                                                        <span class="icon text-white-50"><i class="fas fa-cog"></i></span>
+                                                                                    </a>
+                                                                                    <a style="margin-right: 4px" href="#" data-toggle="modal" data-target="#delete-modal"
+                                                                                        class="btn btn-danger btn-icon-split">
+                                                                                        <span class="text">Excluir</span>
+                                                                                        <span class="icon text-white-50"><i class="fas fa-trash"></i></span>
+                                                                                    </a>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>fulano@gmail.com</td>
+                                                                                <td>Fulano</td>
+                                                                                <td>fulano123</td>
+                                                                                <td>99999-0000</td>
+                                                                                <td class="actions" >
+                                                                                    <a style="margin-right: 4px" href="view.html" class="btn btn-success btn-icon-split">
+                                                                                        <span class="text">Visualizar</span>
+                                                                                        <span class="icon text-white-50"><i class="fas fa-eye"></i></span>
+                                                                                    </a>
+                                                                                    <a style="margin-right: 4px" href="edit.html" class="btn btn-warning btn-icon-split">
+                                                                                        <span class="text">Editar</span>
+                                                                                        <span class="icon text-white-50"><i class="fas fa-cog"></i></span>
+                                                                                    </a>
+                                                                                    <a style="margin-right: 4px" href="#" data-toggle="modal" data-target="#delete-modal"
+                                                                                        class="btn btn-danger btn-icon-split">
+                                                                                        <span class="text">Excluir</span>
+                                                                                        <span class="icon text-white-50"><i class="fas fa-trash"></i></span>
+                                                                                    </a>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>fulano@gmail.com</td>
+                                                                                <td>Fulano</td>
+                                                                                <td>fulano123</td>
+                                                                                <td>99999-0000</td>
+                                                                                <td class="actions" >
+                                                                                    <a style="margin-right: 4px" href="view.html" class="btn btn-success btn-icon-split">
+                                                                                        <span class="text">Visualizar</span>
+                                                                                        <span class="icon text-white-50"><i class="fas fa-eye"></i></span>
+                                                                                    </a>
+                                                                                    <a style="margin-right: 4px" href="edit.html" class="btn btn-warning btn-icon-split">
+                                                                                        <span class="text">Editar</span>
+                                                                                        <span class="icon text-white-50"><i class="fas fa-cog"></i></span>
+                                                                                    </a>
+                                                                                    <a style="margin-right: 4px" href="#" data-toggle="modal" data-target="#delete-modal"
+                                                                                        class="btn btn-danger btn-icon-split">
+                                                                                        <span class="text">Excluir</span>
+                                                                                        <span class="icon text-white-50"><i class="fas fa-trash"></i></span>
+                                                                                    </a>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>fulano@gmail.com</td>
+                                                                                <td>Fulano</td>
+                                                                                <td>fulano123</td>
+                                                                                <td>99999-0000</td>
+                                                                                <td class="actions" >
+                                                                                    <a style="margin-right: 4px" href="view.html" class="btn btn-success btn-icon-split">
+                                                                                        <span class="text">Visualizar</span>
+                                                                                        <span class="icon text-white-50"><i class="fas fa-eye"></i></span>
+                                                                                    </a>
+                                                                                    <a style="margin-right: 4px" href="edit.html" class="btn btn-warning btn-icon-split">
+                                                                                        <span class="text">Editar</span>
+                                                                                        <span class="icon text-white-50"><i class="fas fa-cog"></i></span>
+                                                                                    </a>
+                                                                                    <a style="margin-right: 4px" href="#" data-toggle="modal" data-target="#delete-modal"
+                                                                                        class="btn btn-danger btn-icon-split">
+                                                                                        <span class="text">Excluir</span>
+                                                                                        <span class="icon text-white-50"><i class="fas fa-trash"></i></span>
+                                                                                    </a>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>fulano@gmail.com</td>
+                                                                                <td>Fulano</td>
+                                                                                <td>fulano123</td>
+                                                                                <td>99999-0000</td>
+                                                                                <td class="actions" >
+                                                                                    <a style="margin-right: 4px" href="view.html" class="btn btn-success btn-icon-split">
+                                                                                        <span class="text">Visualizar</span>
+                                                                                        <span class="icon text-white-50"><i class="fas fa-eye"></i></span>
+                                                                                    </a>
+                                                                                    <a style="margin-right: 4px" href="edit.html" class="btn btn-warning btn-icon-split">
+                                                                                        <span class="text">Editar</span>
+                                                                                        <span class="icon text-white-50"><i class="fas fa-cog"></i></span>
+                                                                                    </a>
+                                                                                    <a style="margin-right: 4px" href="#" data-toggle="modal" data-target="#delete-modal"
+                                                                                        class="btn btn-danger btn-icon-split">
+                                                                                        <span class="text">Excluir</span>
+                                                                                        <span class="icon text-white-50"><i class="fas fa-trash"></i></span>
+                                                                                    </a>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>fulano@gmail.com</td>
+                                                                                <td>Fulano</td>
+                                                                                <td>fulano123</td>
+                                                                                <td>99999-0000</td>
+                                                                                <td class="actions" >
+                                                                                    <a style="margin-right: 4px" href="view.html" class="btn btn-success btn-icon-split">
+                                                                                        <span class="text">Visualizar</span>
+                                                                                        <span class="icon text-white-50"><i class="fas fa-eye"></i></span>
+                                                                                    </a>
+                                                                                    <a style="margin-right: 4px" href="edit.html" class="btn btn-warning btn-icon-split">
+                                                                                        <span class="text">Editar</span>
+                                                                                        <span class="icon text-white-50"><i class="fas fa-cog"></i></span>
+                                                                                    </a>
+                                                                                    <a style="margin-right: 4px" href="#" data-toggle="modal" data-target="#delete-modal"
+                                                                                        class="btn btn-danger btn-icon-split">
+                                                                                        <span class="text">Excluir</span>
+                                                                                        <span class="icon text-white-50"><i class="fas fa-trash"></i></span>
+                                                                                    </a>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>fulano@gmail.com</td>
+                                                                                <td>Fulano</td>
+                                                                                <td>fulano123</td>
+                                                                                <td>99999-0000</td>
+                                                                                <td class="actions" >
+                                                                                    <a style="margin-right: 4px" href="view.html" class="btn btn-success btn-icon-split">
+                                                                                        <span class="text">Visualizar</span>
+                                                                                        <span class="icon text-white-50"><i class="fas fa-eye"></i></span>
+                                                                                    </a>
+                                                                                    <a style="margin-right: 4px" href="edit.html" class="btn btn-warning btn-icon-split">
+                                                                                        <span class="text">Editar</span>
+                                                                                        <span class="icon text-white-50"><i class="fas fa-cog"></i></span>
+                                                                                    </a>
+                                                                                    <a style="margin-right: 4px" href="#" data-toggle="modal" data-target="#delete-modal"
+                                                                                        class="btn btn-danger btn-icon-split">
+                                                                                        <span class="text">Excluir</span>
+                                                                                        <span class="icon text-white-50"><i class="fas fa-trash"></i></span>
+                                                                                    </a>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td>fulano@gmail.com</td>
+                                                                                <td>Fulano</td>
+                                                                                <td>fulano123</td>
+                                                                                <td>99999-0000</td>
+                                                                                <td class="actions" >
+                                                                                    <a style="margin-right: 4px" href="view.html" class="btn btn-success btn-icon-split">
+                                                                                        <span class="text">Visualizar</span>
+                                                                                        <span class="icon text-white-50"><i class="fas fa-eye"></i></span>
+                                                                                    </a>
+                                                                                    <a style="margin-right: 4px" href="edit.html" class="btn btn-warning btn-icon-split">
+                                                                                        <span class="text">Editar</span>
+                                                                                        <span class="icon text-white-50"><i class="fas fa-cog"></i></span>
+                                                                                    </a>
+                                                                                    <a style="margin-right: 4px" href="#" data-toggle="modal" data-target="#delete-modal"
+                                                                                        class="btn btn-danger btn-icon-split">
+                                                                                        <span class="text">Excluir</span>
+                                                                                        <span class="icon text-white-50"><i class="fas fa-trash"></i></span>
+                                                                                    </a>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    
+                                                           
+    
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <div class="mx-auto">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-dismiss="modal">Fechar</button>
+        
+                                                        </div>
+                                                </div>
+                                                
+    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+    
+                                <!-- Vertically centered modal end -->
+                            </div>
+                        </div>
+                        <div class="row ">
+    
+                            <!-- Vertically centered modal start -->
+                            <div class="col-lg-6 mt-3">
+                                <div class="card">
+    
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="listausuario">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header ">
+                                                    <h5 class="modal-title ">Cadastrar Usuarios</h5>
+                                                    <button type="button" class="close"
+                                                        data-dismiss="modal"><span>&times;</span></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                  
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <div class="mx-auto">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-dismiss="modal">Fechar</button>
+    
+                                                    </div>
+    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+    
+                                </div>
+                                <!-- Vertically centered modal end -->
+    
+    
+                            </div>
+                        </div>
+                        <div class="row">
+    
+                            <!-- Vertically centered modal start -->
+                            <div class="col-lg-6 mt-3">
+                                <div class="card">
+    
+                                    <!-- Button trigger modal -->
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="listalocal">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header ">
+                                                    <h5 class="modal-title ">Cadastrar Locais</h5>
+                                                    <button type="button" class="close"
+                                                        data-dismiss="modal"><span>&times;</span></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                   
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <div class="mx-auto">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-dismiss="modal">Fechar</button>
+    
+                                                    </div>
+    
+                                                </div>
+    
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Vertically centered modal end -->
+    
+    
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
             <!-- end main content inner  -->
         </div>

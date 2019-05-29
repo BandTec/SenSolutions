@@ -3271,3 +3271,15 @@ body.mobile-nav-active #mobile-nav-toggle {
         font-size: 18px; }
 
 /*# sourceMappingURL=main.css.map */
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+/*BARRA DE ROLAGEM*/
+::-webkit-scrollbar-thumb {
+    background-color:#6681bb;
+}
+::-webkit-scrollbar-corner{
+  height: 3px;
+} 
+

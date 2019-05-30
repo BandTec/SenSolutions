@@ -48,7 +48,7 @@ function limparCampos() {
     return false;
   }
 
-   getUsuariosId(7);
+  
 
   function getUsuariosId(id) {
 

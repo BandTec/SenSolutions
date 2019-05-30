@@ -423,30 +423,81 @@
                                                 <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
                                             </div>
                                             <div class="modal-body">
-                                                <form class="user">
+                                                <form class="user" method="get" action=".">
+                                                     <div id="div_brancos"
+                                                         class="alert alert-danger alert-dismissible fade show"
+                                                         role="alert" style="display: none;">
+                                                         <strong>Preencha todos os campos!</strong>
+                                                         <button type="button" class="close" data-dismiss="alert"
+                                                             aria-label="Close">
+                                                             <span aria-hidden="true">&times;</span>
+                                                         </button>
+                                                     </div>
+                                                     <div id="div_sucess"
+                                                         class="alert alert-success alert-dismissible fade show"
+                                                         role="alert" style="display: none;">
+                                                         <strong>Cadastro realizado com Sucesso!</strong>
+                                                         <button type="button" class="close" data-dismiss="alert"
+                                                             aria-label="Close">
+                                                             <span aria-hidden="true">&times;</span>
+                                                         </button>
+                                                     </div>
+                                                     <div id="div_erro"
+                                                         class="alert alert-danger alert-dismissible fade show"
+                                                         role="alert" style="display: none;">
+                                                         <strong>Erro ao Cadastrar um local</strong> Digite os campos
+                                                          novamente.
+                                                         <button type="button" class="close" data-dismiss="alert"
+                                                             aria-label="Close">
+                                                             <span aria-hidden="true">&times;</span>
+                                                         </button>
+                                                     </div>
+
+                                                     <div class="form-group">
+                                                         <input type="number" class="form-control form-control-user"
+                                                             id="cep" name="cep"   value=""
+                                                             size="10" maxlength="9" placeholder="Digite o CEP.">
+                                                     </div>
                                                     <div class="form-group">
                                                         <div class="form-group">
-                                                            <input type="email" class="form-control form-control-user"
-                                                                id="nome_emp" placeholder="Digite o nome de sua empresa.">
+                                                            <input type="text" class="form-control form-control-user"
+                                                               name="rua"  id="rua" size="60" 
+                                                               placeholder="Digite o logradouro.">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <input type="number" class="form-control form-control-user" id="cep_emp"
-                                                            placeholder="Digite o CEP.">
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control form-control-user"
+                                                                name="cidade"  id="cidade" size="40"
+                                                                placeholder="Digite a cidade de sua empresa.">
+                                                        </div>
                                                     </div>
+                                                    <div class="form-group">
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control form-control-user"
+                                                                name="bairro"  id="bairro" size="40"
+                                                                placeholder="Digite o bairro de sua empresa.">
+                                                        </div>
+                                                    </div>
+                                                    
                                                     <div class="form-group row">
                                                         <div class="col-sm-6 mb-3 mb-sm-0">
                                                             <input type="text" class="form-control form-control-user"
-                                                                id="num_emp" placeholder="Digite o número.">
+                                                                id="uf" name="uf" size="2" placeholder="Digite o
+                                                                Estado.">
                                                         </div>
                                                         <div class="col-sm-6">
-                                                            <input type="text" class="form-control form-control-user"
-                                                                id="logr_emp" placeholder="Digite o logradouro.">
+                                                            <input type="number" class="form-control form-control-user"
+                                                                id="num" placeholder="Digite o Numero.">
                                                         </div>
                                                     </div>
-                                                    <a href="login.html" class="btn btn-primary btn-user btn-block">
+                                                    <button
+                                                        onclick="cadLocal(cep.value,rua.value,bairro.value,uf.value,cidade.value)"
+                                                        id="btn_Cadastrar"
+                                                        class="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2">Cadastre-se</button>
+                                                    <!-- <a href="login.html" class="btn btn-primary btn-user btn-block">
                                                         Registrar local
-                                                    </a>
+                                                    </a> -->
                                                 </form>
                                             </div>
                                             <div class="modal-footer">
@@ -904,6 +955,7 @@
     <script type="text/javascript" src="https://www.chartjs.org/samples/latest/utils.js"></script>
     <script src="https://wchat.freshchat.com/js/widget.js"></script>
     <script src="js/graficos.js"></script>
+    <script src="js/local.js"></script>
 </body>
 
 </html>
@@ -911,5 +963,76 @@
     window.fcWidget.init({
         token: "d0f183b0-73ae-4db8-80d8-d52f5440717e",
         host: "https://wchat.freshchat.com"
+    });
+</script>
+<!-- Adicionando JQuery -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+<!-- Adicionando Javascript -->
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        function limpa_formulário_cep() {
+            // Limpa valores do formulário de cep.
+            $("#rua").val("");
+            $("#bairro").val("");
+            $("#cidade").val("");
+            $("#uf").val("");
+            $("#ibge").val("");
+        }
+
+        //Quando o campo cep perde o foco.
+        $("#cep").blur(function () {
+
+            //Nova variável "cep" somente com dígitos.
+            var cep = $(this).val().replace(/\D/g, '');
+
+            //Verifica se campo cep possui valor informado.
+            if (cep != "") {
+
+                //Expressão regular para validar o CEP.
+                var validacep = /^[0-9]{8}$/;
+
+                //Valida o formato do CEP.
+                if (validacep.test(cep)) {
+
+                    //Preenche os campos com "..." enquanto consulta webservice.
+                    $("#rua").val("...");
+                    $("#bairro").val("...");
+                    $("#cidade").val("...");
+                    $("#uf").val("...");
+                    $("#ibge").val("...");
+
+                    //Consulta o webservice viacep.com.br/
+                    $.getJSON("https://viacep.com.br/ws/" + cep + "/json/?callback=?", function (
+                    dados) {
+
+                        if (!("erro" in dados)) {
+                            //Atualiza os campos com os valores da consulta.
+                            $("#rua").val(dados.logradouro);
+                            $("#bairro").val(dados.bairro);
+                            $("#cidade").val(dados.localidade);
+                            $("#uf").val(dados.uf);
+                            $("#ibge").val(dados.ibge);
+                        } //end if.
+                        else {
+                            //CEP pesquisado não foi encontrado.
+                            limpa_formulário_cep();
+                            alert("CEP não encontrado.");
+                        }
+                    });
+                } //end if.
+                else {
+                    //cep é inválido.
+                    limpa_formulário_cep();
+                    alert("Formato de CEP inválido.");
+                }
+            } //end if.
+            else {
+                //cep sem valor, limpa formulário.
+                limpa_formulário_cep();
+            }
+        });
     });
 </script>

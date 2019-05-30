@@ -814,10 +814,9 @@ ul.breadcrumbs {
     padding-left: 85px;
 }
 
-.single-report .icon {
+.single-report .icon-blue,.icon-yellow,.icon-green,.icon-red {
     font-size: 32px;
     color: #fff;
-    background: var(--primary-color);
     height: 95px;
     width: 100px;
     text-align: right;
@@ -828,6 +827,19 @@ ul.breadcrumbs {
     left: -39px;
     top: -30px;
 }
+.icon-blue{
+    background-color: #007BFF;
+}
+.icon-green{
+    background-color: rgb(38, 172, 49);
+}
+.icon-yellow{
+    background-color: rgb(231, 214, 139);
+}
+.icon-red{
+    background-color: rgb(206, 38, 38);
+}
+
 
 .s-report-title {
     margin-bottom: 25px;

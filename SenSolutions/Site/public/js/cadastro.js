@@ -37,7 +37,7 @@ function limparCampos() {
         btn_Cadastrar.disabled = false;
         limparCampos(); 
         } else {         
-        console.log('Erro de Cadastro!');
+        console.log('Erro de Cadastro!'); 
         finalizar_aguardar();
         }
       }else{
@@ -52,7 +52,6 @@ function limparCampos() {
 
   function getUsuariosId(id) {
 
-  
     fetch(`usuarios/?id=${id}`, {
       method: "GET"
     }).then(js => {

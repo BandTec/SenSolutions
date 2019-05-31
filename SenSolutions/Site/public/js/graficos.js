@@ -49,6 +49,10 @@ function configurarGraficoTemp() {
         },
         scales: {
             yAxes: [{
+                ticks:{
+                    min:0,
+                    max:40
+                },
                 type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
                 display: true,
                 position: 'left',
@@ -77,6 +81,10 @@ function configurarGraficoUmid() {
         },
         scales: {
             yAxes: [{
+                ticks:{
+                    min:0,
+                    max:100
+                },
                 type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
                 display: true,
                 position: 'left',

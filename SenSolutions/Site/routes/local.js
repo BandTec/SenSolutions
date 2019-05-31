@@ -49,7 +49,7 @@ router.post('/cadastrar', function (req, res, next) {
   }).then(consulta => {
     res.status(200);
     res.send('ok');
-
+    console.log(consulta);
   }).catch(err => {
     var erro = `Erro no login: ${err}`;
     console.error(erro);
@@ -60,57 +60,52 @@ router.post('/cadastrar', function (req, res, next) {
   });
 });
 
-// router.get('/', function (req, res, next) {
+router.get('/', function (req, res, next) {
  
-//   banco.conectar().then(() => {
-//     console.log(`Chegou p/ cadastro: ${JSON.stringify(req.query)}`);
-//     var json = req.query;
-//     return banco.sql.query(`Select * from tb_cliente where idcliente = ${json.id};`);
-//   }).then(consulta => {
+  banco.conectar().then(() => {
+    console.log(`Chegou p/ cadastro: ${JSON.stringify(req.query)}`);
+    var json = req.query;
+    return banco.sql.query(`Select * from tb_endereco where CEP = ${json.cep};`);
+  }).then(consulta => {
 
-//     console.log(consulta.recordset)
-//     res.status(200);
-//     res.send(consulta.recordset);
-//   }).catch(err => {
-//     var erro = `Erro no login: ${err}`;
-//     console.error(erro);
-//     res.status(500).send(erro);
+    console.log(consulta.recordset)
+    res.status(200);
+    res.send(consulta.recordset);
+  }).catch(err => {
+    var erro = `Erro no login: ${err}`;
+    console.error(erro);
+    res.status(500).send(erro);
 
-//   }).finally(() => {
-//     banco.sql.close();
-//   });
-// });
-// router.get('/todos', function (req, res, next) {
-//   console.log(banco.conexao);
+  }).finally(() => {
+    banco.sql.close();
+  });
+});
+router.get('/todos', function (req, res, next) {
+  console.log(banco.conexao);
   
-//   banco.conectar().then(() => {
+  banco.conectar().then(() => {
 
-//     return banco.sql.query(`select  
-//                              idcliente as 'Codigo',
-//                              nomeUsuario as 'Nome' ,
-//                              email as 'Email' 
-//                              from tb_cliente order by idcliente  `);
-//     //  para trazer os top 8 cadastros 
-//     // var limite_linhas = 8;
-//     // return banco.sql.query(`select top ${limite_linhas} 
-//     //                         idcliente as 'Codigo',
-//     //                         nomeUsuario as 'Nome',
-//     //                         email                     
-//     //                         from tb_cliente order by idcliente  `);
-//   }).then(consulta => {
-//     console.log(consulta.recordset);
-//     res.send(consulta.recordset);
-//   }).catch(err => {
-
-//     var erro = `Erro para trazer os dados cadastrados: ${err}`;
-//     console.error(erro);
-//     res.sendStatus(500).send(erro);
-
-//   }).finally(() => {
-//     banco.sql.close();
-//   });
-
-// });
+    return banco.sql.query(`select  
+                             * 
+                             from tb_endereco  `);
+    //  para trazer os top 8 cadastros 
+    // var limite_linhas = 8;
+    // return banco.sql.query(`select top ${limite_linhas} 
+    //                         idcliente as 'Codigo',
+    //                         nomeUsuario as 'Nome',
+    //                         email                     
+    //                         from tb_cliente order by idcliente  `);
+  }).then(consulta => {
+    console.log(consulta.recordset);
+    res.send(consulta.recordset);
+  }).catch(err => {
+    var erro = `Erro para trazer os dados cadastrados: ${err}`;
+    console.error(erro);
+    res.sendStatus(500).send(erro);
+  }).finally(() => {
+    banco.sql.close();
+  });
+});
 
 // router.post('/cadastrar', function (req, res, next) {
 

@@ -1,5 +1,6 @@
 
 
+
 var usuario;
 var exibiu_graficoTemp = false;
 var exibiu_graficoUmid = false;
@@ -33,6 +34,7 @@ function logoff() {
 function atualizarGrafico() {
     obterDadosGrafico();
     setTimeout(atualizarGrafico, 10000);
+    
 }
 
 // altere aqui as configurações do gráfico
@@ -152,14 +154,15 @@ function obterDadosGrafico() {
 
                 for (i = 0; i < resposta.length; i++) {
                     var registro = resposta[i];
-
+                    atualizarUmidade(registro.umidade)
+                    atualizarTemperatura(registro.temperatura)
                     // aqui, após 'registro.' use os nomes 
                     // dos atributos que vem no JSON 
                     // que gerou na consulta ao banco de dados
 
                     dadostemp.labels.push(registro.dataHora);
                     dadostemp.datasets[0].data.push(registro.temperatura);
-
+               
                     dadosumid.labels.push(registro.dataHora);
                     dadosumid.datasets[0].data.push(registro.umidade);
                 }
@@ -167,7 +170,7 @@ function obterDadosGrafico() {
 
                 div_aguarde.style.display = 'none';
                 div_aguarde1.style.display = 'none';
-
+                obterDadosAnalyticsTemp()
                 plotarGrafico(dadostemp, dadosumid);
             });
         } else {
@@ -177,6 +180,29 @@ function obterDadosGrafico() {
         .catch(function (error) {
             console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
         });
+}
+
+function atualizarTemperatura(temperatura) {
+    dado_temp.innerHTML = temperatura;
+}
+
+function atualizarUmidade(umidade) {
+    dado_umid.innerHTML = umidade;
+}
+function obterDadosAnalyticsTemp() {
+    fetch('leituras/estatisticas',{cache:'no-store'}).then(function (response) {
+        if(response.ok){
+            response.json().then(function(respostas){
+                console.log(`Analytics temperatura recebidos: ${JSON.stringify(respostas)}`);
+                n_med.innerHTML = respostas.temp_media;
+                n_max.innerHTML = respostas.temp_maxima;
+                n_min.innerHTML = respostas.temp_minima;
+            })
+        }else{
+            console.error('Erro na obtenção de dados');
+            
+        }
+    })
 }
 
 

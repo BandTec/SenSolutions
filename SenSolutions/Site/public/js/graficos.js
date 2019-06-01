@@ -193,10 +193,12 @@ function obterDadosGrafico() {
 
 function atualizarTemperatura(temperatura) {
     dado_temp.innerHTML = `${temperatura} °C`;
-    // if(temperatura >=33){
-    //     alert('Perigo Alta temperatura.')
-    // }
-    
+    if(temperatura >33){
+        alert('Perigo Alta temperatura!')
+    }else if(temperatura <18)
+    {
+        alert('Perigo baixa temperatura!')
+    }
    
 
    
@@ -204,6 +206,11 @@ function atualizarTemperatura(temperatura) {
 }
 
 function atualizarUmidade(umidade) {
+    if(umidade >80){
+        alert('Perigo Alta umidade!')
+    }else if(umidade<40){
+        alert('Perigo baixa umidade!')
+    }
     dado_umid.innerHTML = `${umidade} %`;
 }
 function obterDadosAnalyticsTemp() {

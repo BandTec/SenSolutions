@@ -154,89 +154,95 @@
 
             <!-- main content inner -->
             <div class="main-content-inner">
-                <div class="sales-report-area mt-5 mb-3">
+                 <div class="sales-report-area mt-5 mb-3">
                     <div class="row">
                         <div class="col-md-4 col-12">
-                            <div class="single-report mb-xs-30">
-                                <div class="s-report-inner pr--20 pt--30 mb-3">
-                                    <div class="icon icon-red"><i class="fas fa-thermometer-three-quarters"></i></div>
-
-                                    <div class="text-center h5">
-                                        Temperatura recomendada: 32°C
-                                    </div>
-
-                                    <div class="text-center">
-                                        <div> Temperatura máxima: 34°C</div>
-                                        Temperatura minima: 28°C
-                                    </div>
-                                </div>
-
-                            </div>
+                          
                         </div>
-                        <div class="col-md-2 col-12">
-                            <div class="card text-white bg-danger mb-3">
-                                <div class="card-header bg-danger text-center">Temperatura Atual</div>
-                                <div class="card-body">
-                                    <div class="text-center">
-                                        <i class="fas fa-thermometer-three-quarters fa-2x"></i>
-                                        <span class="ml-1 text-light h3" id="dado_temp">Aguarde...</span>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-2 col-12">
-                            <div class="card text-white bg-primary mb-3">
-                                <div class="card-header bg-primary text-center">Umidade Atual</div>
-                                <div class="card-body">
-                                    <div class="text-center">
-                                        <i class="fas fa-tint fa-2x"></i>
-                                        <span class="ml-1 text-light h3" id="dado_umid">Aguarde...</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        
                         <div class="col-md-4 col-12">
-                            <div class="single-report mb-xs-30">
-                                <div class="s-report-inner pr--20 pt--30 mb-3">
-                                    <div class="icon icon-blue"><i class="fas fa-tint"></i></div>
-
-                                    <div class="text-center h5">
-                                        Umidade recomendada: 59%
-                                    </div>
-
-                                    <div class="text-center">
-                                        <div> Temperatura máxima: 80°C</div>
-                                        Temperatura minima: 59°C
-                                    </div>
-                                </div>
-
-                            </div>
+                           
                         </div>
                     </div>
-                </div>
+                </div> 
                 <!-- inicio grafico -->
                 <div class="row" id="grafico">
-                    <div class="col-lg-6 col-sm-12 mx-auto mt-3">
+                    <div class="col-lg-8 col-sm-12 mx-auto mt-3">
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <h4 class="header-title mb-0">Grafico</h4>
                                 </div>
-                                <div id="div_aguarde">Dados sendo obtidos...</div>
+                                <div id="div_aguarde" class="h3 text-danger">Dados sendo obtidos...</div>
                                 <canvas id="canvas_temp"></canvas>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-sm-12 mx-auto mt-3">
+                    <div class="col-md-4 col-12 mt-3">
+                        <div class="card text-white bg-danger mb-3">
+                            <div class="card-header bg-danger text-center">Temperatura Atual</div>
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <i class="fas fa-thermometer-three-quarters fa-2x"></i>
+                                    <span class="ml-1 text-light h3" id="dado_temp">Aguarde...</span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="single-report mb-xs-30">
+                            <div class="s-report-inner pr--20 pt--30 mb-3">
+                                <div class="icon icon-red"><i class="fas fa-thermometer-three-quarters"></i></div>
+
+                                <div class="text-center h5">
+                                    Temperatura recomendada: 32°C
+                                </div>
+
+                                <div class="text-center">
+                                    <div> Temperatura máxima: 34°C</div>
+                                    Temperatura minima: 28°C
+                                </div>
+                            </div>
+
+                        </div>
+                       
+                    </div>
+                   
+                    <div class="col-lg-8 col-sm-12 mx-auto mt-3">
                         <div class="card">
                             <div class="card-body">
                                 <div class="d-flex justify-content-between align-items-center">
                                     <h4 class="header-title mb-0">Grafico</h4>
                                 </div>
-                                <div id="div_aguarde1">Dados sendo obtidos...</div>
+                                <div id="div_aguarde1" class="h3 text-primary">Dados sendo obtidos...</div>
                                 <canvas id="canvas_umid"></canvas>
                             </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-12 mt-3">
+                        <div class="card text-white bg-primary mb-3">
+                            <div class="card-header bg-primary text-center">Umidade Atual</div>
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <i class="fas fa-tint fa-2x"></i>
+                                    <span class="ml-1 text-light h3" id="dado_umid">Aguarde...</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="single-report mb-xs-30">
+                            <div class="s-report-inner pr--20 pt--30 mb-3">
+                                <div class="icon icon-blue"><i class="fas fa-tint"></i></div>
+
+                                <div class="text-center h5">
+                                    Umidade recomendada: 59%
+                                </div>
+
+                                <div class="text-center">
+                                    <div> Temperatura máxima: 80°C</div>
+                                    Temperatura minima: 59°C
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -289,12 +295,12 @@
                                         <tbody>
 
                                             <tr class="text-center">
-                                                <td class="bg-danger text-white">59</td>
-                                                <td class="bg-warning text-white">65,25</td>
-                                                <td class="bg-success text-white">68,61</td>
+                                                <td class="bg-danger text-white" id="u_min">...</td>
+                                                <td class="bg-warning text-white" >65,25</td>
+                                                <td class="bg-success text-white" id="u_med">...</td>
                                                 <td class="bg-primary text-white">59</td>
                                                 <td class="bg-warning text-white">70</td>
-                                                <td class="bg-danger text-white">80</td>
+                                                <td class="bg-danger text-white" id="u_max">...</td>
                                             </tr>
                                         </tbody>
                                     </table>

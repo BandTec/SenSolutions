@@ -35,21 +35,30 @@ router.get('/estatisticas', function (req, res, next) {
   var estatisticas = {
     temp_maxima: 0, 
     temp_minima: 0, 
-    temp_media: 0
+    temp_media: 0,
+    umid_maxima:0,
+    umid_minima:0,
+    umid_media:0
   };
 
   banco.conectar().then(() => {
     return banco.sql.query(`
-        select 
-          max(temperatura) as temp_maxima, 
-          min(temperatura) as temp_minima, 
-          avg(temperatura) as temp_media 
-        from tb_eventos
+    select 
+    max(temperatura) as temp_maxima, 
+    min(temperatura) as temp_minima, 
+    avg(temperatura) as temp_media,
+    max(umidade) as umid_maxima,
+    min(umidade) as umid_minima,
+    avg(umidade) as umid_media
+      from tb_eventos
         `);
   }).then(consulta => {
     estatisticas.temp_maxima = consulta.recordset[0].temp_maxima;
     estatisticas.temp_minima = consulta.recordset[0].temp_minima;
     estatisticas.temp_media = consulta.recordset[0].temp_media;
+    estatisticas.umid_maxima = consulta.recordset[0].umid_maxima;
+    estatisticas.umid_minima = consulta.recordset[0].umid_minima;
+    estatisticas.umid_media = consulta.recordset[0].umid_media;
     console.log(`Estatísticas: ${JSON.stringify(estatisticas)}`);
     res.send(estatisticas);
   }).catch(err => {

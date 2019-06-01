@@ -183,11 +183,11 @@ function obterDadosGrafico() {
 }
 
 function atualizarTemperatura(temperatura) {
-    dado_temp.innerHTML = temperatura;
+    dado_temp.innerHTML = `${temperatura} °C`;
 }
 
 function atualizarUmidade(umidade) {
-    dado_umid.innerHTML = umidade;
+    dado_umid.innerHTML = `${umidade} %`;
 }
 function obterDadosAnalyticsTemp() {
     fetch('leituras/estatisticas',{cache:'no-store'}).then(function (response) {
@@ -197,6 +197,10 @@ function obterDadosAnalyticsTemp() {
                 n_med.innerHTML = respostas.temp_media;
                 n_max.innerHTML = respostas.temp_maxima;
                 n_min.innerHTML = respostas.temp_minima;
+                // 
+                u_max.innerHTML = respostas.umid_maxima;
+                u_min.innerHTML = respostas.umid_minima;
+                u_med.innerHTML = respostas.umid_media;
             })
         }else{
             console.error('Erro na obtenção de dados');

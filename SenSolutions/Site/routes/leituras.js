@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var banco = require('../app-banco');
+const sms = require("../Utils/apiSms");
 
 router.get('/ultimas', function (req, res, next) {
   console.log(banco.conexao);
@@ -31,7 +32,7 @@ router.get('/ultimas', function (req, res, next) {
 
 router.get('/estatisticas', function (req, res, next) {
   console.log(banco.conexao);
- 
+
   var estatisticas = {
     temp_maxima: 0, 
     temp_minima: 0, 
@@ -41,6 +42,8 @@ router.get('/estatisticas', function (req, res, next) {
     umid_media:0
   };
 
+//  chamada da API DE SMS NAO  TIRAR O COMENTARIO DESSE CODIGO!
+//  sms(); 
   banco.conectar().then(() => {
     return banco.sql.query(`
     select 
@@ -60,7 +63,9 @@ router.get('/estatisticas', function (req, res, next) {
     estatisticas.umid_minima = consulta.recordset[0].umid_minima;
     estatisticas.umid_media = consulta.recordset[0].umid_media;
     console.log(`Estatísticas: ${JSON.stringify(estatisticas)}`);
+   
     res.send(estatisticas);
+ 
   }).catch(err => {
 
     var erro = `Erro na leitura dos últimos registros: ${err}`;
@@ -72,6 +77,8 @@ router.get('/estatisticas', function (req, res, next) {
   });
 
 });
+
+
 
 
 // não mexa nesta linha!

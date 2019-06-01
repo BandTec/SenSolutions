@@ -7,13 +7,14 @@
     "dev": "nodemon  --exec npm start"
   },
   "dependencies": {
+    "body-parser": "^1.18.3",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
+    "ejs": "^2.6.1",
     "express": "~4.16.1",
     "morgan": "~1.9.1",
     "mssql": "^5.1.0",
-    "body-parser": "^1.18.3",
-    "ejs": "^2.6.1"
+    "nexmo": "^2.4.1"
   },
   "devDependencies": {
     "nodemon": "^1.18.4"

@@ -215,9 +215,9 @@ function obterDadosAnalyticsTemp() {
                 n_max.innerHTML = `Temperatura máxima: ${respostas.temp_maxima} °C`;
                 n_min.innerHTML = `Temperatura minima: ${respostas.temp_minima} °C` ;
                 // 
-                u_max.innerHTML = `Umidade máxima: ${respostas.umid_maxima}`;
-                u_min.innerHTML = `Umidade minima: ${respostas.umid_minima}`;
-                u_med.innerHTML = `Umidade média ${respostas.umid_media}`;
+                u_max.innerHTML = `Umidade máxima: ${respostas.umid_maxima} %`;
+                u_min.innerHTML = `Umidade minima: ${respostas.umid_minima} %`;
+                u_med.innerHTML = `Umidade média ${respostas.umid_media} %`;
                 
             })
         }else{

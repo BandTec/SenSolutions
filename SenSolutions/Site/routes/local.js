@@ -47,11 +47,13 @@ router.post('/cadastrar', function (req, res, next) {
          return banco.sql.query(`Insert into tb_endereco(CEP,logradouro,ufEstado,bairro,cidade) 
       values ('${json.cep}','${json.rua}','${json.uf}','${json.bairro}','${json.cidade}')`);  
   }).then(consulta => {
+    
     res.status(200);
     res.send('ok');
+    
     console.log(consulta);
   }).catch(err => {
-    var erro = `Erro no login: ${err}`;
+    var erro = `Erro no cadastro: ${err}`;
     console.error(erro);
     res.status(500).send(erro);
 
@@ -65,10 +67,10 @@ router.get('/', function (req, res, next) {
   banco.conectar().then(() => {
     console.log(`Chegou p/ cadastro: ${JSON.stringify(req.query)}`);
     var json = req.query;
-    return banco.sql.query(`Select * from tb_endereco where CEP = ${json.cep};`);
+    return banco.sql.query(`Select * from tb_endereco where idendereco = ${json.id};`);
   }).then(consulta => {
 
-    console.log(consulta.recordset)
+    console.log(json);
     res.status(200);
     res.send(consulta.recordset);
   }).catch(err => {

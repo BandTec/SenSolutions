@@ -148,24 +148,33 @@ function obterDadosGrafico() {
         if (response.ok) {
             response.json().then(function (resposta) {
 
-                console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
-
+                // console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                // atualizarUmidade(resposta.umid_atual)
+                dado_temp.innerHTML = `${resposta.temp_atual} °C`;
+                dado_umid.innerHTML = `${resposta.umid_atual} %`;
+                // atualizarTemperatura(resposta.temp_atual)
                 resposta.reverse();
-
+                
+                var temperatura_atual = 0;
+                var umidade_atual = 0;
                 for (i = 0; i < resposta.length; i++) {
                     var registro = resposta[i];
-                    atualizarUmidade(registro.umidade)
-                    atualizarTemperatura(registro.temperatura)
+                   
                     // aqui, após 'registro.' use os nomes 
                     // dos atributos que vem no JSON 
                     // que gerou na consulta ao banco de dados
 
                     dadostemp.labels.push(registro.dataHora);
                     dadostemp.datasets[0].data.push(registro.temperatura);
-               
+                    temperatura_atual = registro.temperatura;
+                    umidade_atual = registro.umidade;
                     dadosumid.labels.push(registro.dataHora);
                     dadosumid.datasets[0].data.push(registro.umidade);
                 }
+                // console.log(resposta);
+
+                atualizarTemperatura(temperatura_atual)
+                atualizarUmidade(umidade_atual)
                 console.log(JSON.stringify(dadostemp, dadosumid));
 
                 div_aguarde.style.display = 'none';
@@ -184,6 +193,14 @@ function obterDadosGrafico() {
 
 function atualizarTemperatura(temperatura) {
     dado_temp.innerHTML = `${temperatura} °C`;
+    // if(temperatura >=33){
+    //     alert('Perigo Alta temperatura.')
+    // }
+    
+   
+
+   
+
 }
 
 function atualizarUmidade(umidade) {
@@ -194,13 +211,14 @@ function obterDadosAnalyticsTemp() {
         if(response.ok){
             response.json().then(function(respostas){
                 console.log(`Analytics temperatura recebidos: ${JSON.stringify(respostas)}`);
-                n_med.innerHTML = respostas.temp_media;
-                n_max.innerHTML = respostas.temp_maxima;
-                n_min.innerHTML = respostas.temp_minima;
+                n_med.innerHTML = `Temperatura média: ${respostas.temp_media} °C`;
+                n_max.innerHTML = `Temperatura máxima: ${respostas.temp_maxima} °C`;
+                n_min.innerHTML = `Temperatura minima: ${respostas.temp_minima} °C` ;
                 // 
-                u_max.innerHTML = respostas.umid_maxima;
-                u_min.innerHTML = respostas.umid_minima;
-                u_med.innerHTML = respostas.umid_media;
+                u_max.innerHTML = `Umidade máxima: ${respostas.umid_maxima}`;
+                u_min.innerHTML = `Umidade minima: ${respostas.umid_minima}`;
+                u_med.innerHTML = `Umidade média ${respostas.umid_media}`;
+                
             })
         }else{
             console.error('Erro na obtenção de dados');

@@ -193,24 +193,42 @@ function obterDadosGrafico() {
 
 function atualizarTemperatura(temperatura) {
     dado_temp.innerHTML = `${temperatura} °C`;
-    // if(temperatura >33){
-    //     alert('Perigo Alta temperatura!')
-    // }else if(temperatura <18)
-    // {
-    //     alert('Perigo baixa temperatura!')
-    // }
-   
+    if(temperatura<18 ||temperatura >32){
+        // alert('Perigo baixa umidade!')
+        $('#card_header_temperatura').addClass('text-light bg-danger');
+        $('#card_temperatura').addClass('bg-danger');
+        $('#card_header_temperatura').removeClass('border-danger');
+        $('#icon_temp').addClass('text-light');
+        $('#dado_temp').addClass('text-light');
+    }else{
+        $('#card_header_temperatura').removeClass('text-light bg-danger');
+        $('#card_temperatura').removeClass('bg-danger');
+        $('#card_header_temperatura').addClass('border-danger');
+        $('#icon_temp').removeClass('text-light');
+        $('#dado_temp').removeClass('text-light');
+    }
 
    
 
 }
 
 function atualizarUmidade(umidade) {
-    // if(umidade >80){
-    //     alert('Perigo Alta umidade!')
-    // }else if(umidade<40){
-    //     alert('Perigo baixa umidade!')
-    // }
+    
+     if(umidade<40 ||umidade >80){
+        // alert('Perigo baixa umidade!')
+        $('#card_header_umidade').addClass('text-light bg-primary');
+        $('#card_umidade').addClass('bg-primary');
+        $('#card_header_umidade').removeClass('border-primary');
+        $('#icon_umid').addClass('text-light');
+        $('#dado_umid').addClass('text-light');
+    }else{
+        $('#card_header_umidade').removeClass('text-light bg-primary');
+        $('#card_umidade').removeClass('bg-primary');
+        $('#card_header_umidade').addClass('border-primary');
+        $('#icon_umid').removeClass('text-light');
+        $('#dado_umid').removeClass('text-light');
+    }
+
     dado_umid.innerHTML = `${umidade} %`;
 }
 function obterDadosAnalyticsTemp() {

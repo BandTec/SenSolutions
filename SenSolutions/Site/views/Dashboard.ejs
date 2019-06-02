@@ -179,12 +179,12 @@
                         </div>
                     </div>
                     <div class="col-md-4 col-12 mt-3">
-                        <div class="card text-white bg-danger mb-3">
-                            <div class="card-header bg-danger text-center h3 text-light">Temperatura Atual</div>
+                        <div id="card_temperatura" class="card text-white border-danger mb-3">
+                            <div id="card_header_temperatura" class="card-header border-danger text-center h3">Temperatura Atual</div>
                             <div class="card-body">
                                 <div class="text-center">
-                                    <i class="fas fa-thermometer-three-quarters fa-4x"></i>
-                                    <span class="ml-1 text-light h2" id="dado_temp">Aguarde...</span>
+                                    <i id="icon_temp" lass="fas fa-thermometer-three-quarters fa-4x"></i>
+                                    <span class="ml-1 h2" id="dado_temp">Aguarde...</span>
                                 </div>
 
                             </div>
@@ -235,12 +235,12 @@
                         </div>
                     </div>
                     <div class="col-md-4 col-12 mt-3">
-                        <div class="card text-white bg-primary mb-3">
-                            <div class="card-header bg-primary text-center h3 text-light">Umidade Atual</div>
+                        <div id="card_umidade" class="card border-primary text-white mb-3">
+                            <div id="card_header_umidade" class="card-header border-primary text-center h3 ">Umidade Atual</div>
                             <div class="card-body">
                                 <div class="text-center">
-                                    <i class="fas fa-tint fa-4x"></i>
-                                    <span class="ml-1 text-light h2" id="dado_umid">Aguarde...</span>
+                                    <i id="icon_umid" class="fas fa-tint text-primary fa-4x"></i>
+                                    <span class="ml-1 h2" id="dado_umid">Aguarde...</span>
                                 </div>
                             </div>
                         </div>
@@ -532,9 +532,10 @@
                     </div>
                 </section>
                 <!-- Fim CRUD -->
+                
+                <!-- Inicio Listas -->
                 <section>
-                    <!-- Vertically centered modal start -->
-                    <!-- Modal -->
+                    <!-- Modal Lista sensor-->
                     <div class="modal fade" id="listasensor">
                         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                             <div class="modal-content">
@@ -638,13 +639,11 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Vertically centered modal end -->
-                    <!-- Vertically centered modal start -->
-
-
-                    <!-- Modal -->
+                    <!-- end modal -->
+    
+                    <!-- Modal  Lista usuario-->
                     <div class="modal fade" id="listausuario">
-                        <div class="modal-dialog modal-xl modal-dialog-centered" role="document">
+                        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                             <div class="modal-content">
                                 <div class="modal-header ">
                                     <h5 class="modal-title ">Listar Usuarios</h5>
@@ -748,15 +747,8 @@
                             </div>
                         </div>
                     </div>
+                    <!-- end modal -->
 
-
-                    <!-- Vertically centered modal end -->
-
-
-
-                    <!-- Vertically centered modal start -->
-
-                    <!-- Button trigger modal -->
                     <!-- Modal -->
                     <div class="modal fade" id="listalocal">
                         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
@@ -835,15 +827,12 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Vertically centered modal end -->
-
-
+                    <!--end modal Lista local -->
                 </section>
+                <!-- Fim listas -->
             </div>
+            <!-- end main content inner  -->
         </div>
-        <!-- end main content inner  -->
-
         <!-- end main area -->
 
         <!-- Start Footer Area -->
@@ -899,6 +888,8 @@
         </footer>
         <!-- End Footer Area -->
     </div>
+<!-- End page container area -->
+
     <!-- Inicio core -->
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/popper.min.js"></script>

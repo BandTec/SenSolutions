@@ -175,6 +175,7 @@ function obterDadosGrafico() {
 
                 atualizarTemperatura(temperatura_atual)
                 atualizarUmidade(umidade_atual)
+                mostrarAlerta(temperatura_atual,umidade_atual)
                 console.log(JSON.stringify(dadostemp, dadosumid));
 
                 div_aguarde.style.display = 'none';
@@ -201,6 +202,7 @@ function atualizarTemperatura(temperatura) {
         $('#icon_temp').addClass('text-light');
         $('#dado_temp').addClass('text-light');
     }else{
+     
         $('#card_header_temperatura').removeClass('text-light bg-danger');
         $('#card_temperatura').removeClass('bg-danger');
         $('#card_header_temperatura').addClass('border-danger');
@@ -216,20 +218,29 @@ function atualizarUmidade(umidade) {
     
      if(umidade<40 ||umidade >80){
         // alert('Perigo baixa umidade!')
+       
         $('#card_header_umidade').addClass('text-light bg-primary');
         $('#card_umidade').addClass('bg-primary');
         $('#card_header_umidade').removeClass('border-primary');
         $('#icon_umid').addClass('text-light');
         $('#dado_umid').addClass('text-light');
     }else{
+     
         $('#card_header_umidade').removeClass('text-light bg-primary');
         $('#card_umidade').removeClass('bg-primary');
         $('#card_header_umidade').addClass('border-primary');
         $('#icon_umid').removeClass('text-light');
         $('#dado_umid').removeClass('text-light');
     }
-
     dado_umid.innerHTML = `${umidade} %`;
+}
+
+function mostrarAlerta(temperatura, umidade) {
+    if(temperatura<18||temperatura >32|| umidade<40 ||umidade >80){
+        div_alert.style.display = 'block';
+    }else{
+        div_alert.style.display = 'none';
+    }
 }
 function obterDadosAnalyticsTemp() {
     fetch('leituras/estatisticas',{cache:'no-store'}).then(function (response) {

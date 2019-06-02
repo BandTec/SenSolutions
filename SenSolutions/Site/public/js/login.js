@@ -3,7 +3,7 @@ verificarAutenticacao();
 function verificarAutenticacao() {
 
     if (sessionStorage.usuario_bandtec != undefined) {
-        window.location.href = 'Dashboard.html';
+        window.location.href = 'Dashboard';
     }
 }
 

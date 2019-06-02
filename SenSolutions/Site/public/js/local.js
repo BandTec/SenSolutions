@@ -21,7 +21,7 @@ function finalizar_aguardar() {
 
 function cadLocal(cep, rua ,bairro, uf ,cidade) {
     aguardar();
-    alert('cheguei');
+  
     fetch(`local/cadastrar/?cep=${cep}&rua=${rua}&bairro=${bairro}&uf=${uf}&cidade=${cidade}`, {
         method: "POST"
     }).then(js => {

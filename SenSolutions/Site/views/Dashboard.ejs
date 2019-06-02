@@ -684,7 +684,7 @@
                                             <table class="table table-borderless" id="Datatable">
                                                 <thead>
                                                     <tr>
-                                                        <th scope="col">ID</th>
+                                                        <!-- <th scope="col">ID</th> -->
                                                         <th scope="col">Cep</th>
                                                         <th scope="col">Rua</th>
                                                         <th scope="col">Estado</th>
@@ -697,7 +697,7 @@
                                                     
                                                     <%results.forEach((rs)=>{ %>
                                                         <tr data-row="<%= JSON.stringify(rs) %>">
-                                                            <td><%=rs.idEndereco%></td>
+                                                            <!-- <td><%=rs.idEndereco%></td> -->
                                                             <td><%=rs.CEP%></td>
                                                             <td><%=rs.logradouro%></td>
                                                             <td><%=rs.ufEstado%></td>
@@ -709,20 +709,20 @@
                                                           </tr>
                                                         <%})%>
                                                     <tr>
-                                                        <th scope="row"> 1</th>
+                                                        <!-- <th scope="row"> 1</th>
                                                         <td>Jacob</td>
                                                         <td>Jacob@jacob.com</td>
                                                         <td>12345</td>
-                                                        <td>
+                                                        <td> -->
                                                             <div class="row ">
                                                                 <div class="btn-group btn-group-toggle"
                                                                     data-toggle="buttons">
-                                                                    <a href="#" class="btn btn-success btn-icon-split">
+                                                                    <!-- <a href="#" class="btn btn-success btn-icon-split">
                                                                         <span class="icon text-white-50">
                                                                             <i class="fas fa-eye"></i>
                                                                         </span>
                                                                         <span class="text">Visualizar</span>
-                                                                    </a>
+                                                                    </a> -->
                                                                     <a href="#" class="btn btn-warning btn-icon-split">
                                                                         <span class="icon text-white-50">
                                                                             <i class="fas fa-cog"></i>
@@ -791,15 +791,58 @@
                                             <table class="table table-borderless" id="Datatable">
                                                 <thead>
                                                     <tr>
-                                                        <th scope="col">ID</th>
-                                                        <th scope="col">Email</th>
-                                                        <th scope="col">Nome</th>
-                                                        <th scope="col">Senha</th>
+                                                        <!-- <th scope="col">ID</th> -->
+                                                        <th scope="col">Cep</th>
+                                                        <th scope="col">Rua</th>
+                                                        <th scope="col">Estado</th>
+                                                        <th scope="col">Bairro</th>
+                                                        <th scope="col">Cidade</th>
+
                                                     </tr>
                                                 </thead>
                                                 <tbody>
 
+                                                    <%results.forEach((rs)=>{ %>
+                                                    <tr data-row="<%= JSON.stringify(rs) %>">
+                                                        <!-- <td><%=rs.idEndereco%></td> -->
+                                                        <td><%=rs.CEP%></td>
+                                                        <td><%=rs.logradouro%></td>
+                                                        <td><%=rs.ufEstado%></td>
+                                                        <td><%=rs.bairro%></td>
+                                                        <td><%=rs.cidade%></td>
+
+
+
+                                                    </tr>
+                                                    <%})%>
                                                     <tr>
+                                                        <div class="row ">
+                                                                <div class="btn-group btn-group-toggle"
+                                                                    data-toggle="buttons">
+                                                                    <!-- <a href="#" class="btn btn-success btn-icon-split">
+                                                                        <span class="icon text-white-50">
+                                                                            <i class="fas fa-eye"></i>
+                                                                        </span>
+                                                                        <span class="text">Visualizar</span>
+                                                                    </a> -->
+                                                                    <a href="#" class="btn btn-warning btn-icon-split">
+                                                                        <span class="icon text-white-50">
+                                                                            <i class="fas fa-cog"></i>
+                                                                        </span>
+                                                                        <span class="text">Editar</span>
+                                                                    </a>
+                                                                    <a href="#" class="btn btn-danger btn-icon-split">
+                                                                        <span class="icon text-white-50">
+                                                                            <i class="fas fa-trash"></i>
+                                                                        </span>
+                                                                        <span class="text">Excluir</span>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+
+                                                        </td>
+                                                    </tr>
+                                                    <!-- <tr>
                                                         <th scope="row"> 1</th>
                                                         <td>Jacob</td>
                                                         <td>Jacob@jacob.com</td>
@@ -830,39 +873,7 @@
                                                             </div>
 
                                                         </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row"> 1</th>
-                                                        <td>Jacob</td>
-                                                        <td>Jacob@jacob.com</td>
-                                                        <td>12345</td>
-                                                        <td>
-                                                            <div class="row ">
-                                                                <div class="btn-group btn-group-toggle"
-                                                                    data-toggle="buttons">
-                                                                    <a href="#" class="btn btn-success btn-icon-split">
-                                                                        <span class="icon text-white-50">
-                                                                            <i class="fas fa-eye"></i>
-                                                                        </span>
-                                                                        <span class="text">Visualizar</span>
-                                                                    </a>
-                                                                    <a href="#" class="btn btn-warning btn-icon-split">
-                                                                        <span class="icon text-white-50">
-                                                                            <i class="fas fa-cog"></i>
-                                                                        </span>
-                                                                        <span class="text">Editar</span>
-                                                                    </a>
-                                                                    <a href="#" class="btn btn-danger btn-icon-split">
-                                                                        <span class="icon text-white-50">
-                                                                            <i class="fas fa-trash"></i>
-                                                                        </span>
-                                                                        <span class="text">Excluir</span>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-
-                                                        </td>
-                                                    </tr>
+                                                    </tr> -->
 
                                                 </tbody>
                                             </table>

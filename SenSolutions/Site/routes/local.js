@@ -38,18 +38,19 @@ var banco = require('../app-banco');
 
 // });
 
+
 router.post('/cadastrar', function (req, res, next) {
 
   banco.conectar().then(() => {
-    console.log(`Chegou p/ cadastro: ${JSON.stringify(req.query)}`);
-    var json = req.query;
+    console.log(`Chegou p/ cadastro: ${JSON.stringify(req.body)}`);
+    var json = req.body;
       console.log('inserindo dados no banco');
          return banco.sql.query(`Insert into tb_endereco(CEP,logradouro,ufEstado,bairro,cidade) 
       values ('${json.cep}','${json.rua}','${json.uf}','${json.bairro}','${json.cidade}')`);  
   }).then(consulta => {
     
     res.status(200);
-    res.send('ok');
+    res.redirect('/dashboard')
     
     console.log(consulta);
   }).catch(err => {

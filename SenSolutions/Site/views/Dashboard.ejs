@@ -437,8 +437,8 @@
                                             <button type="button" class="close"
                                                 data-dismiss="modal"><span>&times;</span></button>
                                         </div>
-                                        <div class="modal-body">
-                                            <form class="user" method="get" action=".">
+                                        <div class="modal-body"  >
+                                            <form class="user" action="/local/cadastrar" method="post" >
                                                 <div id="div_brancos"
                                                     class="alert alert-danger alert-dismissible fade show" role="alert"
                                                     style="display: none;">
@@ -507,7 +507,6 @@
                                                     </div>
                                                 </div>
                                                 <button
-                                                    onclick="cadLocal(cep.value,rua.value,bairro.value,uf.value,cidade.value)"
                                                     id="btn_Cadastrar" class="btn btn-lg btn-primary btn-block btn-user btn-login
                                                         text-uppercase font-weight-bold mb-2">Cadastre-se
                                                 </button>
@@ -677,7 +676,7 @@
                                 <div class="modal-body">
                                     <div class="mx-auto">
 
-                                        <h1 class="h3 mb-2 text-gray-800">Dados dos usuários</h1>
+                                        <h1 class="h3 mb-2 text-gray-800">Dados dos testeetet</h1>
 
                                         <!-- DataTales Example -->
 
@@ -686,45 +685,29 @@
                                                 <thead>
                                                     <tr>
                                                         <th scope="col">ID</th>
-                                                        <th scope="col">Email</th>
-                                                        <th scope="col">Nome</th>
-                                                        <th scope="col">Senha</th>
+                                                        <th scope="col">Cep</th>
+                                                        <th scope="col">Rua</th>
+                                                        <th scope="col">Estado</th>
+                                                        <th scope="col">Bairro</th>
+                                                        <th scope="col">Cidade</th>
+
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-
-                                                    <tr>
-                                                        <th scope="row"> 1</th>
-                                                        <td>Jacob</td>
-                                                        <td>Jacob@jacob.com</td>
-                                                        <td>12345</td>
-                                                        <td>
-                                                            <div class="row ">
-                                                                <div class="btn-group btn-group-toggle"
-                                                                    data-toggle="buttons">
-                                                                    <a href="#" class="btn btn-success btn-icon-split">
-                                                                        <span class="icon text-white-50">
-                                                                            <i class="fas fa-eye"></i>
-                                                                        </span>
-                                                                        <span class="text">Visualizar</span>
-                                                                    </a>
-                                                                    <a href="#" class="btn btn-warning btn-icon-split">
-                                                                        <span class="icon text-white-50">
-                                                                            <i class="fas fa-cog"></i>
-                                                                        </span>
-                                                                        <span class="text">Editar</span>
-                                                                    </a>
-                                                                    <a href="#" class="btn btn-danger btn-icon-split">
-                                                                        <span class="icon text-white-50">
-                                                                            <i class="fas fa-trash"></i>
-                                                                        </span>
-                                                                        <span class="text">Excluir</span>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-
-                                                        </td>
-                                                    </tr>
+                                                    
+                                                    <%results.forEach((rs)=>{ %>
+                                                        <tr data-row="<%= JSON.stringify(rs) %>">
+                                                            <td><%=rs.idEndereco%></td>
+                                                            <td><%=rs.CEP%></td>
+                                                            <td><%=rs.logradouro%></td>
+                                                            <td><%=rs.ufEstado%></td>
+                                                            <td><%=rs.bairro%></td>
+                                                            <td><%=rs.cidade%></td>
+                                            
+                                                            
+                                            
+                                                          </tr>
+                                                        <%})%>
                                                     <tr>
                                                         <th scope="row"> 1</th>
                                                         <td>Jacob</td>

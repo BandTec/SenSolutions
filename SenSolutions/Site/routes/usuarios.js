@@ -118,27 +118,25 @@ router.get('/todos', function (req, res, next) {
 
 });
 
-// router.post('/cadastrar', function (req, res, next) {
+// router.post('/cadastro', function (req, res, next) {
 
-//   var nome;
-//   var login;
-//   var senha;
 //   var cadastro_valido = false;
 
 //   banco.conectar().then(() => {
-//     console.log(`Chegou p/ cadastro: ${JSON.stringify(req.body)}`);
-// 	nome = req.body.nome; // depois de .body, use o nome (name) do campo em seu formulário de login
-//     login = req.body.login; // depois de .body, use o nome (name) do campo em seu formulário de login
-//     senha = req.body.senha; // depois de .body, use o nome (name) do campo em seu formulário de login
-//     if (login == undefined || senha == undefined || nome == undefined) {
+//     console.log(`Chegou p/ cadastro: ${JSON.stringify(req.query)}`);
+// 	  // nome = req.body.nome; // depois de .body, use o nome (name) do campo em seu formulário de login
+//     // login = req.body.email; // depois de .body, use o nome (name) do campo em seu formulário de login
+//     // senha = req.body.senha; // depois de .body, use o nome (name) do campo em seu formulário de login
+//     var json1 = req.query;
+//     if (json1.email_user == undefined || json1.senha_user == undefined || json1.nome_user == undefined) {
 // 	  // coloque a frase de erro que quiser aqui. Ela vai aparecer no formulário de cadastro
-//       throw new Error(`Dados de cadastro não chegaram completos: ${login} / ${senha} / ${nome}`);
+//       throw new Error(`Dados de cadastro não chegaram completos: ${json1.email_user} / ${json1.senha_user} / ${json1.nome_user }`);
 //     }
-//     return banco.sql.query(`select count(*) as contagem from usuario where login = '${login}'`);
+//     return banco.sql.query(`select count(*) as contagem from tb_cliente where email = '${json1.email_user}'`);
 //   }).then(consulta => {
 
 // 	if (consulta.recordset[0].contagem >= 1) {
-// 		res.status(400).send(`Já existe usuário com o login "${login}"`);
+// 		res.status(400).send(`Já existe usuário com o login "${json1.email_user}"`);
 // 		return;
 //     } else {
 // 		console.log('válido!');
@@ -154,11 +152,14 @@ router.get('/todos', function (req, res, next) {
 //   }).finally(() => {
 // 	  if (cadastro_valido) {		  
 			  
-// 		banco.sql.query(`insert into usuario (nome, login, senha) values ('${nome}','${login}','${senha}')`).then(function() {
+//     banco.sql.query(`insert into tb_cliente (nomeUsuario, senhaUsuario, Email) 
+//     values ('${json1.nome_user}','${json1.senha_user}','${json1.email_user}')`).then(function () {
 // 			console.log(`Cadastro criado com sucesso!`);
 // 			res.sendStatus(201); 
 // 			// status 201 significa que algo foi criado no back-end, 
-// 				// no caso, um registro de usuário ;)		
+//         // no caso, um registro de usuário ;)
+       
+//       res.redirect('/Dashboard');
 // 		}).catch(err => {
 
 // 			var erro = `Erro no cadastro: ${err}`;
@@ -170,8 +171,6 @@ router.get('/todos', function (req, res, next) {
 // 		});
 // 	  }
 //   });
-  
-
 // });
 
 

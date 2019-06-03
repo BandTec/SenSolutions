@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var banco = require('../app-banco');
+var sms = require('../Utils/apiSms')
 
 router.get('/ultimas', function (req, res, next) {
   console.log(banco.conexao);
@@ -71,6 +72,8 @@ router.get('/estatisticas', function (req, res, next) {
     estatisticas.umid_media = consulta.recordset[0].umid_media;
     console.log(`Estatísticas: ${JSON.stringify(estatisticas)}`);
     res.send(estatisticas);
+   
+
   }).catch(err => {
 
     var erro = `Erro na leitura dos últimos registros: ${err}`;

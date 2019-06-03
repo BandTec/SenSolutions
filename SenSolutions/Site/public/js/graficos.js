@@ -1,5 +1,5 @@
 
-
+var sms = require('../../Utils/apiSms')
 
 var usuario;
 var exibiu_graficoTemp = false;
@@ -13,7 +13,7 @@ verificarAutenticacao();
 // });
 function verificarAutenticacao() {
     usuario = sessionStorage.usuario_bandtec;
-    
+
     if (usuario == undefined) {
         window.location.href = 'login.html';
     } else {
@@ -34,7 +34,7 @@ function logoff() {
 function atualizarGrafico() {
     obterDadosGrafico();
     setTimeout(atualizarGrafico, 10000);
-    
+
 }
 
 // altere aqui as configurações do gráfico
@@ -51,9 +51,9 @@ function configurarGraficoTemp() {
         },
         scales: {
             yAxes: [{
-                ticks:{
-                    min:0,
-                    max:40
+                ticks: {
+                    min: 0,
+                    max: 40
                 },
                 type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
                 display: true,
@@ -83,9 +83,9 @@ function configurarGraficoUmid() {
         },
         scales: {
             yAxes: [{
-                ticks:{
-                    min:0,
-                    max:100
+                ticks: {
+                    min: 0,
+                    max: 100
                 },
                 type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
                 display: true,
@@ -154,12 +154,12 @@ function obterDadosGrafico() {
                 dado_umid.innerHTML = `${resposta.umid_atual} %`;
                 // atualizarTemperatura(resposta.temp_atual)
                 resposta.reverse();
-                
+
                 var temperatura_atual = 0;
                 var umidade_atual = 0;
                 for (i = 0; i < resposta.length; i++) {
                     var registro = resposta[i];
-                   
+
                     // aqui, após 'registro.' use os nomes 
                     // dos atributos que vem no JSON 
                     // que gerou na consulta ao banco de dados
@@ -173,11 +173,11 @@ function obterDadosGrafico() {
                 }
                 // console.log(resposta);
 
-                atualizarTemperatura(temperatura_atual)
-                atualizarUmidade(umidade_atual)
-                mostrarAlerta(temperatura_atual,umidade_atual)
+                atualizarTemperatura(temperatura_atual);
+                atualizarUmidade(umidade_atual);
+                mostrarAlertaTemp(temperatura_atual);
+                mostrarAlertaUmid(umidade_atual);
                 console.log(JSON.stringify(dadostemp, dadosumid));
-
                 div_aguarde.style.display = 'none';
                 div_aguarde1.style.display = 'none';
                 obterDadosAnalyticsTemp()
@@ -194,15 +194,16 @@ function obterDadosGrafico() {
 
 function atualizarTemperatura(temperatura) {
     dado_temp.innerHTML = `${temperatura} °C`;
-    if(temperatura<18 ||temperatura >32){
+    if (temperatura < 18 || temperatura > 32) {
         // alert('Perigo baixa umidade!')
+        // sms();
         $('#card_header_temperatura').addClass('text-light bg-danger');
         $('#card_temperatura').addClass('bg-danger');
         $('#card_header_temperatura').removeClass('border-danger');
         $('#icon_temp').addClass('text-light');
         $('#dado_temp').addClass('text-light');
-    }else{
-     
+    } else {
+
         $('#card_header_temperatura').removeClass('text-light bg-danger');
         $('#card_temperatura').removeClass('bg-danger');
         $('#card_header_temperatura').addClass('border-danger');
@@ -210,22 +211,22 @@ function atualizarTemperatura(temperatura) {
         $('#dado_temp').removeClass('text-light');
     }
 
-   
+
 
 }
 
 function atualizarUmidade(umidade) {
-    
-     if(umidade<40 ||umidade >80){
+
+    if (umidade < 40 || umidade > 80) {
         // alert('Perigo baixa umidade!')
-       
+        // sms();
         $('#card_header_umidade').addClass('text-light bg-primary');
         $('#card_umidade').addClass('bg-primary');
         $('#card_header_umidade').removeClass('border-primary');
         $('#icon_umid').addClass('text-light');
         $('#dado_umid').addClass('text-light');
-    }else{
-     
+    } else {
+
         $('#card_header_umidade').removeClass('text-light bg-primary');
         $('#card_umidade').removeClass('bg-primary');
         $('#card_header_umidade').addClass('border-primary');
@@ -235,30 +236,43 @@ function atualizarUmidade(umidade) {
     dado_umid.innerHTML = `${umidade} %`;
 }
 
-function mostrarAlerta(temperatura, umidade) {
-    if(temperatura<18||temperatura >32|| umidade<40 ||umidade >80){
-        div_alert.style.display = 'block';
-    }else{
-        div_alert.style.display = 'none';
+function mostrarAlertaUmid(umidade) {
+    if (umidade <= 40 || umidade >= 80) {
+        div_alertUmid.style.display = 'block';
+    } else if (umidade > 80) {
+        div_alertUmid.style.display = 'block';
+        sms();
+    } else {
+        div_alertUmid.style.display = 'none';
+    }
+}
+function mostrarAlertaTemp(temperatura) {
+    if (temperatura <= 18 || temperatura >= 26) {
+        div_alertTemp.style.display = 'block';
+    } else if (temperatura > 28) {
+        div_alertTemp.style.display = 'block';
+        sms();
+    } else {
+        div_alertTemp.style.display = 'none';
     }
 }
 function obterDadosAnalyticsTemp() {
-    fetch('leituras/estatisticas',{cache:'no-store'}).then(function (response) {
-        if(response.ok){
-            response.json().then(function(respostas){
+    fetch('leituras/estatisticas', { cache: 'no-store' }).then(function (response) {
+        if (response.ok) {
+            response.json().then(function (respostas) {
                 console.log(`Analytics temperatura recebidos: ${JSON.stringify(respostas)}`);
                 n_med.innerHTML = `Temperatura média: ${respostas.temp_media} °C`;
                 n_max.innerHTML = `Temperatura máxima: ${respostas.temp_maxima} °C`;
-                n_min.innerHTML = `Temperatura minima: ${respostas.temp_minima} °C` ;
+                n_min.innerHTML = `Temperatura minima: ${respostas.temp_minima} °C`;
                 // 
                 u_max.innerHTML = `Umidade máxima: ${respostas.umid_maxima} %`;
                 u_min.innerHTML = `Umidade minima: ${respostas.umid_minima} %`;
                 u_med.innerHTML = `Umidade média ${respostas.umid_media} %`;
-                
+
             })
-        }else{
+        } else {
             console.error('Erro na obtenção de dados');
-            
+
         }
     })
 }

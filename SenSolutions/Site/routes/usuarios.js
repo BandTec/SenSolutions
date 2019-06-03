@@ -57,7 +57,7 @@ router.post('/cadastrar', function (req, res, next) {
     res.send('ok');
 
   }).catch(err => {
-    var erro = `Erro no login: ${err}`;
+    var erro = `Erro no cadastro+: ${err}`;
     console.error(erro);
     res.status(500).send(erro);
 

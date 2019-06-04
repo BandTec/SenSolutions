@@ -56,7 +56,7 @@ router.get('/estatisticas', function (req, res, next) {
   };
 
   banco.conectar().then(() => {
-    console.log('Cheguei no banco!')
+    
     return banco.sql.query(`SELECT DISTINCT MIN(CAST([temperatura] AS FLOAT)) OVER(PARTITION BY 1) AS [temp_minima],
     PERCENTILE_CONT(0.25) WITHIN GROUP(ORDER BY CAST([temperatura] AS FLOAT)) OVER(PARTITION BY 1) AS [temp_priQ],
     PERCENTILE_CONT(0.5) WITHIN GROUP(ORDER BY CAST([temperatura] AS FLOAT)) OVER(PARTITION BY 1) AS [temp_segQ],

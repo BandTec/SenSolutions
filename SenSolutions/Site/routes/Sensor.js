@@ -17,7 +17,7 @@ router.post('/cadastrar', function (req, res, next) {
   }).then(consulta => {
     
     res.status(200);
-    res.redirect('/dashboard')
+    res.redirect('/dashboard');
     
     console.log(consulta);
   }).catch(err => {
@@ -51,26 +51,6 @@ router.get('/', function (req, res, next) {
   });
 });
 
-// router.get('/teste', function (req, res, next) {
- 
-//   banco.conectar().then(() => {
-//     console.log(`Chegou p/ cadastro: ${JSON.stringify(req.query)}`);
-//     var json = req.query;
-//     return banco.sql.query(`Select * from tb_local where idLocal = ${json.id};`);
-//   }).then(consulta => {
-
-//     console.log(json);
-//     res.status(200);
-//     res.send(consulta.recordset);
-//   }).catch(err => {
-//     var erro = `Erro na requisição : ${err}`;
-//     console.error(erro);
-//     res.status(500).send(erro);
-
-//   }).finally(() => {
-//     banco.sql.close();
-//   });
-// });
 
 router.get('/todos', function (req, res, next) {
   console.log(banco.conexao);
@@ -93,45 +73,7 @@ router.get('/todos', function (req, res, next) {
 });
 
 
-// router.get('/todosensores', function (req, res, next) {
-//   console.log(banco.conexao);
-  
-//   banco.conectar().then(() => {
 
-//     return banco.sql.query(`select  
-//                              * 
-//                              from tb_sensor  `);
-//   }).then(consulta => {
-//     console.log(consulta.recordset);
-//     res.send(consulta.recordset);
-//   }).catch(err => {
-//     var erro = `Erro para trazer os dados cadastrados: ${err}`;
-//     console.error(erro);
-//     res.sendStatus(500).send(erro);
-//   }).finally(() => {
-//     banco.sql.close();
-//   });
-// });
-
-// router.get('/todos', function (req, res, next) {
-//   console.log(banco.conexao);
-  
-//   banco.conectar().then(() => {
-
-//     return banco.sql.query(`select  
-//                              * 
-//                              from tb_Sensor  `);
-//   }).then(consulta => {
-//     console.log(consulta.recordset);
-//     res.send(consulta.recordset);
-//   }).catch(err => {
-//     var erro = `Erro para trazer os dados cadastrados: ${err}`;
-//     console.error(erro);
-//     res.sendStatus(500).send(erro);
-//   }).finally(() => {
-//     banco.sql.close();
-//   });
-// });
 
 // não mexa nesta linha!
 module.exports = router;

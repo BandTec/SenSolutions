@@ -93,25 +93,7 @@ router.get('/todos', function (req, res, next) {
 });
 
 
-router.get('/todosensores', function (req, res, next) {
-  console.log(banco.conexao);
-  
-  banco.conectar().then(() => {
 
-    return banco.sql.query(`select  
-                             * 
-                             from tb_sensor  `);
-  }).then(consulta => {
-    console.log(consulta.recordset);
-    res.send(consulta.recordset);
-  }).catch(err => {
-    var erro = `Erro para trazer os dados cadastrados: ${err}`;
-    console.error(erro);
-    res.sendStatus(500).send(erro);
-  }).finally(() => {
-    banco.sql.close();
-  });
-});
 
 router.get('/todoslocais', function (req, res, next) {
   console.log(banco.conexao);

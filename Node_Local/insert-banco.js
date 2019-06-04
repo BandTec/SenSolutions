@@ -109,6 +109,6 @@ var efetuando_insert = false;
 // iniciando a "escuta" de dispositivos Arduino
 iniciar_escuta();
 
-// setInterval(function(){
-//     registrar_leitura(Math.random()*40,Math.random()*100)
-// }, 5000);
+setInterval(function(){
+    registrar_leitura(Math.random()*40,Math.random()*100)
+}, 5000);

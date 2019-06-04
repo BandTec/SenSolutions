@@ -17,7 +17,7 @@ function verificarAutenticacao() {
     if (usuario == undefined) {
         window.location.href = 'login.html';
     } else {
-        b_usuario.innerHTML = usuario;
+        b_usuario.innerHTML = sessionStorage.usuario_bandtec;
     }
 }
 
@@ -194,19 +194,19 @@ function obterDadosGrafico() {
 
 function atualizarTemperatura(temperatura) {
     dado_temp.innerHTML = `${temperatura} °C`;
-    if (temperatura < 18 || temperatura > 32) {
+    if (temperatura < 20 || temperatura > 24) {
         // alert('Perigo baixa umidade!')
         // sms();
-        $('#card_header_temperatura').addClass('text-light bg-danger');
-        $('#card_temperatura').addClass('bg-danger');
-        $('#card_header_temperatura').removeClass('border-danger');
+        $('#card_header_temperatura').addClass('text-light bg-warning');
+        $('#card_temperatura').addClass('bg-warning');
+        $('#card_header_temperatura').removeClass('border-warning');
         $('#icon_temp').addClass('text-light');
         $('#dado_temp').addClass('text-light');
     } else {
 
-        $('#card_header_temperatura').removeClass('text-light bg-danger');
-        $('#card_temperatura').removeClass('bg-danger');
-        $('#card_header_temperatura').addClass('border-danger');
+        $('#card_header_temperatura').removeClass('text-light bg-warning');
+        $('#card_temperatura').removeClass('bg-warning');
+        $('#card_header_temperatura').addClass('border-warning');
         $('#icon_temp').removeClass('text-light');
         $('#dado_temp').removeClass('text-light');
     }
@@ -220,16 +220,16 @@ function atualizarUmidade(umidade) {
     if (umidade < 40 || umidade > 80) {
         // alert('Perigo baixa umidade!')
         // sms();
-        $('#card_header_umidade').addClass('text-light bg-primary');
-        $('#card_umidade').addClass('bg-primary');
-        $('#card_header_umidade').removeClass('border-primary');
+        $('#card_header_umidade').addClass('text-light bg-warning');
+        $('#card_umidade').addClass('bg-warning');
+        $('#card_header_umidade').removeClass('border-warning');
         $('#icon_umid').addClass('text-light');
         $('#dado_umid').addClass('text-light');
     } else {
 
-        $('#card_header_umidade').removeClass('text-light bg-primary');
-        $('#card_umidade').removeClass('bg-primary');
-        $('#card_header_umidade').addClass('border-primary');
+        $('#card_header_umidade').removeClass('text-light bg-warning');
+        $('#card_umidade').removeClass('bg-warning');
+        $('#card_header_umidade').addClass('border-warning');
         $('#icon_umid').removeClass('text-light');
         $('#dado_umid').removeClass('text-light');
     }
@@ -237,21 +237,22 @@ function atualizarUmidade(umidade) {
 }
 
 function mostrarAlertaUmid(umidade) {
-    if (umidade <= 40 || umidade >= 80) {
-        div_alertUmid.style.display = 'block';
-    } else if (umidade > 80) {
+    if (umidade < 50 || umidade > 64) {
         div_alertUmid.style.display = 'block';
         sms();
-    } else {
+    } else if (umidade < 45 || umidade > 71) {
+        sms();
+    }
+    else {
         div_alertUmid.style.display = 'none';
     }
 }
 function mostrarAlertaTemp(temperatura) {
-    if (temperatura <= 18 || temperatura >= 26) {
+    if (temperatura < 18 || temperatura > 26) {
         div_alertTemp.style.display = 'block';
     } else if (temperatura > 28) {
         div_alertTemp.style.display = 'block';
-        sms();
+
     } else {
         div_alertTemp.style.display = 'none';
     }

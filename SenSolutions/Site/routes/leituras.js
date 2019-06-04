@@ -16,7 +16,7 @@ router.get('/ultimas', function (req, res, next) {
     return banco.sql.query(`select top ${limite_linhas}  
                             temperatura, 
                             umidade, 
-                            FORMAT(dataHora,'HH:mm:ss') as dataHora 
+                            FORMAT(dataHora AT TIME ZONE 'UTC' AT TIME ZONE 'E.SOUTH AMERICA STANDARD TIME','HH:mm:ss') as dataHora 
                             from tb_eventos order by idtemp_umid desc`);
   }).then(consulta => {
   dados_atuais.temp_atual = consulta.recordset[0].temperatura;

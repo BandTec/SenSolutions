@@ -26,9 +26,15 @@ function entrar() {
                     sessionStorage.usuario_bandtec = resposta.nomeUsuario;
                     verificarAutenticacao();
                 });
-            } else {
-                console.log('Erro de login!');
-                finalizar_aguardar();
+            } else if(response.status === 500) {
+                console.log('Erro de conexao!');
+                div_erro_BD.style.display ='block';
+                img_aguarde.style.display = 'none';
+                btn_entrar.disabled = false;
+                
+            }else{
+                console.log('Erro no login');
+                finalizar_aguardar();  
             }
         }
     });
@@ -41,11 +47,13 @@ function aguardar() {
     img_aguarde.style.display = 'block';
     div_erro.style.display = 'none';
     div_brancos.style.display = 'none';
+    div_erro_BD.style.display = 'none';
 }
 
 function finalizar_aguardar() {
     btn_entrar.disabled = false;
     img_aguarde.style.display = 'none';
     div_erro.style.display = 'block';
+    
 }
 

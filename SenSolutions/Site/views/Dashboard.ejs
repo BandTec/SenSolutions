@@ -32,7 +32,7 @@
         <![endif]-->
     <!-- preloader area start -->
     <div id="preloader">
-        <div class="loader"></div>
+        <!-- <div class="loader"></div> -->
     </div>
     <!-- preloader area end -->
     <!-- page container area start -->
@@ -317,7 +317,35 @@
                                                     <div class="text-center">
                                                         <h1 class="h4 text-gray-900 mb-4">Registre seu Sensor</h1>
                                                     </div>
-                                                    <form class="user">
+                                                    <form class="user" action="/Sensor/cadastrar" method="post">
+                                                        <div id="div_brancos"
+                                                        class="alert alert-danger alert-dismissible fade show" role="alert"
+                                                        style="display: none;">
+                                                        <strong>Preencha todos os campos!</strong>
+                                                        <button type="button" class="close" data-dismiss="alert"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div id="div_sucess"
+                                                        class="alert alert-success alert-dismissible fade show" role="alert"
+                                                        style="display: none;">
+                                                        <strong>Cadastro realizado com Sucesso!</strong>
+                                                        <button type="button" class="close" data-dismiss="alert"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div id="div_erro"
+                                                        class="alert alert-danger alert-dismissible fade show" role="alert"
+                                                        style="display: none;">
+                                                        <strong>Erro ao Cadastrar um local</strong> Digite os campos
+                                                        novamente.
+                                                        <button type="button" class="close" data-dismiss="alert"
+                                                            aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
                                                         <div class="form-group">
                                                             <div class="form-group">
 
@@ -328,19 +356,18 @@
                                                                         </span>
                                                                     </div>
                                                                     <input class="form-control" type="text"
-                                                                        id="identifica_sens" placeholder="Nº">
+                                                                        id="identifica_sens" name="SerialSensor" placeholder="Nº">
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <input type="text" class="form-control form-control-user"
-                                                                id="id_pos_sens" placeholder="Posição do sensor">
+                                                                id="id_pos_sens" name="PosicaoSensor" placeholder="Posição do sensor">
                                                         </div>
-                                                        <a href="Dashboard" class="btn btn-primary btn-user btn-block">
-                                                            Registrar Sensor
-                                                        </a>
+                                                        <button id="btn_Cadastrar_Sensor" class="btn btn-lg btn-primary btn-block btn-user btn-login
+                                                        text-uppercase font-weight-bold mb-2">Cadastre o Sensor
+                                                        </button>
                                                     </form>
-
                                                 </div>
                                             </div>
                                         </div>

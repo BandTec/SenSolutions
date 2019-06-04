@@ -7,6 +7,8 @@ var indexRouter = require('./routes/index');
 var usuariosRouter = require('./routes/usuarios');
 var leiturasRouter = require('./routes/leituras');
 var localRouter = require('./routes/local');
+var SensorRouter = require('./routes/Sensor');
+
 
 var app = express();
 app.set('views', path.join(__dirname, 'views'));
@@ -21,6 +23,7 @@ app.use('/', indexRouter);
 app.use('/usuarios', usuariosRouter);
 app.use('/leituras', leiturasRouter);
 app.use('/local',localRouter);
+app.use('/Sensor',SensorRouter);
 
 module.exports = app;
 

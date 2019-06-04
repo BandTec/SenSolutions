@@ -10,12 +10,14 @@ function limparCampos() {
     div_erro.style.display = 'none';
     div_sucess.style.display = 'none';
     div_brancos.style.display ='none';
+    div_erro_BD.style.display = 'none';
     
   }
 
   function finalizar_aguardar() {
     btn_Cadastrar.disabled = false;
     div_erro.style.display = 'block';
+    
   }
 
 
@@ -36,9 +38,9 @@ function limparCampos() {
         div_sucess.style.display = 'block';
         btn_Cadastrar.disabled = false;
         limparCampos(); 
-        } else {         
+        } else if(js.status === 500){         
         console.log('Erro de Cadastro!'); 
-        finalizar_aguardar();
+        div_erro_BD.style.display ='block';
         }
       }else{
         console.log('Senhas estao Diferentes!');

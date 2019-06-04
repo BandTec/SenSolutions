@@ -11,15 +11,14 @@ router.get('/ultimas', function (req, res, next) {
   }
   banco.conectar().then(() => {
   
-    var limite_linhas = 5;
+    var limite_linhas = 10;
    
-    return banco.sql.query(`select top ${limite_linhas}  
-                            temperatura, 
-                            umidade, 
-                            FORMAT(dataHora AT TIME ZONE 'UTC' AT TIME ZONE 'E.SOUTH AMERICA STANDARD TIME','HH:mm:ss') as dataHora 
-                            from tb_eventos order by idtemp_umid desc`);
+    return banco.sql.query(`select top ${limite_linhas} temperatura,  umidade, 
+    FORMAT(dataHora AT TIME ZONE 'UTC' AT TIME 
+    ZONE 'E. South America Standard Time','HH:mm:ss') as momento 
+    from tb_eventos order by idtemp_umid desc;`);
   }).then(consulta => {
-  dados_atuais.temp_atual = consulta.recordset[0].temperatura;
+    dados_atuais.temp_atual = consulta.recordset[0].temperatura;
     dados_atuais.umid_atual = consulta.recordset[0].umidade;
  
     console.log(consulta.recordset);
@@ -44,32 +43,52 @@ router.get('/estatisticas', function (req, res, next) {
   console.log(banco.conexao);
  
   var estatisticas = {
-    temp_maxima: 0, 
-    temp_minima: 0, 
-    temp_media: 0,
-    umid_maxima:0,
-    umid_minima:0,
-    umid_media:0
+    temp_maxima:0, 
+    temp_minima:0, 
+    temp_priQ :0,
+    temp_segQ :0,
+    temp_terQ :0,
+    umid_maxima:0, 
+    umid_minima:0, 
+    umid_priQ :0,
+    umid_segQ :0,
+    umid_terQ :0
   };
 
   banco.conectar().then(() => {
-    return banco.sql.query(`
-    select 
-    max(temperatura) as temp_maxima, 
-    min(temperatura) as temp_minima, 
-    avg(temperatura) as temp_media,
-    max(umidade) as umid_maxima,
-    min(umidade) as umid_minima,
-    avg(umidade) as umid_media
-      from tb_eventos
-        `);
+    console.log('Cheguei no banco!')
+    return banco.sql.query(`SELECT DISTINCT MIN(CAST([temperatura] AS FLOAT)) OVER(PARTITION BY 1) AS [temp_minima],
+    PERCENTILE_CONT(0.25) WITHIN GROUP(ORDER BY CAST([temperatura] AS FLOAT)) OVER(PARTITION BY 1) AS [temp_priQ],
+    PERCENTILE_CONT(0.5) WITHIN GROUP(ORDER BY CAST([temperatura] AS FLOAT)) OVER(PARTITION BY 1) AS [temp_segQ],
+    PERCENTILE_CONT(0.75) WITHIN GROUP(ORDER BY CAST([temperatura] AS FLOAT)) OVER(PARTITION BY 1) AS [temp_terQ],
+    MAX(CAST([temperatura] AS FLOAT)) OVER(PARTITION BY 1) AS [temp_maxima],
+     MIN(CAST([umidade] AS FLOAT)) OVER(PARTITION BY 1) AS [umid_minima],
+    PERCENTILE_CONT(0.25) WITHIN GROUP(ORDER BY CAST([umidade] AS FLOAT)) OVER(PARTITION BY 1) AS [umid_priQ],
+    PERCENTILE_CONT(0.5) WITHIN GROUP(ORDER BY CAST([umidade] AS FLOAT)) OVER(PARTITION BY 1) AS [umid_segQ],
+    PERCENTILE_CONT(0.75) WITHIN GROUP(ORDER BY CAST([umidade] AS FLOAT)) OVER(PARTITION BY 1) AS [umid_terQ],
+    MAX(CAST([umidade] AS FLOAT)) OVER(PARTITION BY 1) AS [umid_maxima] FROM tb_eventos;`);
+    // (`
+    // select 
+    // max(temperatura) as temp_maxima, 
+    // min(temperatura) as temp_minima, 
+    // avg(temperatura) as temp_media,
+    // max(umidade) as umid_maxima,
+    // min(umidade) as umid_minima,
+    // avg(umidade) as umid_media
+    //   from tb_eventos
+    //     `);
+
   }).then(consulta => {
     estatisticas.temp_maxima = consulta.recordset[0].temp_maxima;
     estatisticas.temp_minima = consulta.recordset[0].temp_minima;
-    estatisticas.temp_media = consulta.recordset[0].temp_media;
+    estatisticas.temp_priQ = consulta.recordset[0].temp_priQ;
+    estatisticas.temp_segQ = consulta.recordset[0].temp_segQ;
+    estatisticas.temp_terQ = consulta.recordset[0].temp_terQ;
     estatisticas.umid_maxima = consulta.recordset[0].umid_maxima;
     estatisticas.umid_minima = consulta.recordset[0].umid_minima;
-    estatisticas.umid_media = consulta.recordset[0].umid_media;
+    estatisticas.umid_priQ = consulta.recordset[0].umid_priQ;
+    estatisticas.umid_segQ = consulta.recordset[0].umid_segQ;
+    estatisticas.umid_terQ = consulta.recordset[0].umid_terQ;
     console.log(`Estatísticas: ${JSON.stringify(estatisticas)}`);
     res.send(estatisticas);
    
@@ -83,6 +102,7 @@ router.get('/estatisticas', function (req, res, next) {
   }).finally(() => {
     banco.sql.close();
   });
+
 
 });
 

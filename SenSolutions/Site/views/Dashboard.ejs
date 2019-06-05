@@ -188,12 +188,12 @@
                         </div>
                     </div>
                     <div class="col-md-4 col-12 mt-3">
-                        <div id="card_temperatura" class="card text-white border-danger mb-3">
-                            <div id="card_header_temperatura" class="card-header border-danger text-center h3">Temperatura Atual</div>
+                        <div id="card_temperatura" class="card text-light bg-danger mb-3">
+                            <div id="card_header_temperatura" class="card-header text-light bg-danger text-center h3">Temperatura Atual</div>
                             <div class="card-body">
                                 <div class="text-center">
-                                    <i id="icon_temp" class="fas fa-thermometer-three-quarters text-danger fa-4x"></i>
-                                    <span class="ml-1 h2" id="dado_temp">Aguarde...</span>
+                                    <i id="icon_temp" class="fas fa-thermometer-three-quarters text-light fa-4x"></i>
+                                    <span class="ml-1 h2 text-light" id="dado_temp">Aguarde...</span>
                                     
                                 </div>
 
@@ -208,9 +208,12 @@
                                         <div class="text-center h4 mb-2">
                                             Dados de umidade atuais
                                         </div>
-                                        <div id="n_max">Obtendo dados...</div>
-                                        <div id="n_med">Obtendo dados...</div>
                                         <div id="n_min">Obtendo dados...</div>
+                                        <div id="n_priQ">Obtendo dados...</div>
+                                        <div id="n_segQ">Obtendo dados...</div>
+                                        <div id="n_terQ">Obtendo dados...</div>
+                                        <div id="n_max">Obtendo dados...</div>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -251,12 +254,12 @@
                         </div>
                     </div>
                     <div class="col-md-4 col-12 mt-3">
-                        <div id="card_umidade" class="card border-primary text-white mb-3">
-                            <div id="card_header_umidade" class="card-header border-primary text-center h3 ">Umidade Atual</div>
+                        <div id="card_umidade" class="card bg-primary text-white mb-3">
+                            <div id="card_header_umidade" class="card-header bg-primary text-light text-center h3 ">Umidade Atual</div>
                             <div class="card-body">
                                 <div class="text-center">
-                                    <i id="icon_umid" class="fas fa-tint text-primary fa-4x"></i>
-                                    <span class="ml-1 h2" id="dado_umid">Aguarde...</span>
+                                    <i id="icon_umid" class="fas fa-tint text-light fa-4x"></i>
+                                    <span class="ml-1 h2 text-light" id="dado_umid">Aguarde...</span>
                                 </div>
                             </div>
                         </div>
@@ -270,9 +273,12 @@
 
 
                                 <div class="text-center">
-                                    <div id="u_max">Obtendo dados...</div>
-                                    <div id="u_med">Obtendo dados...</div>
                                     <div id="u_min">Obtendo dados...</div>
+                                    <div id="u_priQ">Obtendo dados...</div>
+                                    <div id="u_segQ">Obtendo dados...</div>
+                                    <div id="u_terQ">Obtendo dados...</div>
+                                    <div id="u_max">Obtendo dados...</div>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -953,7 +959,10 @@
 </body>
 
 </html>
+
 <script>
+verificarAutenticacao();
+
     window.fcWidget.init({
         token: "d0f183b0-73ae-4db8-80d8-d52f5440717e",
         host: "https://wchat.freshchat.com"

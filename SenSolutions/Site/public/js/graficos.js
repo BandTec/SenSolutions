@@ -1,10 +1,10 @@
 
-var sms = require('../../Utils/apiSms')
+
 
 var usuario;
 var exibiu_graficoTemp = false;
 var exibiu_graficoUmid = false;
-verificarAutenticacao();
+
 
 // Não mexa nestas 3 linhas! 
 // google.load('visualization', '1', {
@@ -150,8 +150,8 @@ function obterDadosGrafico() {
 
                 // console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                 // atualizarUmidade(resposta.umid_atual)
-                dado_temp.innerHTML = `${resposta.temp_atual} °C`;
-                dado_umid.innerHTML = `${resposta.umid_atual} %`;
+                // dado_temp.innerHTML = `${resposta.temp_atual} °C`;
+                // dado_umid.innerHTML = `${resposta.umid_atual} %`;
                 // atualizarTemperatura(resposta.temp_atual)
                 resposta.reverse();
 
@@ -164,17 +164,17 @@ function obterDadosGrafico() {
                     // dos atributos que vem no JSON 
                     // que gerou na consulta ao banco de dados
 
-                    dadostemp.labels.push(registro.dataHora);
+                    dadostemp.labels.push(registro.momento);
                     dadostemp.datasets[0].data.push(registro.temperatura);
                     temperatura_atual = registro.temperatura;
                     umidade_atual = registro.umidade;
-                    dadosumid.labels.push(registro.dataHora);
+                    dadosumid.labels.push(registro.momento);
                     dadosumid.datasets[0].data.push(registro.umidade);
                 }
                 // console.log(resposta);
-
-                atualizarTemperatura(temperatura_atual);
                 atualizarUmidade(umidade_atual);
+                atualizarTemperatura(temperatura_atual);
+               
                 mostrarAlertaTemp(temperatura_atual);
                 mostrarAlertaUmid(umidade_atual);
                 console.log(JSON.stringify(dadostemp, dadosumid));
@@ -192,83 +192,86 @@ function obterDadosGrafico() {
         });
 }
 
-function atualizarTemperatura(temperatura) {
-    dado_temp.innerHTML = `${temperatura} °C`;
-    if (temperatura < 20 || temperatura > 24) {
-        // alert('Perigo baixa umidade!')
-        // sms();
-        $('#card_header_temperatura').addClass('text-light bg-warning');
-        $('#card_temperatura').addClass('bg-warning');
-        $('#card_header_temperatura').removeClass('border-warning');
-        $('#icon_temp').addClass('text-light');
-        $('#dado_temp').addClass('text-light');
-    } else {
-
-        $('#card_header_temperatura').removeClass('text-light bg-warning');
-        $('#card_temperatura').removeClass('bg-warning');
-        $('#card_header_temperatura').addClass('border-warning');
-        $('#icon_temp').removeClass('text-light');
-        $('#dado_temp').removeClass('text-light');
-    }
 
 
 
-}
-
-function atualizarUmidade(umidade) {
-
-    if (umidade < 40 || umidade > 80) {
-        // alert('Perigo baixa umidade!')
-        // sms();
-        $('#card_header_umidade').addClass('text-light bg-warning');
-        $('#card_umidade').addClass('bg-warning');
-        $('#card_header_umidade').removeClass('border-warning');
-        $('#icon_umid').addClass('text-light');
-        $('#dado_umid').addClass('text-light');
-    } else {
-
-        $('#card_header_umidade').removeClass('text-light bg-warning');
-        $('#card_umidade').removeClass('bg-warning');
-        $('#card_header_umidade').addClass('border-warning');
-        $('#icon_umid').removeClass('text-light');
-        $('#dado_umid').removeClass('text-light');
-    }
-    dado_umid.innerHTML = `${umidade} %`;
-}
 
 function mostrarAlertaUmid(umidade) {
-    if (umidade < 50 || umidade > 64) {
+    if (umidade < 45 || umidade > 71) {
         div_alertUmid.style.display = 'block';
-        sms();
-    } else if (umidade < 45 || umidade > 71) {
-        sms();
-    }
+    } 
     else {
         div_alertUmid.style.display = 'none';
     }
 }
-function mostrarAlertaTemp(temperatura) {
-    if (temperatura < 18 || temperatura > 26) {
-        div_alertTemp.style.display = 'block';
-    } else if (temperatura > 28) {
-        div_alertTemp.style.display = 'block';
 
-    } else {
+function atualizarUmidade(umidade) {
+
+    dado_umid.innerHTML = `${umidade} %`;
+    if (umidade < 50 || umidade > 64) {
+        $('#card_header_umidade').removeClass('bg-primary');
+        $('#card_umidade').removeClass('bg-primary');
+        $('#card_header_umidade').addClass('bg-warning');
+        $('#card_umidade').addClass('bg-warning');
+    } 
+    else {
+        $('#card_header_umidade').removeClass('bg-warning');
+        $('#card_umidade').removeClass('bg-warning');
+        $('#card_header_umidade').addClass('bg-primary');
+        $('#card_umidade').addClass('bg-primary');
+    }
+
+}
+
+
+function mostrarAlertaTemp(temperatura) {
+    if (temperatura < 16 || temperatura > 28) {
+        div_alertTemp.style.display = 'block';
+    }
+     else {
         div_alertTemp.style.display = 'none';
     }
 }
+
+function atualizarTemperatura(temperatura) {
+    dado_temp.innerHTML = `${temperatura} °C`;
+    if (temperatura < 18 || temperatura > 26) {
+        $('#card_header_temperatura').removeClass('bg-danger');
+        $('#card_temperatura').removeClass('bg-danger');
+        $('#card_header_temperatura').addClass('bg-warning');
+        $('#card_temperatura').addClass('bg-warning');
+       
+    } else {
+        $('#card_header_temperatura').removeClass('bg-warning');
+        $('#card_temperatura').removeClass('bg-warning');
+        $('#card_header_temperatura').addClass('bg-danger');
+        $('#card_temperatura').addClass('bg-danger');
+        
+    }
+
+
+
+}
+
 function obterDadosAnalyticsTemp() {
     fetch('leituras/estatisticas', { cache: 'no-store' }).then(function (response) {
         if (response.ok) {
             response.json().then(function (respostas) {
                 console.log(`Analytics temperatura recebidos: ${JSON.stringify(respostas)}`);
-                n_med.innerHTML = `Temperatura média: ${respostas.temp_media} °C`;
-                n_max.innerHTML = `Temperatura máxima: ${respostas.temp_maxima} °C`;
+                
+                
                 n_min.innerHTML = `Temperatura minima: ${respostas.temp_minima} °C`;
-                // 
-                u_max.innerHTML = `Umidade máxima: ${respostas.umid_maxima} %`;
+                n_priQ.innerHTML = `1º Quartil: ${respostas.temp_priQ} °C`;
+                n_segQ.innerHTML = `2º Quartil: ${respostas.temp_segQ} °C`;
+                n_terQ.innerHTML = `3º Quartil: ${respostas.temp_terQ} °C`;
+                n_max.innerHTML = `Temperatura máxima: ${respostas.temp_maxima} °C`;
+
+              
                 u_min.innerHTML = `Umidade minima: ${respostas.umid_minima} %`;
-                u_med.innerHTML = `Umidade média ${respostas.umid_media} %`;
+                u_priQ.innerHTML = `1º Quartil: ${respostas.umid_priQ} %`;
+                u_segQ.innerHTML = `2º Quartil: ${respostas.umid_segQ} %`;
+                u_terQ.innerHTML = `3º Quartil: ${respostas.umid_terQ} %`;
+                u_max.innerHTML = `Umidade máxima: ${respostas.umid_maxima} %`;
 
             })
         } else {

@@ -110,5 +110,5 @@ var efetuando_insert = false;
 iniciar_escuta();
 
 setInterval(function(){
-    registrar_leitura(Math.random()*40,Math.random()*100)
+    registrar_leitura(parseInt(Math.random()*32),parseInt(Math.random()*101))
 }, 5000);

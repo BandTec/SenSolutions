@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var banco = require('../app-banco');
-var sms = require('../Utils/apiSms')
+var sms = require('../Utils/apiSms');
 
 router.get('/ultimas', function (req, res, next) {
   console.log(banco.conexao);
@@ -22,7 +22,7 @@ router.get('/ultimas', function (req, res, next) {
     dados_atuais.umid_atual = consulta.recordset[0].umidade;
  if(dados_atuais.temp_atual < 16 || dados_atuais.temp_atual > 28 || dados_atuais.umid_atual < 45 || dados_atuais.umid_atual >71){
    console.log('Enviou dados');
-  // sms();
+  //  sms();
  }
     console.log(consulta.recordset);
     console.log(`Dados atuais: ${JSON.stringify(dados_atuais)}`);
@@ -60,16 +60,16 @@ router.get('/estatisticas', function (req, res, next) {
 
   banco.conectar().then(() => {
     
-    return banco.sql.query(`SELECT DISTINCT MIN(CAST([temperatura] AS FLOAT)) OVER(PARTITION BY 1) AS [temp_minima],
-    PERCENTILE_CONT(0.25) WITHIN GROUP(ORDER BY CAST([temperatura] AS FLOAT)) OVER(PARTITION BY 1) AS [temp_priQ],
-    PERCENTILE_CONT(0.5) WITHIN GROUP(ORDER BY CAST([temperatura] AS FLOAT)) OVER(PARTITION BY 1) AS [temp_segQ],
-    PERCENTILE_CONT(0.75) WITHIN GROUP(ORDER BY CAST([temperatura] AS FLOAT)) OVER(PARTITION BY 1) AS [temp_terQ],
-    MAX(CAST([temperatura] AS FLOAT)) OVER(PARTITION BY 1) AS [temp_maxima],
-     MIN(CAST([umidade] AS FLOAT)) OVER(PARTITION BY 1) AS [umid_minima],
-    PERCENTILE_CONT(0.25) WITHIN GROUP(ORDER BY CAST([umidade] AS FLOAT)) OVER(PARTITION BY 1) AS [umid_priQ],
-    PERCENTILE_CONT(0.5) WITHIN GROUP(ORDER BY CAST([umidade] AS FLOAT)) OVER(PARTITION BY 1) AS [umid_segQ],
-    PERCENTILE_CONT(0.75) WITHIN GROUP(ORDER BY CAST([umidade] AS FLOAT)) OVER(PARTITION BY 1) AS [umid_terQ],
-    MAX(CAST([umidade] AS FLOAT)) OVER(PARTITION BY 1) AS [umid_maxima] FROM tb_eventos;`);
+    return banco.sql.query(`SELECT DISTINCT MIN(CAST([temperatura] AS INT)) OVER(PARTITION BY 1) AS [temp_minima],
+    PERCENTILE_CONT(0.25) WITHIN GROUP(ORDER BY CAST([temperatura] AS INT)) OVER(PARTITION BY 1) AS [temp_priQ],
+    PERCENTILE_CONT(0.5) WITHIN GROUP(ORDER BY CAST([temperatura] AS INT)) OVER(PARTITION BY 1) AS [temp_segQ],
+    PERCENTILE_CONT(0.75) WITHIN GROUP(ORDER BY CAST([temperatura] AS INT)) OVER(PARTITION BY 1) AS [temp_terQ],
+    MAX(CAST([temperatura] AS INT)) OVER(PARTITION BY 1) AS [temp_maxima],
+     MIN(CAST([umidade] AS INT)) OVER(PARTITION BY 1) AS [umid_minima],
+    PERCENTILE_CONT(0.25) WITHIN GROUP(ORDER BY CAST([umidade] AS INT)) OVER(PARTITION BY 1) AS [umid_priQ],
+    PERCENTILE_CONT(0.5) WITHIN GROUP(ORDER BY CAST([umidade] AS INT)) OVER(PARTITION BY 1) AS [umid_segQ],
+    PERCENTILE_CONT(0.75) WITHIN GROUP(ORDER BY CAST([umidade] AS INT)) OVER(PARTITION BY 1) AS [umid_terQ],
+    MAX(CAST([umidade] AS INT)) OVER(PARTITION BY 1) AS [umid_maxima] FROM tb_eventos;`);
     // (`
     // select 
     // max(temperatura) as temp_maxima, 

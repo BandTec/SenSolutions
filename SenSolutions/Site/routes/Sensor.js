@@ -10,11 +10,16 @@ router.post('/cadastrar', function (req, res, next) {
 
   banco.conectar().then(() => {
     console.log(`Chegou p/ cadastro: ${JSON.stringify(req.body)}`);
-    var json = req.body;
+    var posicaoSensor = req.body.PosicaoSensor;
+    var SerialSensor = req.body.SerialSensor;
+
       console.log('inserindo dados no banco');
-         return banco.sql.query(`Insert into tb_sensor(SerialSensor,posicaoSensor,fkLocal) 
-      values ('${json.serialSensor}','${json.posicaoSensor}',1)`);  
+         return banco.sql.query(`Insert into tb_sensor(SerialSensor,posicaoSensor,Temp_Max,Temp_min,Umid_min,Umid_max,fkLocal) 
+      values('${SerialSensor}', '${posicaoSensor}', '40', '0', '0', '100', 1)
+      `);  
   }).then(consulta => {
+    //console.log(`Sensores encontrados para cadastro: ${JSON.stringify(consulta.recordset)}`);
+
     
     res.status(200);
     res.redirect('/dashboard');

@@ -22,7 +22,7 @@ router.get('/ultimas', function (req, res, next) {
     dados_atuais.umid_atual = consulta.recordset[0].umidade;
  if(dados_atuais.temp_atual < 16 || dados_atuais.temp_atual > 28 || dados_atuais.umid_atual < 45 || dados_atuais.umid_atual >71){
    console.log('Enviou dados');
-  sms();
+  // sms();
  }
     console.log(consulta.recordset);
     console.log(`Dados atuais: ${JSON.stringify(dados_atuais)}`);

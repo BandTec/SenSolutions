@@ -151,160 +151,169 @@
                 </div>
             </div>
             <!-- page title area end -->
-            
+
             <!-- main content inner -->
             <div class="main-content-inner">
-                    <div id="div_alertTemp" class="alert alert-danger alert-dismissible fade show mb-0 mt-3 h5 text-danger" style="display:none" role="alert">
-                            <strong class="h3 text-danger">ALERTA!</strong> A temperatura do seu local estão fora do recomendado!
-                            <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <div id="div_alertTemp" class="alert alert-danger alert-dismissible fade show mb-0 mt-3 h5 text-danger"
+                    style="display:none" role="alert">
+                    <strong class="h3 text-danger">ALERTA!</strong> A temperatura do seu local estão fora do
+                    recomendado!
+                    <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button> -->
-                          </div>
-                          <div id="div_alertUmid" class="alert alert-primary alert-dismissible fade show mb-0 mt-3 h5 text-primary" style="display:none" role="alert">
-                            <strong class="h3 text-primary">ALERTA!</strong> A umidade do seu local estão fora do recomendado!
-                            <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button> -->
-                          </div>
-               <section>
-                <!-- inicio grafico -->
-                <div class="row" id="grafico">
-                    <div class="col-lg-8 col-sm-12 mx-auto mt-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <h4 class="header-title mb-0">Grafico</h4>
-                                </div>
-                                <!-- <div  class="h3 text-danger">Dados sendo obtidos...</div> -->
-                                
-                                  <div  id="div_aguarde" class="text-center">
-                                      <div class="h1 text-danger">Aguarde...</div>
-                                      <div class="spinner-border text-danger" style="width: 3rem; height: 3rem;" role="status">
-                                            <span class="sr-only">Loading...</span>
-                                          </div>
-                                  </div>
-                                <canvas id="canvas_temp"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-12 mt-3">
-                        <div id="card_temperatura" class="card text-light bg-danger mb-3">
-                            <div id="card_header_temperatura" class="card-header text-light bg-danger text-center h3">Temperatura Atual</div>
-                            <div class="card-body">
-                                <div class="text-center">
-                                    <i id="icon_temp" class="fas fa-thermometer-three-quarters text-light fa-4x"></i>
-                                    <span class="ml-1 h2 text-light" id="dado_temp">Aguarde...</span>
-                                    
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="single-report mb-xs-30">
-                            <div class="s-report-inner pr--20 pt--30 mb-3">
-                                <div class="icon icon-red"><i class="fas fa-thermometer-three-quarters"></i></div>
-                                <div class="row">
-                                    <div class="col-12 text-center">
-                                        <div class="text-center h4 mb-2">
-                                            Dados de umidade atuais
-                                        </div>
-                                        <div id="n_min">Obtendo dados...</div>
-                                        <div id="n_priQ">Obtendo dados...</div>
-                                        <div id="n_segQ">Obtendo dados...</div>
-                                        <div id="n_terQ">Obtendo dados...</div>
-                                        <div id="n_max">Obtendo dados...</div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="single-report mb-xs-30 mt-3">
-                            <div class="s-report-inner pr--20 pt--30 mb-3">
-                                <div class="icon icon-red"><i class="fas fa-thermometer-three-quarters"></i></div>
-                                <div class="row">
-                                    <div class="col-12 text-center">
-                                        <div class="text-center h4 mb-2">
-                                            Dados de Temperatura recomendados
-                                        </div>
-                                        <div class="text-lead">Temperatura minima: 18°C</div>
-                                        <div class="text-lead">Temperatura média: 22°C</div>
-                                        <div class="text-lead">Temperatura máxima: 28°C</div>
-                                        
-                                        
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-8 col-sm-12 mx-auto mt-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <h4 class="header-title mb-0">Grafico</h4>
-                                </div>
-                                <!-- <div id="div_aguarde1" class="h3 text-primary">Dados sendo obtidos...</div> -->
-                                <div  id="div_aguarde1" class="text-center">
-                                        <div class="h1 text-primary">Aguarde...</div>
-                                        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-                                              <span class="sr-only">Loading...</span>
-                                            </div>
-                                    </div>
-                                <canvas id="canvas_umid"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-12 mt-3">
-                        <div id="card_umidade" class="card bg-primary text-white mb-3">
-                            <div id="card_header_umidade" class="card-header bg-primary text-light text-center h3 ">Umidade Atual</div>
-                            <div class="card-body">
-                                <div class="text-center">
-                                    <i id="icon_umid" class="fas fa-tint text-light fa-4x"></i>
-                                    <span class="ml-1 h2 text-light" id="dado_umid">Aguarde...</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="single-report mb-xs-30">
-                            <div class="s-report-inner pr--20 pt--30 mb-3">
-                                <div class="icon icon-blue"><i class="fas fa-tint"></i></div>
-                                <div class="text-center h4 mb-2">
-                                    Dados de umidade Atuais
-                                </div>
-
-
-                                <div class="text-center">
-                                    <div id="u_min">Obtendo dados...</div>
-                                    <div id="u_priQ">Obtendo dados...</div>
-                                    <div id="u_segQ">Obtendo dados...</div>
-                                    <div id="u_terQ">Obtendo dados...</div>
-                                    <div id="u_max">Obtendo dados...</div>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                        <div class="single-report mb-xs-30 mt-3">
-                            <div class="s-report-inner pr--20 pt--30 mb-3">
-                                <div class="icon icon-blue"><i class="fas fa-tint"></i></div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <div class="text-center h4 mb-2">
-                                            Dados de umidade recomendados
-                                        </div>
-                                        <div class="text-center">
-                                            <div>Umidade minima:40%</div>
-                                            <div>Umidade média:60%</div>
-                                            <div>Umidade máxima:80%</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-                <!-- fim grafico -->
-               </section>
+                <div id="div_alertUmid"
+                    class="alert alert-primary alert-dismissible fade show mb-0 mt-3 h5 text-primary"
+                    style="display:none" role="alert">
+                    <strong class="h3 text-primary">ALERTA!</strong> A umidade do seu local estão fora do recomendado!
+                    <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button> -->
+                </div>
+                <section>
+                    <!-- inicio grafico -->
+                    <div class="row" id="grafico">
+                        <div class="col-lg-8 col-sm-12 mx-auto mt-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <h4 class="header-title mb-0">Grafico</h4>
+                                    </div>
+                                    <!-- <div  class="h3 text-danger">Dados sendo obtidos...</div> -->
+
+                                    <div id="div_aguarde" class="text-center">
+                                        <div class="h1 text-danger">Aguarde...</div>
+                                        <div class="spinner-border text-danger" style="width: 3rem; height: 3rem;"
+                                            role="status">
+                                            <span class="sr-only">Loading...</span>
+                                        </div>
+                                    </div>
+                                    <canvas id="canvas_temp"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-12 mt-3">
+                            <div id="card_temperatura" class="card text-light bg-danger mb-3">
+                                <div id="card_header_temperatura"
+                                    class="card-header text-light bg-danger text-center h3">Temperatura Atual</div>
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <i id="icon_temp"
+                                            class="fas fa-thermometer-three-quarters text-light fa-4x"></i>
+                                        <span class="ml-1 h2 text-light" id="dado_temp">Aguarde...</span>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="single-report mb-xs-30">
+                                <div class="s-report-inner pr--20 pt--30 mb-3">
+                                    <div class="icon icon-red"><i class="fas fa-thermometer-three-quarters"></i></div>
+                                    <div class="row">
+                                        <div class="col-12 text-center">
+                                            <div class="text-center h4 mb-2">
+                                                Dados de umidade atuais
+                                            </div>
+                                            <div id="n_min">Obtendo dados...</div>
+                                            <div id="n_priQ">Obtendo dados...</div>
+                                            <div id="n_segQ">Obtendo dados...</div>
+                                            <div id="n_terQ">Obtendo dados...</div>
+                                            <div id="n_max">Obtendo dados...</div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="single-report mb-xs-30 mt-3">
+                                <div class="s-report-inner pr--20 pt--30 mb-3">
+                                    <div class="icon icon-red"><i class="fas fa-thermometer-three-quarters"></i></div>
+                                    <div class="row">
+                                        <div class="col-12 text-center">
+                                            <div class="text-center h4 mb-2">
+                                                Dados de Temperatura recomendados
+                                            </div>
+                                            <div class="text-lead">Temperatura minima: 18°C</div>
+                                            <div class="text-lead">Temperatura média: 22°C</div>
+                                            <div class="text-lead">Temperatura máxima: 28°C</div>
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-sm-12 mx-auto mt-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <h4 class="header-title mb-0">Grafico</h4>
+                                    </div>
+                                    <!-- <div id="div_aguarde1" class="h3 text-primary">Dados sendo obtidos...</div> -->
+                                    <div id="div_aguarde1" class="text-center">
+                                        <div class="h1 text-primary">Aguarde...</div>
+                                        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;"
+                                            role="status">
+                                            <span class="sr-only">Loading...</span>
+                                        </div>
+                                    </div>
+                                    <canvas id="canvas_umid"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-12 mt-3">
+                            <div id="card_umidade" class="card bg-primary text-white mb-3">
+                                <div id="card_header_umidade" class="card-header bg-primary text-light text-center h3 ">
+                                    Umidade Atual</div>
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <i id="icon_umid" class="fas fa-tint text-light fa-4x"></i>
+                                        <span class="ml-1 h2 text-light" id="dado_umid">Aguarde...</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="single-report mb-xs-30">
+                                <div class="s-report-inner pr--20 pt--30 mb-3">
+                                    <div class="icon icon-blue"><i class="fas fa-tint"></i></div>
+                                    <div class="text-center h4 mb-2">
+                                        Dados de umidade Atuais
+                                    </div>
+
+
+                                    <div class="text-center">
+                                        <div id="u_min">Obtendo dados...</div>
+                                        <div id="u_priQ">Obtendo dados...</div>
+                                        <div id="u_segQ">Obtendo dados...</div>
+                                        <div id="u_terQ">Obtendo dados...</div>
+                                        <div id="u_max">Obtendo dados...</div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="single-report mb-xs-30 mt-3">
+                                <div class="s-report-inner pr--20 pt--30 mb-3">
+                                    <div class="icon icon-blue"><i class="fas fa-tint"></i></div>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="text-center h4 mb-2">
+                                                Dados de umidade recomendados
+                                            </div>
+                                            <div class="text-center">
+                                                <div>Umidade minima:40%</div>
+                                                <div>Umidade média:60%</div>
+                                                <div>Umidade máxima:80%</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- fim grafico -->
+                </section>
 
                 <!-- Inicio CRUD -->
                 <section>
@@ -317,7 +326,8 @@
                                     <div class="modal-content">
                                         <div class="modal-header ">
                                             <h5 class="modal-title ">Cadastrar sensores</h5>
-                                            <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                                            <button type="button" class="close"
+                                                data-dismiss="modal"><span>&times;</span></button>
                                         </div>
                                         <div class="modal-body">
                                             <div class="mx-auto">
@@ -327,33 +337,33 @@
                                                     </div>
                                                     <form class="user" action="/Sensor/cadastrar" method="post">
                                                         <div id="div_brancos"
-                                                        class="alert alert-danger alert-dismissible fade show" role="alert"
-                                                        style="display: none;">
-                                                        <strong>Preencha todos os campos!</strong>
-                                                        <button type="button" class="close" data-dismiss="alert"
-                                                            aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div id="div_sucess"
-                                                        class="alert alert-success alert-dismissible fade show" role="alert"
-                                                        style="display: none;">
-                                                        <strong>Cadastro realizado com Sucesso!</strong>
-                                                        <button type="button" class="close" data-dismiss="alert"
-                                                            aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
-                                                    <div id="div_erro"
-                                                        class="alert alert-danger alert-dismissible fade show" role="alert"
-                                                        style="display: none;">
-                                                        <strong>Erro ao Cadastrar um local</strong> Digite os campos
-                                                        novamente.
-                                                        <button type="button" class="close" data-dismiss="alert"
-                                                            aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                    </div>
+                                                            class="alert alert-danger alert-dismissible fade show"
+                                                            role="alert" style="display: none;">
+                                                            <strong>Preencha todos os campos!</strong>
+                                                            <button type="button" class="close" data-dismiss="alert"
+                                                                aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div id="div_sucess"
+                                                            class="alert alert-success alert-dismissible fade show"
+                                                            role="alert" style="display: none;">
+                                                            <strong>Cadastro realizado com Sucesso!</strong>
+                                                            <button type="button" class="close" data-dismiss="alert"
+                                                                aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div id="div_erro"
+                                                            class="alert alert-danger alert-dismissible fade show"
+                                                            role="alert" style="display: none;">
+                                                            <strong>Erro ao Cadastrar um local</strong> Digite os campos
+                                                            novamente.
+                                                            <button type="button" class="close" data-dismiss="alert"
+                                                                aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
                                                         <div class="form-group">
                                                             <div class="form-group">
 
@@ -364,13 +374,15 @@
                                                                         </span>
                                                                     </div>
                                                                     <input class="form-control" type="text"
-                                                                        id="identifica_sens" name="SerialSensor" placeholder="Nº">
+                                                                        id="identifica_sens" name="SerialSensor"
+                                                                        placeholder="Nº">
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="form-group">
                                                             <input type="text" class="form-control form-control-user"
-                                                                id="id_pos_sens" name="PosicaoSensor" placeholder="Posição do sensor">
+                                                                id="id_pos_sens" name="PosicaoSensor"
+                                                                placeholder="Posição do sensor">
                                                         </div>
                                                         <button id="btn_Cadastrar_Sensor" class="btn btn-lg btn-primary btn-block btn-user btn-login
                                                         text-uppercase font-weight-bold mb-2">Cadastre o Sensor
@@ -381,7 +393,8 @@
                                         </div>
                                         <div class="modal-footer">
                                             <div class="mx-auto">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Fechar</button>
                                             </div>
                                         </div>
                                     </div>
@@ -490,7 +503,8 @@
                                     <div class="modal-content">
                                         <div class="modal-header ">
                                             <h5 class="modal-title ">Cadastrar Locais</h5>
-                                            <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                                            <button type="button" class="close"
+                                                data-dismiss="modal"><span>&times;</span></button>
                                         </div>
                                         <div class="modal-body">
                                             <form class="user" action="/local/cadastrar" method="post">
@@ -572,7 +586,8 @@
                                         </div>
                                         <div class="modal-footer">
                                             <div class="mx-auto">
-                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Fechar</button>
                                             </div>
                                         </div>
                                     </div>
@@ -583,7 +598,7 @@
                     </div>
                 </section>
                 <!-- Fim CRUD -->
-                
+
                 <!-- Inicio Listas -->
                 <section>
                     <!-- Modal Lista sensor-->
@@ -592,7 +607,8 @@
                             <div class="modal-content">
                                 <div class="modal-header ">
                                     <h5 class="modal-title ">Listar sensores</h5>
-                                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                                    <button type="button" class="close"
+                                        data-dismiss="modal"><span>&times;</span></button>
                                 </div>
                                 <div class="modal-body">
                                     <div class="mx-auto">
@@ -602,29 +618,31 @@
                                             <table class="table table-borderless" id="Datatable">
                                                 <thead>
                                                     <tr>
-                                                        <th scope="col">ID</th>
-                                                        <th scope="col">Email</th>
-                                                        <th scope="col">Nome</th>
-                                                        <th scope="col">Senha</th>
+
+                                                        <th scope="col">N.Serial</th>
+                                                        <th scope="col">Posição </th>
+                                                        <th scope="col">Temp Max</th>
+                                                        <th scope="col">Temp Min</th>
+                                                        <th scope="col">Umid Max</th>
+                                                        <th scope="col">Umid Min</th>
+
                                                     </tr>
                                                 </thead>
                                                 <tbody>
 
-                                                    <tr>
-                                                        <th scope="row"> 1</th>
-                                                        <td>Jacob</td>
-                                                        <td>Jacob@jacob.com</td>
-                                                        <td>12345</td>
+                                                    <%results.forEach((rs)=>{ %>
+                                                    <tr data-row="<%= JSON.stringify(rs) %>">
+
+                                                        <td><%=rs.SerialSensor%></td>
+                                                        <td><%=rs.posicaoSensor%></td>
+                                                        <td><%=rs.Temp_Max%></td>
+                                                        <td><%=rs.Temp_Min%></td>
+                                                        <td><%=rs.Umid_Min%></td>
+                                                        <td><%=rs.Umid_Max%></td>
                                                         <td>
-                                                            <div class="row ">
+                                                            <div class="row">
                                                                 <div class="btn-group btn-group-toggle"
                                                                     data-toggle="buttons">
-                                                                    <a href="#" class="btn btn-success btn-icon-split">
-                                                                        <span class="icon text-white-50">
-                                                                            <i class="fas fa-eye"></i>
-                                                                        </span>
-                                                                        <span class="text">Visualizar</span>
-                                                                    </a>
                                                                     <a href="#" class="btn btn-warning btn-icon-split">
                                                                         <span class="icon text-white-50">
                                                                             <i class="fas fa-cog"></i>
@@ -639,42 +657,9 @@
                                                                     </a>
                                                                 </div>
                                                             </div>
-
                                                         </td>
                                                     </tr>
-                                                    <tr>
-                                                        <th scope="row"> 1</th>
-                                                        <td>Jacob</td>
-                                                        <td>Jacob@jacob.com</td>
-                                                        <td>12345</td>
-                                                        <td>
-                                                            <div class="row ">
-                                                                <div class="btn-group btn-group-toggle"
-                                                                    data-toggle="buttons">
-                                                                    <a href="#" class="btn btn-success btn-icon-split">
-                                                                        <span class="icon text-white-50">
-                                                                            <i class="fas fa-eye"></i>
-                                                                        </span>
-                                                                        <span class="text">Visualizar</span>
-                                                                    </a>
-                                                                    <a href="#" class="btn btn-warning btn-icon-split">
-                                                                        <span class="icon text-white-50">
-                                                                            <i class="fas fa-cog"></i>
-                                                                        </span>
-                                                                        <span class="text">Editar</span>
-                                                                    </a>
-                                                                    <a href="#" class="btn btn-danger btn-icon-split">
-                                                                        <span class="icon text-white-50">
-                                                                            <i class="fas fa-trash"></i>
-                                                                        </span>
-                                                                        <span class="text">Excluir</span>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-
-                                                        </td>
-                                                    </tr>
-
+                                                    <%})%>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -691,7 +676,7 @@
                         </div>
                     </div>
                     <!-- end modal -->
-    
+
                     <!-- Modal  Lista usuario-->
                     <div class="modal fade" id="listausuario">
                         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
@@ -702,91 +687,49 @@
                                         data-dismiss="modal"><span>&times;</span></button>
                                 </div>
                                 <div class="modal-body">
-                                        <div class="mx-auto">
-                                            <h1 class="h3 mb-2 text-gray-800">Dados dos usuários</h1>
-                                            <!-- DataTales Example -->
-                                            <div class="table-responsive">
-                                                <table class="table table-borderless" id="Datatable">
-                                                    <thead>
-                                                        <tr>
-                                                            <th scope="col">ID</th>
-                                                            <th scope="col">Email</th>
-                                                            <th scope="col">Nome</th>
-                                                            <th scope="col">Senha</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-    
-                                                        <tr>
-                                                            <th scope="row"> 1</th>
-                                                            <td>Jacob</td>
-                                                            <td>Jacob@jacob.com</td>
-                                                            <td>12345</td>
-                                                            <td>
-                                                                <div class="row ">
-                                                                    <div class="btn-group btn-group-toggle"
-                                                                        data-toggle="buttons">
-                                                                        <a href="#" class="btn btn-success btn-icon-split">
-                                                                            <span class="icon text-white-50">
-                                                                                <i class="fas fa-eye"></i>
-                                                                            </span>
-                                                                            <span class="text">Visualizar</span>
-                                                                        </a>
-                                                                        <a href="#" class="btn btn-warning btn-icon-split">
-                                                                            <span class="icon text-white-50">
-                                                                                <i class="fas fa-cog"></i>
-                                                                            </span>
-                                                                            <span class="text">Editar</span>
-                                                                        </a>
-                                                                        <a href="#" class="btn btn-danger btn-icon-split">
-                                                                            <span class="icon text-white-50">
-                                                                                <i class="fas fa-trash"></i>
-                                                                            </span>
-                                                                            <span class="text">Excluir</span>
-                                                                        </a>
-                                                                    </div>
+                                    <div class="mx-auto">
+                                        <h1 class="h3 mb-2 text-gray-800">Dados dos usuários</h1>
+                                        <!-- DataTales Example -->
+                                        <div class="table-responsive">
+                                            <table class="table table-borderless" id="Datatable">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Nome</th>
+                                                        <th scope="col">Email</th>                                        
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <%results.forEach((rs)=>{ %>
+                                                    <tr data-row="<%= JSON.stringify(rs) %>">
+                                                        <td><%=rs.nomeUsuario%></td>
+                                                        <td><%=rs.Email%></td>
+
+                                                        <td>
+                                                            <div class="row">
+                                                                <div class="btn-group btn-group-toggle"
+                                                                    data-toggle="buttons">
+                                                                    <a href="#" class="btn btn-warning btn-icon-split">
+                                                                        <span class="icon text-white-50">
+                                                                            <i class="fas fa-cog"></i>
+                                                                        </span>
+                                                                        <span class="text">Editar</span>
+                                                                    </a>
+                                                                    <a href="#" class="btn btn-danger btn-icon-split">
+                                                                        <span class="icon text-white-50">
+                                                                            <i class="fas fa-trash"></i>
+                                                                        </span>
+                                                                        <span class="text">Excluir</span>
+                                                                    </a>
                                                                 </div>
-    
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <th scope="row"> 1</th>
-                                                            <td>Jacob</td>
-                                                            <td>Jacob@jacob.com</td>
-                                                            <td>12345</td>
-                                                            <td>
-                                                                <div class="row ">
-                                                                    <div class="btn-group btn-group-toggle"
-                                                                        data-toggle="buttons">
-                                                                        <a href="#" class="btn btn-success btn-icon-split">
-                                                                            <span class="icon text-white-50">
-                                                                                <i class="fas fa-eye"></i>
-                                                                            </span>
-                                                                            <span class="text">Visualizar</span>
-                                                                        </a>
-                                                                        <a href="#" class="btn btn-warning btn-icon-split">
-                                                                            <span class="icon text-white-50">
-                                                                                <i class="fas fa-cog"></i>
-                                                                            </span>
-                                                                            <span class="text">Editar</span>
-                                                                        </a>
-                                                                        <a href="#" class="btn btn-danger btn-icon-split">
-                                                                            <span class="icon text-white-50">
-                                                                                <i class="fas fa-trash"></i>
-                                                                            </span>
-                                                                            <span class="text">Excluir</span>
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-    
-                                                            </td>
-                                                        </tr>
-    
-                                                    </tbody>
-                                                </table>
-                                            </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <%})%>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
+                                </div>
 
                                 <div class="modal-footer">
                                     <div class="mx-auto">
@@ -809,7 +752,7 @@
                                     <button type="button" class="close"
                                         data-dismiss="modal"><span>&times;</span></button>
                                 </div>
-                             <div class="modal-body">
+                                <div class="modal-body">
                                     <div class="mx-auto">
 
                                         <h1 class="h3 mb-2 text-gray-800">Dados dos Locais</h1>
@@ -841,26 +784,26 @@
                                                         <td><%=rs.bairro%></td>
                                                         <td><%=rs.cidade%></td>
                                                         <td>
-                                                                <div class="row">
-                                                                    <div class="btn-group btn-group-toggle"
-                                                                        data-toggle="buttons">
-                                                                        <a href="#" class="btn btn-warning btn-icon-split">
-                                                                            <span class="icon text-white-50">
-                                                                                <i class="fas fa-cog"></i>
-                                                                            </span>
-                                                                            <span class="text">Editar</span>
-                                                                        </a>
-                                                                        <a href="#" class="btn btn-danger btn-icon-split">
-                                                                            <span class="icon text-white-50">
-                                                                                <i class="fas fa-trash"></i>
-                                                                            </span>
-                                                                            <span class="text">Excluir</span>
-                                                                        </a>
-                                                                    </div>
+                                                            <div class="row">
+                                                                <div class="btn-group btn-group-toggle"
+                                                                    data-toggle="buttons">
+                                                                    <a href="#" class="btn btn-warning btn-icon-split">
+                                                                        <span class="icon text-white-50">
+                                                                            <i class="fas fa-cog"></i>
+                                                                        </span>
+                                                                        <span class="text">Editar</span>
+                                                                    </a>
+                                                                    <a href="#" class="btn btn-danger btn-icon-split">
+                                                                        <span class="icon text-white-50">
+                                                                            <i class="fas fa-trash"></i>
+                                                                        </span>
+                                                                        <span class="text">Excluir</span>
+                                                                    </a>
                                                                 </div>
+                                                            </div>
                                                         </td>
                                                     </tr>
-                                                    <%})%>                                            
+                                                    <%})%>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -939,7 +882,7 @@
         </footer>
         <!-- End Footer Area -->
     </div>
-<!-- End page container area -->
+    <!-- End page container area -->
 
     <!-- Inicio core -->
     <script src="js/jquery-3.3.1.min.js"></script>
@@ -963,7 +906,7 @@
 </html>
 
 <script>
-verificarAutenticacao();
+    verificarAutenticacao();
 
     window.fcWidget.init({
         token: "d0f183b0-73ae-4db8-80d8-d52f5440717e",

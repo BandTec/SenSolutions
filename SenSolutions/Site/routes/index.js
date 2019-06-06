@@ -10,13 +10,14 @@ router.get('/dashboard',function(req,res,next){
   
     var limite_linhas = 5;
    
-    return banco.sql.query(`select *  from tb_endereco`);
+    return banco.sql.query(`select * from tb_cliente full join tb_local on idCliente = FkCLiente
+full join tb_endereco on idEndereco = fkEndereco
+full join tb_sensor on idlocal = fkLocal 
+`);
   }).then(consulta => {
  
     res.render('dashboard',{results:consulta.recordset});
   
-  
-
   }).catch(err => {
 
     var erro = `Erro na leitura dos últimos registros: ${err}`;
@@ -26,9 +27,8 @@ router.get('/dashboard',function(req,res,next){
   }).finally(() => {
     banco.sql.close();
   });
-
- 
 });
+
 
 
 module.exports = router;

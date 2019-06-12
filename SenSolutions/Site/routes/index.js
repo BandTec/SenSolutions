@@ -28,6 +28,30 @@ full join tb_sensor on idlocal = fkLocal
     banco.sql.close();
   });
 });
+router.get('/dashboard/todos',function(req,res,next){
+  
+  banco.conectar().then(() => {
+  
+    var limite_linhas = 5;
+   
+    return banco.sql.query(`select * from tb_cliente full join tb_local on idCliente = FkCLiente
+full join tb_endereco on idEndereco = fkEndereco
+full join tb_sensor on idlocal = fkLocal 
+`);
+  }).then(consulta => {
+ 
+    res.render('dashboard',{results:consulta.recordset});
+  
+  }).catch(err => {
+
+    var erro = `Erro na leitura dos últimos registros: ${err}`;
+    console.error(erro);
+    res.sendStatus(500).send(erro);
+
+  }).finally(() => {
+    banco.sql.close();
+  });
+});
 
 
 

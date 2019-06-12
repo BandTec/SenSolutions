@@ -20,7 +20,8 @@ router.get('/ultimas', function (req, res, next) {
   }).then(consulta => {
     dados_atuais.temp_atual = consulta.recordset[0].temperatura;
     dados_atuais.umid_atual = consulta.recordset[0].umidade;
- if(dados_atuais.temp_atual < 16 || dados_atuais.temp_atual > 28 || dados_atuais.umid_atual < 45 || dados_atuais.umid_atual >71){
+ if(dados_atuais.temp_atual < 16 || dados_atuais.temp_atual > 28 ||
+   dados_atuais.umid_atual < 45 || dados_atuais.umid_atual >71){
    console.log('Enviou dados');
   //  sms();
  }
@@ -72,7 +73,8 @@ router.get('/estatisticas', function (req, res, next) {
     MAX(CAST([umidade] AS INT)) OVER(PARTITION BY 1) AS [umid_maxima] FROM tb_eventos;`);
     // (`
     // select 
-    // max(temperatura) as temp_maxima, 
+    // max(temperatura) as temp_maxima,
+    // max(temp)+avg(temp)/2  as [terceiro quartil]
     // min(temperatura) as temp_minima, 
     // avg(temperatura) as temp_media,
     // max(umidade) as umid_maxima,
@@ -105,8 +107,6 @@ router.get('/estatisticas', function (req, res, next) {
   }).finally(() => {
     banco.sql.close();
   });
-
-
 });
 
 

@@ -35,19 +35,19 @@ router.post('/cadastrar', function (req, res, next) {
   });
 });
 
-router.get('/', function (req, res, next) {
+router.get('/id', function (req, res, next) {
  
   banco.conectar().then(() => {
-    console.log(`Chegou p/ cadastro: ${JSON.stringify(req.query)}`);
-    var json = req.query;
-    return banco.sql.query(`Select * from tb_sensor where idSensor = ${json.id};`);
+    console.log(`Chegou p/ cadastro: ${JSON.stringify(req.body)}`);
+    
+    return banco.sql.query(`Select * from tb_sensor where idSensor = ${req.body.idsensor};`);
   }).then(consulta => {
+    // console.log(`Sensores encontrados: ${JSON.stringify(consulta.recordset)}`);
 
-    console.log(json);
     res.status(200);
     res.send(consulta.recordset);
   }).catch(err => {
-    var erro = `Erro no login: ${err}`;
+    var erro = `Erro no delete: ${err}`;
     console.error(erro);
     res.status(500).send(erro);
 

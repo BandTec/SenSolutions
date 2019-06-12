@@ -46,17 +46,16 @@ function cadLocal(cep, rua ,bairro, uf ,cidade) {
     return false;
 }
 
-// getUsuariosId(7);
+getUsuariosId(7);
 
-// function getUsuariosId(id) {
+function getUsuariosId(id) {
 
-
-//     fetch(`usuarios/?id=${id}`, {
-//         method: "GET"
-//     }).then(js => {
-//         return js.json();
-//     }).then(rs => {
-//         console.log(rs);
-//     });
-//     return false;
-// }
+    fetch(`usuarios/?id=${id}`, {
+        method: "GET"
+    }).then(js => {
+        return js.json();
+    }).then(rs => {
+        console.log(rs);
+    });
+    return false;
+}

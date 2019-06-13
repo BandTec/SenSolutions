@@ -81,7 +81,7 @@ function limparCampos() {
     return false;
   }
 
-  function getUsuariosId(id) {
+  function deleteById(id) {
 
     fetch(`usuarios/delete/?id=${id}`, {
       method: "GET"

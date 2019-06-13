@@ -49,7 +49,7 @@
                     <nav>
                         <ul class="metismenu " id="menu">
                             <li>
-                                <a class="text-light" href="Dashboard.html"><i class="fas fa-home text-primary"></i>
+                                <a class="text-light" href="Dashboard"><i class="fas fa-home text-primary"></i>
                                     Home</a>
                             </li>
                             <li class="active " Sensores>
@@ -357,25 +357,25 @@
                                                         <div id="div_erro"
                                                             class="alert alert-danger alert-dismissible fade show"
                                                             role="alert" style="display: none;">
-                                                            <strong>Erro ao Cadastrar um local</strong> Digite os campos
+                                                            <strong>Erro ao Cadastrar um Sensor</strong> Digite os
+                                                            campos
                                                             novamente.
                                                             <button type="button" class="close" data-dismiss="alert"
                                                                 aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
                                                         </div>
-                                                        <div class="form-group" >
-                                                            <div class="form-group" >
-                                                                    <div class="input-group" style="display: none;">
-                                                                            <div class="input-group-prepend">
-                                                                                <span class="input-group-text">
-                                                                                    Codigo:
-                                                                                </span>
-                                                                            </div>
-                                                                            <input class="form-control" type="text"
-                                                                                id="idSensor" name="idsensor"
-                                                                                placeholder="Nº">
-                                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="form-group">
+                                                                <div class="input-group" style="display: none;">
+                                                                    <div class="input-group-prepend">
+                                                                        <span class="input-group-text">
+                                                                            Codigo:
+                                                                        </span>
+                                                                    </div>
+                                                                    <input class="form-control" type="text"
+                                                                        id="idSensor" name="idsensor" placeholder="Nº">
+                                                                </div>
 
                                                                 <div class="input-group">
                                                                     <div class="input-group-prepend">
@@ -426,8 +426,7 @@
                                                 data-dismiss="modal"><span>&times;</span></button>
                                         </div>
                                         <div class="modal-body">
-                                            <form class="user" form id="form_Cad_Usu" method="post"
-                                                onsubmit="return  cadastroUsuario()">
+                                            <form class="user" action="/usuarios/cadastrarUsu" method="post">
                                                 <div id="div_brancos"
                                                     class="alert alert-danger alert-dismissible fade show" role="alert"
                                                     style="display: none;">
@@ -479,14 +478,10 @@
                                                             placeholder="Repita sua senha.">
                                                     </div>
                                                 </div>
-                                                <!-- <button
-                                                    onclick="cadastroUsuario(nome_user.value,email_user.value,senha_user.value,repeat_senha.value)"
-                                                    id="btn_Cadastrar_usu"
-                                                    class="btn btn-lg btn-primary btn-user btn-block btn-login text-uppercase font-weight-bold mb-2">Cadastre-se
-                                                </button> -->
-                                                <a href="Dashboard" class="btn btn-outline-primary btn-user btn-block">
-                                                    Registrar
-                                                </a>
+                                                <button id="btn_Cadastrar_Usuarios" class="btn btn-lg btn-primary btn-block btn-user btn-login
+                                                        text-uppercase font-weight-bold mb-2">Cadastre o Usuario
+                                                </button>
+
                                             </form>
                                         </div>
                                         <div class="modal-footer">
@@ -577,12 +572,19 @@
                                                 <div class="form-group row">
                                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                                         <input type="text" class="form-control form-control-user"
-                                                            id="uf" name="uf" size="2" placeholder="Digite o
-                                                                Estado.">
+                                                            id="uf" name="uf" size="2" placeholder="Digite o Estado.">
                                                     </div>
+
                                                     <div class="col-sm-6">
                                                         <input type="number" class="form-control form-control-user"
-                                                            id="num" placeholder="Digite o Numero.">
+                                                            id="numero" name="numero" laceholder="Digite o Numero.">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="form-group">
+                                                        <input type="text" class="form-control form-control-user"
+                                                            name="complemento" id="complemento" size="40"
+                                                            placeholder="Digite o Complemento.">
                                                     </div>
                                                 </div>
                                                 <button id="btn_Cadastrar_local" class="btn btn-lg btn-primary btn-block btn-user btn-login
@@ -705,7 +707,7 @@
                                                 <thead>
                                                     <tr>
                                                         <th scope="col">Nome</th>
-                                                        <th scope="col">Email</th>                                        
+                                                        <th scope="col">Email</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -718,18 +720,39 @@
                                                             <div class="row">
                                                                 <div class="btn-group btn-group-toggle"
                                                                     data-toggle="buttons">
-                                                                    <a href="#" class="btn btn-warning btn-icon-split">
-                                                                        <span class="icon text-white-50">
-                                                                            <i class="fas fa-cog"></i>
-                                                                        </span>
-                                                                        <span class="text">Editar</span>
-                                                                    </a>
-                                                                    <a href="#" class="btn btn-danger btn-icon-split">
+                                                                    <!-- <form class="user" action="/usuarios/edit/"
+                                                                        method="put">
+                                                                        <button id="btn_editar_usuario"
+                                                                            class="btn btn-warning btn-icon-split">
+                                                                            <span class="icon text-white-50">
+                                                                                <i class="fas fa-cog"></i>
+                                                                            </span>
+                                                                            <span class="text"> Editar </span>
+                                                                        </button>
+                                                                    </form> -->
+                                                                      <a href="#"
+                                                                          class="btn btn-warning btn-icon-split">
+                                                                          <span class="icon text-white-50">
+                                                                              <i class="fas fa-cog"></i>
+                                                                          </span>
+                                                                          <span class="text">Editar</span>
+                                                                      </a>
+                                                                    <form class="user" action="/usuarios/delete/"
+                                                                        method="delete">
+                                                                        <button id="btn_excluir_usuario"
+                                                                            class="btn btn-danger btn-icon-split">
+                                                                            <span class="icon text-white-50"><i
+                                                                                    class="fas fa-trash"></i></span>
+                                                                            <span class="text"> Excluir </span>
+                                                                        </button>
+                                                                    </form>
+                                                                  
+                                                                    <!-- <a href="#" class="btn btn-danger btn-icon-split">
                                                                         <span class="icon text-white-50">
                                                                             <i class="fas fa-trash"></i>
                                                                         </span>
                                                                         <span class="text">Excluir</span>
-                                                                    </a>
+                                                                    </a> -->
                                                                 </div>
                                                             </div>
                                                         </td>
@@ -776,10 +799,11 @@
                                                         <!-- <th scope="col">ID</th> -->
                                                         <th scope="col">Cep</th>
                                                         <th scope="col">Rua</th>
+                                                        <th scope="col">Num</th>
+                                                        <th scope="col">Comp</th>
                                                         <th scope="col">Estado</th>
                                                         <th scope="col">Bairro</th>
                                                         <th scope="col">Cidade</th>
-                                                        <th scope="col">Opções</th>
 
                                                     </tr>
                                                 </thead>
@@ -790,21 +814,24 @@
                                                         <!-- <td><%=rs.idEndereco%></td> -->
                                                         <td><%=rs.CEP%></td>
                                                         <td><%=rs.logradouro%></td>
+                                                        <td><%=rs.numero%></td>
+                                                        <td><%=rs.complemento%></td>
                                                         <td><%=rs.ufEstado%></td>
                                                         <td><%=rs.bairro%></td>
                                                         <td><%=rs.cidade%></td>
+
                                                         <td>
                                                             <div class="row">
                                                                 <div class="btn-group btn-group-toggle"
                                                                     data-toggle="buttons">
                                                                     <a href="#" class="btn btn-warning btn-icon-split">
-                                                                        <span class="icon text-white-50">
+                                                                        <span class="icon text-white-30">
                                                                             <i class="fas fa-cog"></i>
                                                                         </span>
                                                                         <span class="text">Editar</span>
                                                                     </a>
                                                                     <a href="#" class="btn btn-danger btn-icon-split">
-                                                                        <span class="icon text-white-50">
+                                                                        <span class="icon text-white-30">
                                                                             <i class="fas fa-trash"></i>
                                                                         </span>
                                                                         <span class="text">Excluir</span>

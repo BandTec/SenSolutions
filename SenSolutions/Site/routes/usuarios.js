@@ -37,21 +37,46 @@ router.post('/entrar', function (req, res, next) {
   });
 
 });
+router.post('/cadastrarUsu', function (req, res, next) {
+
+  banco.conectar().then(() => {
+    console.log(`Chegou p/ cadastro: ${JSON.stringify(req.body)}`);
+    var nome = req.body.nome;
+    var email = req.body.email;
+    var senha = req.body.senha;
+
+    console.log('inserindo dados no banco');
+    return banco.sql.query(`Insert into tb_cliente(nomeUsuario,senhaUsuario,Email) 
+      values ('${nome}','${senha}','${email}')`);
+  }).then(consulta => {
+    //console.log(`Sensores encontrados para cadastro: ${JSON.stringify(consulta.recordset)}`);
+    res.status(200);
+    res.redirect('/dashboard');
+
+    console.log(consulta);
+  }).catch(err => {
+    var erro = `Erro no cadastro: ${err}`;
+    console.error(erro);
+    res.status(500).send(erro);
+
+  }).finally(() => {
+    banco.sql.close();
+  });
+});
 
 router.post('/cadastrar', function (req, res, next) {
 
   banco.conectar().then(() => {
     console.log(`Chegou p/ cadastro: ${JSON.stringify(req.query)}`);
     var json = req.query;
-    if(json.user == '' || json.password == '' || json.email == ''){
-      console.log('Preencha todos os campos');
-    }else{
+    
       console.log('inserindo dados no banco');
       return banco.sql.query(`Insert into tb_cliente(nomeUsuario,senhaUsuario,Email) 
       values ('${json.user}','${json.password}','${json.email}')`);
-    }
+    
     
   }).then(consulta => {
+    console.log(consulta.recordset);
     
     res.status(200);
     res.send('ok');
@@ -74,7 +99,7 @@ router.get('/', function (req, res, next) {
     return banco.sql.query(`Select * from tb_cliente where idcliente = ${json.idcliente};`);
   }).then(consulta => {
 
-    console.log(consulta.recordset)
+    console.log(consulta.recordset);
     res.status(200);
     res.send(consulta.recordset);
   }).catch(err => {
@@ -127,9 +152,7 @@ router.get('/delete/:id', function(req, res, next) {
     return banco.sql.query(`delete from tb_cliente where idcliente = ${json}`);
   }).then(consulta => {
     
-    console.log(`Usuários encontrados: ${JSON.stringify(consulta.recordset)}`);
-
-    console.log(consulta.recordset)
+  
     res.status(200);
     res.send(consulta.recordset);
   }).catch(err => {
@@ -144,31 +167,30 @@ router.get('/delete/:id', function(req, res, next) {
  
 
 
-// router.post('/cadastro', function (req, res, next) {
+// router.post('/cadastrar', function (req, res, next) {
 
 //   var cadastro_valido = false;
 
 //   banco.conectar().then(() => {
-//     console.log(`Chegou p/ cadastro: ${JSON.stringify(req.query)}`);
-// 	  // nome = req.body.nome; // depois de .body, use o nome (name) do campo em seu formulário de login
-//     // login = req.body.email; // depois de .body, use o nome (name) do campo em seu formulário de login
-//     // senha = req.body.senha; // depois de .body, use o nome (name) do campo em seu formulário de login
-//     var json1 = req.query;
-//     if (json1.email_user == undefined || json1.senha_user == undefined || json1.nome_user == undefined) {
+//     console.log(`Chegou p/ cadastro: ${JSON.stringify(req.body)}`);
+//     nome = req.body.nomeCompleto; // depois de .body, use o nome (name) do campo em seu formulário de login
+//     login = req.body.emailCad; // depois de .body, use o nome (name) do campo em seu formulário de login
+//     senha = req.body.senhaCad; // depois de .body, use o nome (name) do campo em seu formulário de login
+   
+//     if (login == undefined || senha == undefined || nome == undefined) {
 // 	  // coloque a frase de erro que quiser aqui. Ela vai aparecer no formulário de cadastro
-//       throw new Error(`Dados de cadastro não chegaram completos: ${json1.email_user} / ${json1.senha_user} / ${json1.nome_user }`);
+//       throw new Error(`Dados de cadastro não chegaram completos: ${login} / ${senha} / ${nome }`);
 //     }
-//     return banco.sql.query(`select count(*) as contagem from tb_cliente where email = '${json1.email_user}'`);
+//     return banco.sql.query(`select count(*) as contagem from tb_cliente where email = '${login}'`);
 //   }).then(consulta => {
 
 // 	if (consulta.recordset[0].contagem >= 1) {
-// 		res.status(400).send(`Já existe usuário com o login "${json1.email_user}"`);
+//     res.status(400).send(`Já existe usuário com o login "${login}"`);
 // 		return;
 //     } else {
 // 		console.log('válido!');
 // 		cadastro_valido = true;
 // 	}
-
 //   }).catch(err => {
 
 //     var erro = `Erro no cadastro: ${err}`;
@@ -177,15 +199,13 @@ router.get('/delete/:id', function(req, res, next) {
 
 //   }).finally(() => {
 // 	  if (cadastro_valido) {		  
-			  
 //     banco.sql.query(`insert into tb_cliente (nomeUsuario, senhaUsuario, Email) 
-//     values ('${json1.nome_user}','${json1.senha_user}','${json1.email_user}')`).then(function () {
+//     values ('${nome}','${senha}','${login}')`).then(function () {
 // 			console.log(`Cadastro criado com sucesso!`);
 // 			res.sendStatus(201); 
 // 			// status 201 significa que algo foi criado no back-end, 
-//         // no caso, um registro de usuário ;)
-       
-//       res.redirect('/Dashboard');
+//         // no caso, um registro de usuário ;) 
+//       res.redirect('/login.html');
 // 		}).catch(err => {
 
 // 			var erro = `Erro no cadastro: ${err}`;
@@ -198,8 +218,6 @@ router.get('/delete/:id', function(req, res, next) {
 // 	  }
 //   });
 // });
-
-
 
 // não mexa nesta linha!
 module.exports = router;

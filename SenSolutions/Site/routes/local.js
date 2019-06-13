@@ -13,7 +13,9 @@ router.post('/cadastrar', function (req, res, next) {
     var json = req.body;
       console.log('inserindo dados no banco');
          return banco.sql.query(`Insert into tb_endereco(CEP,logradouro,ufEstado,bairro,cidade) 
-      values ('${json.cep}','${json.rua}','${json.uf}','${json.bairro}','${json.cidade}')`);  
+      values ('${json.cep}','${json.rua}','${json.uf}','${json.bairro}','${json.cidade}')
+      insert into tb_local(numero,complemento,fkcliente,fkendereco)
+      values(${json.numero},'${json.complemento}',1,1)`);  
   }).then(consulta => {
     
     res.status(200);
@@ -30,12 +32,12 @@ router.post('/cadastrar', function (req, res, next) {
   });
 });
 
-router.get('/', function (req, res, next) {
+router.get('/:id', function (req, res, next) {
  
   banco.conectar().then(() => {
-    console.log(`Chegou p/ cadastro: ${JSON.stringify(req.query)}`);
-    var json = req.query;
-    return banco.sql.query(`Select * from tb_endereco where idendereco = ${json.id};`);
+    console.log(`Chegou p/ cadastro: ${JSON.stringify(req.params.id)}`);
+ 
+    return banco.sql.query(`Select * from tb_endereco where idendereco = ${req.params.id};`);
   }).then(consulta => {
 
     console.log(json);
@@ -51,26 +53,6 @@ router.get('/', function (req, res, next) {
   });
 });
 
-// router.get('/teste', function (req, res, next) {
- 
-//   banco.conectar().then(() => {
-//     console.log(`Chegou p/ cadastro: ${JSON.stringify(req.query)}`);
-//     var json = req.query;
-//     return banco.sql.query(`Select * from tb_local where idLocal = ${json.id};`);
-//   }).then(consulta => {
-
-//     console.log(json);
-//     res.status(200);
-//     res.send(consulta.recordset);
-//   }).catch(err => {
-//     var erro = `Erro na requisição : ${err}`;
-//     console.error(erro);
-//     res.status(500).send(erro);
-
-//   }).finally(() => {
-//     banco.sql.close();
-//   });
-// });
 
 router.get('/todos', function (req, res, next) {
   console.log(banco.conexao);

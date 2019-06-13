@@ -3,6 +3,10 @@ function limparCampos() {
     exampleInputEmail.value = '';
     exampleInputPassword.value = '';
     exampleRepeatPassword.value = '';
+    nome_user.value='';
+    email_user.value ='';
+    senha_user.value= '';
+    repeat_senha.value= '';
   }
 
   function aguardar() {
@@ -51,40 +55,40 @@ function limparCampos() {
   }
 
 
-  function cadastroUsuario(user, email, password, confirmPassword) {
-    aguardar();
+  // function cadastroUsuario(user, email, password, confirmPassword) {
+  //   aguardar();
     
-    fetch(`usuarios/cadastro/?user=${user}&email=${email}&password=${password}`, {
-      method: "POST"
-    }).then(js => {
-      console.log(js.status);
-      if (user == '' || email == '' || password == '' || confirmPassword == '') {
-        console.log('Preencha todos os campos');
-        limparCampos();
-        div_brancos.style.display = 'block';
-        btn_Cadastrar.disabled = false;
-      } else if (password == confirmPassword) {
-        if (js.status === 200) {
-          console.log('Cadastrado com Sucesso!');
-          div_sucess.style.display = 'block';
-          btn_Cadastrar.disabled = false;
-          limparCampos();
-        } else {
-          console.log('Erro de Cadastro!');
-          finalizar_aguardar();
-        }
-      } else {
-        console.log('Senhas estao Diferentes!');
-        finalizar_aguardar();
-      }
-    });
-    return false;
-  }
+  //   fetch(`usuarios/cadastro/?user=${user}&email=${email}&password=${password}`, {
+  //     method: "POST"
+  //   }).then(js => {
+  //     console.log(js.status);
+  //     if (user == '' || email == '' || password == '' || confirmPassword == '') {
+  //       console.log('Preencha todos os campos');
+  //       limparCampos();
+  //       div_brancos.style.display = 'block';
+  //       btn_Cadastrar.disabled = false;
+  //     } else if (password == confirmPassword) {
+  //       if (js.status === 200) {
+  //         console.log('Cadastrado com Sucesso!');
+  //         div_sucess.style.display = 'block';
+  //         btn_Cadastrar.disabled = false;
+  //         limparCampos();
+  //       } else {
+  //         console.log('Erro de Cadastro!');
+  //         finalizar_aguardar();
+  //       }
+  //     } else {
+  //       console.log('Senhas estao Diferentes!');
+  //       finalizar_aguardar();
+  //     }
+  //   });
+  //   return false;
+  // }
 
-  function deleteById(id) {
+  function excluirUsuarios(id) {
 
     fetch(`usuarios/delete/?id=${id}`, {
-      method: "GET"
+      method: "delete"
     }).then(js => {
       return js.json();
     }).then(rs => {

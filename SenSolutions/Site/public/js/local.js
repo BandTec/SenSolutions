@@ -19,14 +19,14 @@ function finalizar_aguardar() {
 }
 
 
-function cadLocal(cep, rua ,bairro, uf ,cidade) {
+function cadLocal(cep, rua ,bairro, uf ,cidade,numero,complemento) {
     aguardar();
   
-    fetch(`local/cadastrar/?cep=${cep}&rua=${rua}&bairro=${bairro}&uf=${uf}&cidade=${cidade}`, {
+    fetch(`local/cadastrar/?cep=${cep}&rua=${rua}&bairro=${bairro}&uf=${uf}&cidade=${cidade}&numero${numero}&complemento${complemento}`, {
         method: "POST"
     }).then(js => {
         console.log(js.status);      
-        if (rua == '' || cep == '' || bairro == '' || uf == '' || cidade == '') {
+        if (rua == '' || cep == '' || bairro == '' || uf == '' || cidade == '' || numero == '') {
             console.log('Preencha todos os campos');
             limparCampos();
             div_brancos.style.display = 'block';
@@ -46,7 +46,7 @@ function cadLocal(cep, rua ,bairro, uf ,cidade) {
     return false;
 }
 
-getUsuariosId(7);
+getUsuariosId(1);
 
 function getUsuariosId(id) {
 

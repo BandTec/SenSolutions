@@ -10,10 +10,10 @@ router.get('/dashboard',function(req,res,next){
   
     var limite_linhas = 5;
    
-    return banco.sql.query(`select * from tb_cliente full join tb_local on idCliente = FkCLiente
-full join tb_endereco on idEndereco = fkEndereco
-full join tb_sensor on idlocal = fkLocal 
-`);
+    return banco.sql.query(`select * from tb_cliente
+                full join tb_local on idCliente = FkCLiente
+                full join tb_endereco on idEndereco = fkEndereco
+                full join tb_sensor on idlocal = fkLocal `);
   }).then(consulta => {
  
     res.render('dashboard',{results:consulta.recordset});
@@ -32,11 +32,11 @@ router.get('/dashboard/todos',function(req,res,next){
   
   banco.conectar().then(() => {
   
-    var limite_linhas = 5;
    
-    return banco.sql.query(`select * from tb_cliente full join tb_local on idCliente = FkCLiente
-full join tb_endereco on idEndereco = fkEndereco
-full join tb_sensor on idlocal = fkLocal 
+   
+    return banco.sql.query(`select * from tb_cliente left join tb_local on idCliente = FkCLiente
+left join tb_endereco on idEndereco = fkEndereco
+left join tb_sensor on idlocal = fkLocal 
 `);
   }).then(consulta => {
  

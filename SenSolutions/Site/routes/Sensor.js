@@ -13,17 +13,15 @@ router.post('/cadastrar', function (req, res, next) {
     var posicaoSensor = req.body.PosicaoSensor;
     var SerialSensor = req.body.SerialSensor;
 
-      console.log('inserindo dados no banco');
-         return banco.sql.query(`Insert into tb_sensor(SerialSensor,posicaoSensor,Temp_Max,Temp_min,Umid_min,Umid_max,fkLocal) 
-      values('${SerialSensor}', '${posicaoSensor}', '40', '0', '0', '100', 1)
-      `);  
+    console.log('inserindo dados no banco');
+    return banco.sql.query(`Insert into tb_sensor(SerialSensor,posicaoSensor,Temp_Max,Temp_min,Umid_min,Umid_max,fkLocal) 
+      values('${SerialSensor}', '${posicaoSensor}', '40', '0', '0', '100', 2)
+      `);
   }).then(consulta => {
     //console.log(`Sensores encontrados para cadastro: ${JSON.stringify(consulta.recordset)}`);
-
-    
     res.status(200);
     res.redirect('/dashboard');
-    
+
     console.log(consulta);
   }).catch(err => {
     var erro = `Erro no cadastro: ${err}`;
@@ -35,12 +33,33 @@ router.post('/cadastrar', function (req, res, next) {
   });
 });
 
-router.get('/id', function (req, res, next) {
- 
+router.get('/:id', function (req, res, next) {
+
   banco.conectar().then(() => {
-    console.log(`Chegou p/ cadastro: ${JSON.stringify(req.body)}`);
-    
-    return banco.sql.query(`Select * from tb_sensor where idSensor = ${req.body.idsensor};`);
+    console.log(`Chegou p/ cadastro: ${JSON.stringify(req.params)}`);
+
+    return banco.sql.query(`Select * from tb_sensor where idSensor = ${req.params.id};`);
+  }).then(consulta => {
+    // console.log(`Sensores encontrados: ${JSON.stringify(consulta.recordset)}`);
+
+    res.status(200);
+    res.send(consulta.recordset);
+  }).catch(err => {
+    var erro = `Erro na consulta: ${err}`;
+    console.error(erro);
+    res.status(500).send(erro);
+
+  }).finally(() => {
+    banco.sql.close();
+  });
+});
+
+router.delete('/:id', function (req, res, next) {
+
+  banco.conectar().then(() => {
+    console.log(`Chegou p/ cadastro: ${JSON.stringify(req.params)}`);
+
+    return banco.sql.query(`delete  from tb_sensor where idSensor = ${req.params.id};`);
   }).then(consulta => {
     // console.log(`Sensores encontrados: ${JSON.stringify(consulta.recordset)}`);
 
@@ -55,12 +74,6 @@ router.get('/id', function (req, res, next) {
     banco.sql.close();
   });
 });
-
-
-
-
-
-
 
 // não mexa nesta linha!
 module.exports = router;

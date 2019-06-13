@@ -118,13 +118,13 @@ router.get('/todos', function (req, res, next) {
 
 });
 
-router.get('/delete', function(req, res, next) {
+router.get('/delete/:id', function(req, res, next) {
 
   banco.conectar().then(() => {
-    console.log(`Chegou p/ Deletar: ${JSON.stringify(req.body)}`);
-    var json = req.body;
+    console.log(`Chegou p/ Deletar: ${JSON.stringify(req.params.id)}`);
+    var json = req.params.id;
     // console.log(`Chegou p/ Deletar: ${json}`);
-    return banco.sql.query(`delete from tb_cliente where idcliente = ${json.idcliente}`);
+    return banco.sql.query(`delete from tb_cliente where idcliente = ${json}`);
   }).then(consulta => {
     
     console.log(`Usuários encontrados: ${JSON.stringify(consulta.recordset)}`);
@@ -133,7 +133,7 @@ router.get('/delete', function(req, res, next) {
     res.status(200);
     res.send(consulta.recordset);
   }).catch(err => {
-    var erro = `Erro no login: ${err}`;
+    var erro = `Erro no delete: ${err}`;
     console.error(erro);
     res.status(500).send(erro);
 

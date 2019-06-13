@@ -8,7 +8,6 @@ router.get('/dashboard',function(req,res,next){
   
   banco.conectar().then(() => {
   
-    var limite_linhas = 5;
    
     return banco.sql.query(`select * from tb_cliente
                 full join tb_local on idCliente = FkCLiente

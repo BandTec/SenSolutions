@@ -32,70 +32,71 @@ router.post('/cadastrar', function (req, res, next) {
   });
 });
 
-router.get('/:id', function (req, res, next) {
+// router.get('/:id', function (req, res, next) {
  
-  banco.conectar().then(() => {
-    console.log(`Chegou p/ cadastro: ${JSON.stringify(req.params.id)}`);
- 
-    return banco.sql.query(`Select * from tb_endereco where idendereco = ${req.params.id};`);
-  }).then(consulta => {
+//   banco.conectar().then(() => {
+//     console.log(`Chegou p/ cadastro: ${JSON.stringify(req.params.id)}`);
+//     var json = req.params.id;
+//     return banco.sql.query(`Select * from tb_endereco where idendereco = ${json};`);
+//   }).then(consulta => {
 
-    console.log(json);
-    res.status(200);
-    res.send(consulta.recordset);
-  }).catch(err => {
-    var erro = `Erro no login: ${err}`;
-    console.error(erro);
-    res.status(500).send(erro);
+//     console.log(json);
+//     res.status(200);
+//     res.send(consulta.recordset);
+//   }).catch(err => {
+//     var erro = `Erro no login: ${err}`;
+//     console.error(erro);
+//     res.status(500).send(erro);
 
-  }).finally(() => {
-    banco.sql.close();
-  });
-});
+//   }).finally(() => {
+//     banco.sql.close();
+//   });
+// });
 
 
 router.get('/todos', function (req, res, next) {
   console.log(banco.conexao);
-  
-  banco.conectar().then(() => {
 
-    return banco.sql.query(`select  
-                             * 
-                             from tb_endereco  `);
+  banco.conectar().then(() => {
+    return banco.sql.query(`select  * from tb_endereco `);
   }).then(consulta => {
+    
     console.log(consulta.recordset);
-    res.send(consulta.recordset);
+      res.send(consulta.recordset);  
   }).catch(err => {
+
     var erro = `Erro para trazer os dados cadastrados: ${err}`;
     console.error(erro);
     res.sendStatus(500).send(erro);
+
   }).finally(() => {
     banco.sql.close();
   });
+
 });
 
 
 
 
-router.get('/todoslocais', function (req, res, next) {
-  console.log(banco.conexao);
+// router.get('/todoslocais', function (req, res, next) {
+//   console.log(banco.conexao);
   
-  banco.conectar().then(() => {
+//   banco.conectar().then(() => {
 
-    return banco.sql.query(`select  
-                             * 
-                             from tb_local  `);
-  }).then(consulta => {
-    console.log(consulta.recordset);
-    res.send(consulta.recordset);
-  }).catch(err => {
-    var erro = `Erro para trazer os dados cadastrados: ${err}`;
-    console.error(erro);
-    res.sendStatus(500).send(erro);
-  }).finally(() => {
-    banco.sql.close();
-  });
-});
+//     return banco.sql.query(`select  
+//                              * 
+//                              from tb_local  `);
+//   }).then(consulta => {
+//     console.log(consulta.recordset);
+//     res.send(consulta.recordset);
+//   }).catch(err => {
+//     var erro = `Erro para trazer os dados cadastrados: ${err}`;
+//     console.error(erro);
+//     res.sendStatus(500).send(erro);
+//   }).finally(() => {
+//     banco.sql.close();
+//   });
+// });
 
 // não mexa nesta linha!
 module.exports = router;

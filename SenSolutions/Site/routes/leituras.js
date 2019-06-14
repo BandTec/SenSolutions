@@ -4,7 +4,7 @@ var banco = require('../app-banco');
 var sms = require('../Utils/apiSms');
 
 router.get('/ultimas', function (req, res, next) {
-  console.log(banco.conexao);
+  // console.log(banco.conexao);
   var dados_atuais ={
     temp_atual:0,
     umid_atual:0
@@ -25,8 +25,8 @@ router.get('/ultimas', function (req, res, next) {
    console.log('Enviou dados');
   //  sms();
  }
-    console.log(consulta.recordset);
-    console.log(`Dados atuais: ${JSON.stringify(dados_atuais)}`);
+    // console.log(consulta.recordset);
+    // console.log(`Dados atuais: ${JSON.stringify(dados_atuais)}`);
     res.send(consulta.recordset);
   
   
@@ -94,7 +94,7 @@ router.get('/estatisticas', function (req, res, next) {
     estatisticas.umid_priQ = consulta.recordset[0].umid_priQ;
     estatisticas.umid_segQ = consulta.recordset[0].umid_segQ;
     estatisticas.umid_terQ = consulta.recordset[0].umid_terQ;
-    console.log(`Estatísticas: ${JSON.stringify(estatisticas)}`);
+    // console.log(`Estatísticas: ${JSON.stringify(estatisticas)}`);
     res.send(estatisticas);
    
 

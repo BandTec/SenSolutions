@@ -730,23 +730,21 @@
                                                                             <span class="text"> Editar </span>
                                                                         </button>
                                                                     </form> -->
-                                                                      <a href="#"
-                                                                          class="btn btn-warning btn-icon-split">
-                                                                          <span class="icon text-white-50">
-                                                                              <i class="fas fa-cog"></i>
-                                                                          </span>
-                                                                          <span class="text">Editar</span>
-                                                                      </a>
-                                                                    <form class="user" action="/usuarios/delete/"
-                                                                        method="delete">
+                                                                    <!-- <a href="#" class="btn btn-warning btn-icon-split">
+                                                                        <span class="icon text-white-50">
+                                                                            <i class="fas fa-cog"></i>
+                                                                        </span>
+                                                                        <span class="text">Editar</span>
+                                                                    </a> -->
+                                                                   
                                                                         <button id="btn_excluir_usuario"
                                                                             class="btn btn-danger btn-icon-split">
                                                                             <span class="icon text-white-50"><i
                                                                                     class="fas fa-trash"></i></span>
                                                                             <span class="text"> Excluir </span>
                                                                         </button>
-                                                                    </form>
-                                                                  
+                                                                    
+
                                                                     <!-- <a href="#" class="btn btn-danger btn-icon-split">
                                                                         <span class="icon text-white-50">
                                                                             <i class="fas fa-trash"></i>
@@ -920,7 +918,6 @@
         <!-- End Footer Area -->
     </div>
     <!-- End page container area -->
-
     <!-- Inicio core -->
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/popper.min.js"></script>
@@ -938,6 +935,16 @@
     <script src="js/graficos.js"></script>
     <script src="js/local.js"></script>
     <script src="js/cadastro.js" type="text/javascript"></script>
+    <script src="js/delete.js"></script>
+    <script>
+        //        ##  script de DELETE   ##  
+        var del = new Delete('#btn_excluir_usuario', '/usuarios/delete/');
+        del.init().then(rs => {
+            window.location.reload()
+        }).catch(err => {
+            console.log(err)
+        });
+    </script>
 </body>
 
 </html>

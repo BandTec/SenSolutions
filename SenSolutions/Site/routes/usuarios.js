@@ -143,7 +143,7 @@ router.get('/todos', function (req, res, next) {
 
 });
 
-router.get('/delete/:id', function(req, res, next) {
+router.delete('/delete/:id', function(req, res, next) {
 
   banco.conectar().then(() => {
     console.log(`Chegou p/ Deletar: ${JSON.stringify(req.params.id)}`);
